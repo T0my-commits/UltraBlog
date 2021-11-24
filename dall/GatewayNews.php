@@ -19,7 +19,8 @@ class GatewayNews {
 		$argv = array(":id" => array($id, PDO::PARAM_INT));
 
 		// on exécute la recherche;
-		$res = $con->executeQuery($query, $argv);
+		$con->executeQuery($query, $argv);
+		$res = $con->getResults();
 
 		// on renvoi les résultats;
 		return new News($res);
@@ -35,7 +36,8 @@ class GatewayNews {
 		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
 
 		// on récupère les news par date;
-		$res = $con->executeQuery($query, $argv);
+		$con->executeQuery($query, $argv);
+		$res = $con->getResults();
 
 		// on stock ces news dans des instances de News dans un tableau;
 		foreach ($res as $r) {
@@ -54,7 +56,8 @@ class GatewayNews {
 		$query = "SELECT * FROM News";
 
 		// on éxécute la requête;
-		$res = $con->executeQuery($query, []);
+		$con->executeQuery($query, []);
+		$res = $con->getResults();
 
 		// on ajoute les résultats dans un tableau;
 		foreach ($res as $r) {
@@ -73,7 +76,8 @@ class GatewayNews {
 		$query = "SELECT COUNT(*) FROM News";
 
 		// on éxécute la requête;
-		$nb = $con->executeQuery($query, []);
+		$con->executeQuery($query, []);
+		$nb = $con->getResults();
 
 		// on retourne le nombre de News;
 		return $nb;

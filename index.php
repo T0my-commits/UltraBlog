@@ -1,5 +1,5 @@
 <?php
 
-require("vues/pagePrincipale.php")
+require("vues/pagePrincipale.php");
 
 ?>

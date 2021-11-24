@@ -9,7 +9,7 @@ class ControleAdministrateur {
 		try
 		{
 			/* On veut gérer les actions suivantes :
-			 *   - systeme de pagination
+			 *   - affichage de la page et systeme de pagination
 			 *   - addnews (l'administrateur veut ajouter une news)
 			 *   - inscription
 			 *   - connexion

@@ -22,14 +22,30 @@ class GatewayNews {
 		$res = $con->executeQuery($query, $argv);
 
 		// on renvoi les résultats;
-		return $res;
+		return new News($res);
+	}
+
+	function findNews(string $dateNews) : News[] {
+		$query = "SELECT * FROM News WHERE dateNews=:dateNews";
+		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
+
+		// on récupère les news par date;
+		$res = $con->executeQuery($query, $argv);
+
+		// on stock ces news dans des instances de News dans un tableau;
+		foreach ($res as $r) {
+			$news[] = new News($r);
+		}
+
+		// on retourne les news;
+		return $news;
 	}
 
 	/**
 	 * Fonction qui retourne toutes les news
 	 * @return toutes les news de la BD
 	*/
-	function findAll() : bool {
+	function findAll() : News[] {
 		$query = "SELECT * FROM News";
 
 		// on éxécute la requête;
@@ -62,8 +78,8 @@ class GatewayNews {
 	 * Function qui insert une news dans la base de données
 	 * @return true si erreur, false sinon
 	*/
-	function insertNews(int $idMembre, string $dateNews, string $contenu) : bool {
-		$query = "INSERT INTO News() VALUES(:idMembre, :dateNews, :contenu)";
+	function insertNews(int $idMembre, string $contenu) : bool {
+		$query = "INSERT INTO News() VALUES(:idMembre, NOW(), :contenu)";
 		$argv = array(":idMembre" => array($idMembre, PDO::PARAM_INT),
 			":dateNews" => array($dateNews, PDO::PARAM_STR),
 			":contenu" => array($contenu, PDO::PARAM_STR)

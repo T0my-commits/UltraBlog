@@ -30,6 +30,7 @@ Le projet utilise une patron d'architecture MVC. Les dossiers sont classés de l
 - ***modele*** : contient les définitions de classes
 - ***vues*** : contient les fichiers de vues du projet (HTML)
 - ***css*** : contient la mise en page des vues (CSS)
+- ***media*** : contient toutes les ressources du site (images, icones, etc.)
 
 Le projet est soumis à la convention de nommage CamelCase pour le nommage des variables (premiereLettreDuPremierMotEnMinusculeApresInverse).
 Le nom des fichiers de classe commencent par une majuscule, tout comme le nom de la classe et de ces méthodes (Classe.Methode).

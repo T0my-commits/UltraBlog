@@ -22,6 +22,17 @@ Les collaborateurs du projet sont :
 - Orillon Mathilde
 - Devienne Thomas
 
-Le projet utilise une patron d'architecture MVC.
+Le projet utilise une patron d'architecture MVC. Les dossiers sont classés de la manière suivante :
 
+- ***BD*** : contient la base de données sous la forme d'un script SQL
+- ***controle*** : contient les Controlers chargés de traiter les actions et gérer les erreurs
+- ***dall*** : contient les Gatways servant d'interfaces entre la BD (requêtes SQL) et le modele
+- ***modele*** : contient les définitions de classes
+- ***vues*** : contient les fichiers de vues du projet (HTML)
+- ***css*** : contient la mise en page des vues (CSS)
+
+Le projet est soumis à la convention de nommage CamelCase pour le nommage des variables (premiereLettreDuPremierMotEnMinusculeApresInverse).
+Le nom des fichiers de classe commencent par une majuscule, tout comme le nom de la classe et de ces méthodes (Classe.Methode).
+Aucune variable ou nom de classe de possède d'accents !
+ 
 *Bon courage !*

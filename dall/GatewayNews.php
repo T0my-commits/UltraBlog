@@ -14,7 +14,7 @@ class GatewayNews {
 	 * Fonction qui permet de rechercher une news dans la base de données et de la renvoyer
 	 * @return La news ayant l'id passé en paramètre
 	*/
-	function FindNews(int $id) {
+	function FindNews(int $id) : News[] {
 		$query = "SELECT * FROM News WHERE id=:id";
 		$argv = array(":id" => array($id, PDO::PARAM_INT));
 
@@ -29,7 +29,7 @@ class GatewayNews {
 	 * Fonction qui retourne toutes les news
 	 * @return toutes les news de la BD
 	*/
-	function findAll() {
+	function findAll() : bool {
 		$query = "SELECT * FROM News";
 
 		// on éxécute la requête;
@@ -48,7 +48,7 @@ class GatewayNews {
 	 * Fonction qui compte le nombre de news total
 	 * @return le nombre de news total dans la BD
 	*/
-	function countAll() {
+	function countAll() : int {
 		$query = "SELECT COUNT(*) FROM News";
 
 		// on éxécute la requête;
@@ -62,12 +62,33 @@ class GatewayNews {
 	 * Function qui insert une news dans la base de données
 	 * @return true si erreur, false sinon
 	*/
-	function insert($idMembre, $dateNews, $contenu) {
+	function insertNews(int $idMembre, string $dateNews, string $contenu) : bool {
 		$query = "INSERT INTO News() VALUES(:idMembre, :dateNews, :contenu)";
 		$argv = array(":idMembre" => array($idMembre, PDO::PARAM_INT),
 			":dateNews" => array($dateNews, PDO::PARAM_STR),
 			":contenu" => array($contenu, PDO::PARAM_STR)
 		);
+
+		// on insert la news dans la base de données;
+		$status = $con->executeQuery($query, $argv);
+
+		// on retourne le code d'erreur de la méthode executeQuery;
+		return $status;
+	}
+
+	/**
+	 * Fonction qui supprime une news
+	 * @return true si erreur, false si succès
+	*/
+	function deleteNews(int $id) : bool {
+		$query = "DELETE FROM News WHERE id=:id";
+		$argv = array(":id" => array($id, PDO::PARAM_INT));
+
+		// on supprime la news;
+		$status = $con->executeQuery($query, $argv);
+
+		// on retourne le code erreur de executeQuery();
+		return $status;
 	}
 }
 

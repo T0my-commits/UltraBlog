@@ -1,24 +1,24 @@
 <?php
 
 class User{
-	private $nom;
-	private $prenom;
-	private $login;
-	private $mdp;
+	protected $idUser;  //j'ai regardé sur internet normalement il faut mettre en protected mais je suis pas sûre
+	protected $nom;
+	protected $prenom;
+	protected $login;
 
-	public function __constrcut(string $n, string $p, string $l, string $mdp){
-		$this->nom=$n;
+	function __construct(int $idUser, string $nom, int $prenom, string $login){
+		$this->idUser=$idUser;
+		$this->nom=$nom;
 		$this->prenom=$p;
 		$this->login=$l;
-		$this->mdp=$mdp;
+		return $this;
 	}
 
 	public function  toString() : string{
-		return $this->nom." ".$this->prenom." a pour login ".$this->login." et mot de passe : ".$this->mdp;
+		return $this->idUser." ".$this->nom." ".$this->prenom." ".$this->login;
 	} 
 }
 
-//User($id,$nom, $prenom, $login, $mdp)
 
 ?>
 

@@ -114,8 +114,8 @@
 
 		    	</div>
 		    <div class="col-4">
-		    	<div class="container">
-		    		Un container
+		    	<div class="container sticky-top bg-white">
+		    		Un containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn
 		    	</div>
 
 

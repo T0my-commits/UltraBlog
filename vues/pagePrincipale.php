@@ -11,7 +11,7 @@ require("recurrent/header.php");
 	<div class="gy-5 col-8 align-self-center mx-auto">
 
 		<div>
-			<h1 class="fs-1 fw-bold">UltraBlog</h1>
+			<h1 class="fs-1 fw-bold white">UltraBlog</h1>
 			<!--
 			<button type="button" class="btn btn-primary">Ajouter une news</button>
 			<button type="button" class="btn btn-secondary btn-md">Voir mes news sur cette page</button>
@@ -25,34 +25,34 @@ require("recurrent/header.php");
 		</div>
 
 
-		<div class="card mb-3">
+		<div class="card mb-3  bg-white-translucent rounded-stg" aria-live="assertive" aria-atomic="true">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
 		    <h3 class="card-title">Les effets secondaires du CBD sur la santé <span class="badge bg-secondary">New</span></h3>
 		    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 		    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		    <a href="#" class="btn btn-primary">Lire l'article</a>
-		    <button type="button" class="btn btn-outline-danger">Effacer news</button>
+		    <a href="#" class="btn btn-primary rounded-stg">Lire l'article</a>
+		    <button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
 		  </div>
 		</div>
-		<div class="card mb-3">
+		<div class="card mb-3  bg-white-translucent rounded-stg">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
 		    <h3 class="card-title">Pourquoi les bébés pleuvent-ils ? <span class="badge bg-secondary">New</span></h3>
 		    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 		    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		    <a href="#" class="btn btn-primary">Lire l'article</a>
-		    <button type="button" class="btn btn-outline-danger">Effacer news</button>
+		    <a href="#" class="btn btn-primary rounded-stg">Lire l'article</a>
+		    <button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
 		  </div>
 		</div>
-		<div class="card mb-3">
+		<div class="card mb-3  bg-white-translucent rounded-stg">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
 		    <h3 class="card-title">Quel est la différence entre le pole nord et le pole nord mais pas pareil ?</h3>
 		    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 		    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		    <a href="#" class="btn btn-primary">Lire l'article</a>
-		    <button type="button" class="btn btn-outline-danger">Effacer news</button>
+		    <a href="#" class="btn btn-primary rounded-stg">Lire l'article</a>
+		    <button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
 		  </div>
 		</div>
 	</div>

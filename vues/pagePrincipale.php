@@ -4,7 +4,7 @@ require("recurrent/header.php");
 
 ?>
 
-<body style="background-color: #a1c2ff;">
+<body style="background-color: #cdd9e8;">
 
 
 <div class="container-xxl my-5">
@@ -19,13 +19,13 @@ require("recurrent/header.php");
 			
 			<div class="mb-3">
 			  <label for="exampleFormControlTextarea1" class="form-label">Poster une news</label>
-			  <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Rédigez votre article ici"></textarea>
+			  <textarea class="form-control shadow-sm" id="exampleFormControlTextarea1" rows="6" placeholder="Rédigez votre article ici"></textarea>
 				<button type="button" class="btn btn-primary my-2">Je poste !</button>
 			</div>
 		</div>
 
 
-		<div class="card mb-3  bg-white-translucent rounded-stg" aria-live="assertive" aria-atomic="true">
+		<div class="card mb-3 bg-white-translucent rounded-stg shadow" aria-live="assertive" aria-atomic="true">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
 		    <h3 class="card-title">Les effets secondaires du CBD sur la santé <span class="badge bg-secondary">New</span></h3>
@@ -35,7 +35,7 @@ require("recurrent/header.php");
 		    <button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
 		  </div>
 		</div>
-		<div class="card mb-3  bg-white-translucent rounded-stg">
+		<div class="card mb-3 bg-white-translucent rounded-stg shadow">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
 		    <h3 class="card-title">Pourquoi les bébés pleuvent-ils ? <span class="badge bg-secondary">New</span></h3>
@@ -45,7 +45,7 @@ require("recurrent/header.php");
 		    <button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
 		  </div>
 		</div>
-		<div class="card mb-3  bg-white-translucent rounded-stg">
+		<div class="card mb-3 bg-white-translucent rounded-stg shadow">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
 		    <h3 class="card-title">Quel est la différence entre le pole nord et le pole nord mais pas pareil ?</h3>

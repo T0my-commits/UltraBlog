@@ -45,6 +45,10 @@ require("recurrent/header.php");
 		    <div id="emailHelp" class="form-text">Nous ne partagerons jamais votre adresse mail avec quelqu'un d'autre.</div>
 		  </div>
 		  <div class="mb-3">
+		    <label for="flogin" class="form-label">Votre login</label>
+		    <input type="text" class="form-control" id="flogin" required>
+		  </div>
+		  <div class="mb-3">
 		    <label for="fnom" class="form-label">Votre nom</label>
 		    <input type="text" class="form-control" id="fnom" required>
 		  </div>

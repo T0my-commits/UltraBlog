@@ -1,6 +1,7 @@
 <?php
 
-class Commentaires{
+class Commentaires {
+	
 	private int $id;
 	private string $login;
 	private int $idNews;

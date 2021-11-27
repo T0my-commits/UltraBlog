@@ -51,12 +51,6 @@ class GatewayCom{
 		return $news;
 	}*/
 
-//à voir ensemble 
-
-
-
-
-
 	/**
 	 * Fonction qui permet d'insérer un utilisateur dans la base de données
 	 * @param int $idUser identifiant de l'utilisateur, string $nom nom de l'utilisateur, string $prenom prenom de l'utilisateur, string $login le login de la personne
@@ -75,24 +69,5 @@ class GatewayCom{
 
 		//retourne le code d'erreur de la méthode executeQuery
 		return $status;						
-	}
-
-
-	/**
-	 * Fonction qui permet d'insérer un commentaire dans la base de données
-	 * @param int $idUser identifiant de l'utilisateur
-	 * @return un bool true si succès, false pour erreur
-	*/
-	function SupprimerCom(int $idUser):bool{
-
-		$query='"DELETE FROM User WHERE idUser=:idUser"';
-		$arg=array(':idUser'=> array($idUser,PDO::PARAM_INT));
-
-		//on supprime le commentaire
-		$status=$con->executeQuery($query, $arg);
-		
-		//on retourne le code d'erreur de la méthode executeQuery
-		return $status;			
-
 	}
 ?>

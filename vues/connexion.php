@@ -1,6 +1,4 @@
-<html>
-<head></head>
-<body>
+<!--
 <link 	href="styleBlog.css"type="text/css" rel="stylesheet"media="screen"/>
 <form action="verificationC.php" method="GET">
 	<p>
@@ -19,6 +17,33 @@
 	</form>
 
 	<a href="inscription.php"> Inscrivez-vous! </a>
+-->
 
-</body>
-<html>
+<?php
+
+require("recurrent/header.php");
+
+?>
+
+<div class="container-xxl my-5">
+	<div class="col-4 align-self-center mx-auto">
+		<h1 class="fs-3 my-4 fw-bold">Connexion</h1>
+		<form>
+		  <div class="mb-3">
+		    <label for="flogin" class="form-label">Login</label>
+		    <input type="text" class="form-control" id="flogin" required>
+		  </div>
+		  <div class="mb-3">
+		    <label for="fmdp" class="form-label">Mot de passe</label>
+		    <input type="password" class="form-control" id="fmdp" required>
+		  </div>
+		  <button type="submit" class="btn btn-primary my-3">Submit</button>
+		</form>
+	</div>
+</div>
+
+<?php
+
+require("recurrent/footer.php");
+
+?>

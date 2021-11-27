@@ -20,8 +20,9 @@
 
 	<?php
 
-	require("vues/pagePrincipale.php");
+	//require("vues/pagePrincipale.php");
 	//require("vues/inscription.php");
+	require("vues/connexion.php");
 
 	?>
 

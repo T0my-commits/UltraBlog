@@ -14,7 +14,7 @@ class GatewayNews {
 	 * Fonction qui permet de rechercher une news dans la base de données et de la renvoyer
 	 * @return News[] La news ayant l'id passé en paramètre
 	*/
-	function FindNews(int $id) : News[] {
+	function FindNews(int $id) : News {
 		$query = "SELECT * FROM News WHERE id=:id";
 		$argv = array(":id" => array($id, PDO::PARAM_INT));
 

@@ -7,6 +7,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </head>
 
+	<div style="height: 40px;"></div>
+
     <body style="background-color: #ff5ca4;">
     	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 		  <div class="container-fluid">
@@ -113,13 +115,11 @@
 					</nav>
 
 		    	</div>
-		    <div class="col-4">
-		    	<div class="container sticky-top bg-white">
-		    		Un containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn
-		    	</div>
-
-
-		    </div>
+				    <div class="col-4">
+				    	<div class="container sticky-top bg-white" style="transform: translateY(80px);">
+				    		Un containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn containerUn
+				    	</div>
+				    </div>
 
 			    
 

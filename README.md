@@ -25,9 +25,9 @@ Les collaborateurs du projet sont :
 Le projet utilise une patron d'architecture MVC. Les dossiers sont classés de la manière suivante :
 
 - ***BD*** : contient la base de données sous la forme d'un script SQL
-- ***controle*** : contient les Controlers chargés de traiter les actions, gérer les erreurs et les données, création d'un modèle
-- ***dall*** : contient les Gatways servant d'interfaces entre la BD (requêtes SQL) et le modele
+- ***controle*** : contient les Controlers chargés de traiter les actions, gérer les erreurs et les données, créer un modèle
 - ***modele*** : contient les définitions de classes les appels aux gateways et la gestion des sessions / cookies
+- ***dall*** : contient les Gatways servant d'interfaces entre la BD (requêtes SQL) et le modele
 - ***vues*** : contient les fichiers de vues du projet (HTML)
 - ***css*** : contient la mise en page des vues (CSS)
 - ***media*** : contient toutes les ressources du site (images, icones, etc.)

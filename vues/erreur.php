@@ -22,7 +22,7 @@
 
 <?php
 
-	foreach($TMessage as $erreur){
+	foreach($dVueEreur as $erreur){
 		echo"</br>".$erreur;
 	}	
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 24 nov. 2021 à 20:20
+-- Généré le : dim. 28 nov. 2021 à 01:53
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.0.12
 
@@ -42,6 +42,8 @@ CREATE TABLE `commentaires` (
 
 CREATE TABLE `membres` (
   `id` int(255) NOT NULL,
+  `login` varchar(30) NOT NULL,
+  `motdepasse` varchar(30) NOT NULL,
   `nom` varchar(30) NOT NULL,
   `prenom` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
@@ -53,9 +55,9 @@ CREATE TABLE `membres` (
 -- Déchargement des données de la table `membres`
 --
 
-INSERT INTO `membres` (`id`, `nom`, `prenom`, `email`, `tel`, `d_inscription`) VALUES
-(1, 'Zuckerberg', 'Mark', 'mark.zuckerberg@gmail.com', '06.55.77.45.23', '2021-11-19'),
-(2, 'Devienne', 'Thomas', 'devienne.thomas@hotmail.fr', '06 95 07 22 83', '2021-11-19');
+INSERT INTO `membres` (`id`, `login`, `motdepasse`, `nom`, `prenom`, `email`, `tel`, `d_inscription`) VALUES
+(1, 'mark', 'mark', 'Zuckerberg', 'Mark', 'mark.zuckerberg@gmail.com', '06.55.77.45.23', '2021-11-19'),
+(2, 'thomas', 'thomas', 'Devienne', 'Thomas', 'devienne.thomas@hotmail.fr', '06 95 07 22 83', '2021-11-19');
 
 -- --------------------------------------------------------
 

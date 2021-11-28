@@ -68,16 +68,16 @@ class Validation {
 	 * Méthode qui permet de vérifier que le formulaire de connexion à bien été renseigné
 	 * @return bool true si ok, false si ko
 	*/
-	static function ValidConnexion(string $nom, string $motdepasse) : bool {
+	static function ValidConnexion(string &$nom, string &$motdepasse, array &$dVueErreur) : bool {
 		//vérification du login bien attribué
-		if(!isset($login) || $login = "")
+		if(!isset($login) || $login = "" || $login = " ")
 			$dVueErreur[] = " il faut renseigner le login";
 		else 
 			$login = filter_var($login, FILTER_SANITIZE_STRING);
 
 
 		//vérification du mot de passe bien attribué
-		if(!isset($motdepasse) || $motdepasse = "")
+		if(!isset($motdepasse) || $motdepasse = "" || $motdepasse = " ")
 			$dVueErreur[] = " il faut renseigner le mot de passe";
 		else 
 			$motdepasse = filter_var($motdepasse, FILTER_SANITIZE_STRING);

@@ -1,17 +1,18 @@
 <?php
 
-class GatewayAdministrateur{
+class GatewayAdministrateur {
+
 	private $con;
 
-	function __construct(Connection $con){
-		$this->con=$con;
+	function __construct(Connection $con) {
+		$this->con = $con;
 	}
 
 	/**
 	 * Fonction qui permet à un administrateur de se connecter
 	 * @return bool Retourne true si ok, false si ko
 	*/
-	function static SeConnecter(string $login, string $motdepasse) : bool {
+	public function SeConnecter(string $login, string $motdepasse) : bool {
 
 		//requête pour récuperer le commentaire en fonction de l'idNews
 		$query="SELECT login,nom,prenom,email,tel,motdepasse FROM membres WHERE login=:login,motdepasse=:motdepasse";	
@@ -40,3 +41,6 @@ class GatewayAdministrateur{
 			$user = NULL;
 		*/
 	}
+}
+
+?>

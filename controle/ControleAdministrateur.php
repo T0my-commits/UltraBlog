@@ -23,7 +23,8 @@ class ControleAdministrateur {
 			global $rep,$vues;
 
 			// on récupère l'action dans l'URL
-			$action = $_GET["action"];
+			if (isset($_GET["action"])) $action = $_GET["action"];
+								else 	$action = NULL;
 
 			switch ($action) {
 				case NULL:
@@ -41,10 +42,12 @@ class ControleAdministrateur {
 
 				case "inscription":
 					// on redirige vers la page d'inscription
+					require($rep.$vues["inscription"]);
 					break;
 
 				case "connexion":
 					// on redirige vers la page de connexion
+					require($rep.$vues["connexion"]);
 					break;
 
 				default:

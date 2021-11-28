@@ -19,11 +19,16 @@ class ControleAdministrateur {
 			 * via une méthode POST (exemple : login, mot de passe)
 			*/
 
+			// nécessaire pour utiliser variables globales:
+			global $rep,$vues;
+
+			// on récupère l'action dans l'URL
 			$action = $_GET["action"];
 
 			switch ($action) {
 				case NULL:
 					// action
+					require($rep.$vues["pagePrincipale"]);
 					break;
 
 				case "page":

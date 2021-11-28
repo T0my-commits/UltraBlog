@@ -38,6 +38,35 @@ class Commentaires {
 
 
 
+	/**
+	 * Méthode qui permet à un utilisateur d'écrire un commentaire
+	 * @return true si l'insertion a fonctionné, dans le cas contraire retourne false
+	*/
+	public static function EcrireCom():bool{
+		$gw = new GatewayCom(new Connexion($dsn, $username, $password));
+		$isOk=$gw->InsertCom($id, $login, $idNews, $contenu);
+		if ($isOk) 	
+			return true;
+		else 	
+			return false;
+	}
+
+	/**
+	 * Méthode qui permet à un utilisateur d'effacer une news
+	 * @return true si l'insertion a fonctionné, dans le cas contraire retourne false
+	*/
+	public static function SupprimerCom():bool{
+		$gw = new GatewayCom(new Connexion($dsn, $username, $password));
+		SupprimerCom( $id);
+		if ($isOk) 	
+			return true;
+		else 	
+			return false;
+	}
+
+
+
+
 }
 
 ?>

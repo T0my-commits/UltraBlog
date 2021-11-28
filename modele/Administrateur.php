@@ -14,14 +14,26 @@ class Administrateur extends User {
 		//return $this->motdepasse;
 	}
 
+
+	/**
+	 * Méthode qui permet à un utilisateur de se connecter
+	 * @param string $login, login de l'utilisateur
+	 * @param string $motdepasse, mot de passe de l'utilisateur
+	 * @return true si la connexion a fonctionné, dans le cas contraire retourne false
+	*/
 	public static function SeConnecter(string $login, string $motdepasse) : bool {
 		// on se connecte à la base de données
 		$gw = new GatewayAdministrateur(new Connexion($dsn, $username, $password));
 		$isOk = $gw->SeConnecter($login, $motdepasse);
-
-		if ($isOk) 	return true;
-			  else 	return false;
+		if ($isOk) 	
+			return true;
+		else 	
+			return false;
 	}
+
+
+
+
 }
 
 ?>

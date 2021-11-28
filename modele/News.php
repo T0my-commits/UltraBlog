@@ -44,6 +44,35 @@ class News {
 		this->contenu = $contenu;
 		return this;
 	}
+
+	/**
+	 * Méthode qui permet à un utilisateur d'écrire une news
+	 * @return true si l'insertion a fonctionné, dans le cas contraire retourne false
+	*/
+	public static function EcrireNews():bool{
+		$gw = new GatewayNews(new Connexion($dsn, $username, $password));
+		$isOk=$gw->insertNews($idMembre, $contenu);
+		if ($isOk) 	
+			return true;
+		else 	
+			return false;
+	}
+
+	/**
+	 * Méthode qui permet à un utilisateur d'effacer une news
+	 * @return true si l'insertion a fonctionné, dans le cas contraire retourne false
+	*/
+	public static function SupprimerNews():bool{
+		$gw = new GatewayNews(new Connexion($dsn, $username, $password));
+		$isOk=$gw->deleteNews($id);
+		if ($isOk) 	
+			return true;
+		else 	
+			return false;
+	}
+
+
+
 }
 
 ?>

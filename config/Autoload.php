@@ -38,6 +38,7 @@ class Autoload {
     */
     private static function _autoload($class) {
         global $rep;
+        
         $filename = $class.'.php';
         $dir =array('modele/','./','config/','controle/');
 

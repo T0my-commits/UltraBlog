@@ -20,10 +20,10 @@ class ControleAdministrateur {
 			*/
 
 			// nécessaire pour utiliser variables globales:
-			global $rep,$vues;
+			global $rep, $vues;
 
 			//on initialise un tableau d'erreur
-			$dVueEreur = array ();
+			$dVueEreur = array();
 
 			// on récupère l'action dans l'URL
 			if (isset($_GET["action"])) $action = $_GET["action"];
@@ -83,16 +83,17 @@ class ControleAdministrateur {
 	 * @param array $dVueErreur Le tableau contenant toutes les erreurs rencontrées
 	*/
 	function ValidationConnexion(array $dVueEreur) {
-		global $rep,$vues;
+		global $rep, $vues;
 
-		$login = $_POST['login'];
-		$motdepasse = $_POST['motdepasse'];
+		$login = $_POST['flogin'];
+		$motdepasse = $_POST['fmotdepasse'];
 		Validation::ValidConnexion($login, $motdepasse, $dVueEreur);
 
-		$model = Administrateur()::SeConnecter($login, $motdepasse);
+		$model = Administrateur::SeConnecter($login, $motdepasse);
 
-		if ($model)
+		if ($model) {
 			require($rep.$vues["pagePrincipale"]);
+		}
 		else {
 			$dVueEreur[] = "Mauvais login ou mot de passe";
 			require($rep.$vues["erreur"]);

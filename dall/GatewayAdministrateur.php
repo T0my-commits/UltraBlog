@@ -15,7 +15,7 @@ class GatewayAdministrateur{
 
 		//requête pour récuperer le commentaire en fonction de l'idNews
 		$query="SELECT login,nom,prenom,email,tel,motdepasse FROM membres WHERE login=:login,motdepasse=:motdepasse";	
-		$arg=array(":login" => array($login, PDO::PARAM_STR),
+		$arg = array(":login" => array($login, PDO::PARAM_STR),
 			":motdepasse" => array($motdepasse, PDO::PARAM_STR));
 
 		//execution de la requête
@@ -23,10 +23,8 @@ class GatewayAdministrateur{
 		$res = $con->getResults();
 
 		// vérification des résultats
-		if (!empty($res))
-			return true;
-		else
-			return false;
+		if (!empty($res)) 	return true;
+					 else 	return false;
 
 		/*
 		if (!empty($res)) {
@@ -41,7 +39,4 @@ class GatewayAdministrateur{
 		else
 			$user = NULL;
 		*/
-
-		//renvoie un tableau de commentaires
-		return $user;	
 	}

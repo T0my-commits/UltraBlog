@@ -6,7 +6,7 @@ $rep = __DIR__."/../";
 // BD
 
 $dsn = "mysql:host=localhost;dbname=youpi";
-$user = "root";
+$username = "root";
 $password = "";
 
 // Vues

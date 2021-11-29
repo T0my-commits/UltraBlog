@@ -34,7 +34,7 @@ class GatewayCom{
 	 * @param int $idUser identifiant d'un utilisateur
 	 * @return News[] un ensemble de news ayant la même date de publication
 	*/
-	function findNews(int idUser) : News[] {
+	function FindNews(int idUser) : News[] {
 		$query = "SELECT * FROM  WHERE dateNews=:dateNews";
 		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
 

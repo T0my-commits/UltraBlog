@@ -31,7 +31,7 @@ class GatewayNews {
 	 * @param string $dateNews c'est une string car SQL est capable de faire la conversion
 	 * @return News[] un ensemble de news ayant la même date de publication
 	*/
-	function findNews(string $dateNews) : News[] {
+	function FindNews(string $dateNews) : News[] {
 		$query = "SELECT * FROM News WHERE dateNews=:dateNews";
 		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
 
@@ -52,7 +52,7 @@ class GatewayNews {
 	 * Fonction qui retourne toutes les news
 	 * @return News[] toutes les news de la BD
 	*/
-	function findAll() : News[] {
+	function FindAll() : News[] {
 		$query = "SELECT * FROM News";
 
 		// on éxécute la requête;
@@ -72,7 +72,7 @@ class GatewayNews {
 	 * Fonction qui compte le nombre de news total
 	 * @return int le nombre de news total dans la BD
 	*/
-	function countAll() : int {
+	function CountAll() : int {
 		$query = "SELECT COUNT(*) FROM News";
 
 		// on éxécute la requête;
@@ -87,7 +87,7 @@ class GatewayNews {
 	 * Function qui insert une news dans la base de données
 	 * @return bool true si erreur, false sinon
 	*/
-	function insertNews(int $idMembre, string $contenu) : bool {
+	function InsertNews(int $idMembre, string $contenu) : bool {
 		$query = "INSERT INTO News() VALUES(:idMembre, NOW(), :contenu)";
 		$argv = array(":idMembre" => array($idMembre, PDO::PARAM_INT),
 			":dateNews" => array($dateNews, PDO::PARAM_STR),
@@ -105,7 +105,7 @@ class GatewayNews {
 	 * Fonction qui supprime une news
 	 * @return bool true si erreur, false si succès
 	*/
-	function deleteNews(int $id) : bool {
+	function DeleteNews(int $id) : bool {
 		$query = "DELETE FROM News WHERE id=:id";
 		$argv = array(":id" => array($id, PDO::PARAM_INT));
 

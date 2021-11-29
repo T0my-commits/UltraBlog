@@ -22,6 +22,7 @@ class Administrateur extends User {
 	 * @return true si la connexion a fonctionné, dans le cas contraire retourne false
 	*/
 	public static function SeConnecter(string $login, string $motdepasse) : bool {
+		global $dsn, $username, $password;
 		// on se connecte à la base de données
 		$gw = new GatewayAdministrateur(new Connexion($dsn, $username, $password));
 		$isOk = $gw->SeConnecter($login, $motdepasse);

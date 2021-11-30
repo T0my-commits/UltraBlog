@@ -1,7 +1,16 @@
 <?php
 
+  `id` int(11) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `idMembre` int(255) NOT NULL,
+  `dateNews` date NOT NULL,
+  `contenu` varchar(10000) NOT NULL
+
+
 class News {
-	private string $nom;
+	private int $id;
+	private string $titre;
+	private int $idMembre;
 	private string $dateNews;
 	private string $contenu;
 
@@ -17,8 +26,8 @@ class News {
 				$this-&gt;__construct1($args[0]);
 				break;
 			
-			case 3:
-				$this-&gt;__construct3($args[0],$args[1],$args[2]);
+			case 5:
+				$this-&gt;__construct5($args[0],$args[1],$args[2],$args[3],$args[4]);
 				break;
 		}
 	}
@@ -28,7 +37,7 @@ class News {
 	 * @param $news une instance de news
 	*/
 	function __construct1(News $news) {
-		this = $news;
+		$this = $news;
 		return this;
 	}
 
@@ -38,39 +47,69 @@ class News {
 	 * @param $dateNews la date de publication
 	 * @param $contenu le contenu de la news
 	*/
-	function __construct3(string $nom, string $dateNews, string $contenu) {
-		this->nom = $nom;
-		this->dateNews = $dateNews;
-		this->contenu = $contenu;
-		return this;
+	function __construct5(int $id, string $titre, int $idMembre, string $dateNews, string $contenu) {
+		$this->id=$id;
+		$this->titre=$titre;
+		$this->idMembre = $idMembre;
+		$this->dateNews = $dateNews;
+		$this->contenu = $contenu;
+		return $this;
 	}
 
-	/**
-	 * Méthode qui permet à un utilisateur d'écrire une news
-	 * @return true si l'insertion a fonctionné, dans le cas contraire retourne false
-	*/
-	public static function EcrireNews():bool{
-		$gw = new GatewayNews(new Connexion($dsn, $username, $password));
-		$isOk=$gw->insertNews($idMembre, $contenu);
-		if ($isOk) 	
-			return true;
-		else 	
-			return false;
+
+//getter
+
+	public function getId():int{
+		return $id;
 	}
 
-	/**
-	 * Méthode qui permet à un utilisateur d'effacer une news
-	 * @return true si l'insertion a fonctionné, dans le cas contraire retourne false
-	*/
-	public static function SupprimerNews():bool{
-		$gw = new GatewayNews(new Connexion($dsn, $username, $password));
-		$isOk=$gw->deleteNews($id);
-		if ($isOk) 	
-			return true;
-		else 	
-			return false;
+	public function getTitre(): string{
+		return $titre;
 	}
 
+	public function getIdMembre():int{
+		return $idMembre;
+	}
+
+	public function getDate(): string{
+		return $dateNews;
+	}
+
+	public function getContenu(): string{
+		return $contenu;
+	}
+
+
+//setter
+
+	public function setId(int $id){
+		$this->id=$id;
+	}
+
+
+	public function setTitre(string $titre){
+		$this->titre = $titre;
+	}
+
+	public function setIdMembre(int $idMembre){
+		$this->idMembre;
+	}
+
+
+	public function setDate(string $dateNews){
+		$this->dateNews=$dateNews;
+	}
+
+	public function setContenu(string $contenu){
+		$this->contenu=$contenu;
+	}
+
+
+//méthode toString()
+
+	public function toString() : string {
+		return $this->titre." ".$this->dateNews." ".$this->contenu." ".$this->idMembre;
+	}
 
 
 }

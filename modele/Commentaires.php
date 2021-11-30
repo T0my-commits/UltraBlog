@@ -34,34 +34,50 @@ class Commentaires {
 		$this->contenu=$contenu;
 		return $this;
 	}
-//faire la fonction to string
 
 
+//getter
 
-	/**
-	 * Méthode qui permet à un utilisateur d'écrire un commentaire
-	 * @return true si l'insertion a fonctionné, dans le cas contraire retourne false
-	*/
-	public static function EcrireCom():bool{
-		$gw = new GatewayCom(new Connexion($dsn, $username, $password));
-		$isOk=$gw->InsertCom($id, $login, $idNews, $contenu);
-		if ($isOk) 	
-			return true;
-		else 	
-			return false;
+	public function getId():int{
+		return $id;
 	}
 
-	/**
-	 * Méthode qui permet à un utilisateur d'effacer une news
-	 * @return true si l'insertion a fonctionné, dans le cas contraire retourne false
-	*/
-	public static function SupprimerCom():bool{
-		$gw = new GatewayCom(new Connexion($dsn, $username, $password));
-		SupprimerCom( $id);
-		if ($isOk) 	
-			return true;
-		else 	
-			return false;
+	public function getLogin():string{
+		return $login;
+	}
+
+	public function getIdNews():int{
+		return $idNews;
+	}
+
+	public function getContenu(): string{
+		return $contenu;
+	}
+
+
+//setter
+
+	public function setId(int $id){
+		$this->id=$id;
+	}
+
+	public function setLogin(string $login){
+		$this->login=$login;
+	}
+
+	public function setIdNews(int $idNews){
+		$this->idNews=$idNews;
+	}
+
+	public function setContenu(string $contenu){
+		$this->contenu=$contenu;
+	}
+
+
+
+//méthode toString()
+	public function toString() : string {
+		return $this->login." ".$this->contenu;
 	}
 
 

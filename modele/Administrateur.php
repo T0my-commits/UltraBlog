@@ -1,17 +1,26 @@
 <?php
 
-class Administrateur extends User {
+class Administrateur {
 
-	private $motdepasse;
+	protected $nom;
+	protected $prenom;
+	protected $email;
+	protected $tel;
+	protected $login;
+	protected $motdepasse;
 
 	public function __construct(string $nom, int $prenom, string $email, string $tel, string $login, string $motdepasse) {
+		$this->nom = $nom;
+		$this->prenom = $prenom;
+		$this->login = $login;
+		$this->email = $email;
+		$this->tel = $tel;
 		$this->motdepasse = $motdepasse;
-		parent::_construct($nom, $prenom, $email, $tel, $login);
+		return $this;
 	}
 
 	public function toString() : string {
-		//parent::toString(string $nom, int $prenom, string $login);
-		//return $this->motdepasse;
+		return $this->nom." ".$this->prenom." ".$this->login;
 	}
 
 
@@ -25,16 +34,8 @@ class Administrateur extends User {
 		global $dsn, $username, $password;
 		// on se connecte à la base de données
 		$gw = new GatewayAdministrateur(new Connexion($dsn, $username, $password));
-		$isOk = $gw->SeConnecter($login, $motdepasse);
-		if ($isOk) 	
-			return true;
-		else 	
-			return false;
+		return $gw->SeConnecter($login, $motdepasse);
 	}
-
-
-
-
 }
 
 ?>

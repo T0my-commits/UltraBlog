@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : dim. 28 nov. 2021 à 01:53
+-- Généré le : mar. 30 nov. 2021 à 13:05
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.0.12
 
@@ -66,11 +66,21 @@ INSERT INTO `membres` (`id`, `login`, `motdepasse`, `nom`, `prenom`, `email`, `t
 --
 
 CREATE TABLE `News` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `titre` varchar(255) NOT NULL,
   `idMembre` int(255) NOT NULL,
   `dateNews` date NOT NULL,
   `contenu` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `News`
+--
+
+INSERT INTO `News` (`id`, `titre`, `idMembre`, `dateNews`, `contenu`) VALUES
+(1, 'Comment l\'UX design joue-t-il avec la psychologie humaine ? Les explications du docteur Rieux en exclusivité.', 2, '2021-11-30', 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'),
+(2, 'Pourquoi les bébés pleuvent-ils ?', 1, '2021-11-28', 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.'),
+(3, 'Quel est la différence entre le pole nord et le pole nord mais pas pareil ?', 2, '2021-11-14', 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.');
 
 --
 -- Index pour les tables déchargées
@@ -89,6 +99,12 @@ ALTER TABLE `membres`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `News`
+--
+ALTER TABLE `News`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -103,6 +119,12 @@ ALTER TABLE `commentaires`
 --
 ALTER TABLE `membres`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `News`
+--
+ALTER TABLE `News`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

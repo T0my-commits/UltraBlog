@@ -6,8 +6,8 @@ $rep = __DIR__."/../";
 // BD
 
 $dsn = "mysql:host=localhost;dbname=youpi";
-$username = "root";
-$password = "";
+$username = "root"; // à changer avant la publication du site !!! Dangereux !!!
+$password = ""; // ça aussi !!! Dangereux !!!
 
 // Vues
 

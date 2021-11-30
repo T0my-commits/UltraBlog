@@ -32,11 +32,7 @@ class ControleUtilisateur {
 			switch ($action) {
 				case NULL:
 					// on liste les news
-					ListerNews();
-					break;
-
-				case "page":
-					// on appelle les bonnes pages
+					$this->ListerNews();
 					break;
 
 				case "inscription":
@@ -62,26 +58,26 @@ class ControleUtilisateur {
 			$dVueEreur[] =	"Erreur inattendue!!! ";
 			require ($rep.$vues['erreur']);
 		}
+	}
 
-		/**
-		 * Méthode qui permet d'afficher les news sur la page principale
-		*/
-		public function ListerNews() : void {
-			// on défini le nombre de news par page;
-			$nbNewsParPage = 3;
+	/**
+	 * Méthode qui permet d'afficher les news sur la page principale
+	*/
+	function ListerNews() : void {
+		// on défini le nombre de news par page;
+		$NB_NEWS_PAR_PAGE = 3;
 
-			// on défini le numéro de page demandé;
-			if (isset($_GET["page"])) 	$page = $_GET["page"];
-			else 						$page = 1;
+		// on défini le numéro de page demandé;
+		if (isset($_GET["page"])) 	$page = $_GET["page"];
+		else 						$page = 1;
 
-			// on récupère les news de cette page;
-			$val = Validation::ValiderPage($page);
-			$model = new ModeleNews();
-			$nbNews = $model->GetNewsPage($page, $nbNewsParPage);
+		// on récupère les news de cette page;
+		$val = Validation::ValiderPage($page);
+		$model = new ModeleNews();
+		$nbNews = $model->GetNewsPage($page, $NB_NEWS_PAR_PAGE);
 
-			// puis on affiche la page avec les nouvelles infos;
-			require($rep.$vues["pagePrincipale"]);
-		}
+		// puis on affiche la page avec les nouvelles infos;
+		require($rep.$vues["pagePrincipale"]);
 	}
 }
 

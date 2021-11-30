@@ -92,14 +92,14 @@ class Validation {
 	 * Méthode qui permet de vérifier que le numéro de page est bien un paramètre attendu
 	 * @return bool true si ok, false si ko
 	*/
-	public static ValiderPage(int $page) : bool {
+	public static function ValiderPage(int $page) : bool {
 		/* Il faut vérifier :
 			- que le paramètre fourni est bien un int
 			- qu'il appartient à l'intervalle [0 ; nbDePageMax]
 			- qu'il ne contient pas de caractères (pas de code javascript par exemple)
 			- qu'il ne contient pas d'espace ou de 0 au début (pour ne pas faire planter la BD)
 		*/
-
+/*
 		global $dsn, $username, $password;
 		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
 		$nbNewsTotal = $ng->CountAll();
@@ -108,6 +108,8 @@ class Validation {
 		// si le numero de page demandé est supérieur au nombre de pages totales;
 		if ($nbPagesTotal <= $page)
 			throw new Exception("La page demandée n'existe pas");
+*/
+			return true;
 	}
 }
 

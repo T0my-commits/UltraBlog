@@ -76,8 +76,8 @@ class ControleUtilisateur {
 
 			// on récupère les news de cette page;
 			$val = Validation::ValiderPage($page);
-			$model = new News();
-			$nbNews = $model->getNewsPage($page, $nbNewsParPage);
+			$model = new ModeleNews();
+			$nbNews = $model->GetNewsPage($page, $nbNewsParPage);
 
 			// puis on affiche la page avec les nouvelles infos;
 			require($rep.$vues["pagePrincipale"]);

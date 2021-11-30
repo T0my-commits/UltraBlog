@@ -31,7 +31,7 @@ class GatewayNews {
 	 * @param string $dateNews c'est une string car SQL est capable de faire la conversion
 	 * @return News[] un ensemble de news ayant la même date de publication
 	*/
-	function FindNews(string $dateNews) : News[] {
+	function FindNews(string $dateNews) : array {
 		$query = "SELECT * FROM News WHERE dateNews=:dateNews";
 		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
 
@@ -46,6 +46,15 @@ class GatewayNews {
 
 		// on retourne les news;
 		return $news;
+	}
+
+	/**
+	 * Fonction qui permet de trouver une news ou un ensemble de news qui appartiennent au même intervalle d'id
+	 * @param int $deb id du premier id de l'intervalle
+	 * @return int $fin id du dernier id de l'intervalle
+	*/
+	function FindNewsRange(int $deb, int $fin) : array {
+		
 	}
 
 	/**

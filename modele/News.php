@@ -1,12 +1,5 @@
 <?php
 
-  `id` int(11) NOT NULL,
-  `titre` varchar(255) NOT NULL,
-  `idMembre` int(255) NOT NULL,
-  `dateNews` date NOT NULL,
-  `contenu` varchar(10000) NOT NULL
-
-
 class News {
 	private int $id;
 	private string $titre;

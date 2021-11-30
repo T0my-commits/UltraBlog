@@ -1,6 +1,6 @@
 <?php
 
-class ControleAdministrateur {
+class ControleAdministrateur extends ControleUtilisateur {
 
 	/**
 	 * Constructeur de la classe
@@ -30,22 +30,8 @@ class ControleAdministrateur {
 								else 	$action = NULL;
 
 			switch ($action) {
-				case NULL:
-					// action
-					require($rep.$vues["pagePrincipale"]);
-					break;
-
-				case "page":
-					// on appelle les bonnes pages
-					break;
-
 				case "addnews":
 					// on redirige vers la page d'ajout de news
-					break;
-
-				case "inscription":
-					// on redirige vers la page d'inscription
-					require($rep.$vues["inscription"]);
 					break;
 
 				case "connexion":
@@ -59,7 +45,8 @@ class ControleAdministrateur {
 					break;
 
 				default:
-					// page erreur;
+					// on renvoie le constructeur de ControleUtilisateur;
+					parent::__construct();
 					break;
 			}
 		}

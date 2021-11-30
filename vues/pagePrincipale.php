@@ -25,50 +25,40 @@ require("recurrent/header.php");
 		</div>
 
 
+		<?php foreach ($tabNews as $news) { ?>
 		<div class="card mb-3 bg-white-translucent rounded-stg shadow" aria-live="assertive" aria-atomic="true">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
-		    <h3 class="card-title">Les effets secondaires du CBD sur la santé <span class="badge bg-secondary">New</span></h3>
-		    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		    <a href="#" class="btn btn-primary rounded-stg">Lire l'article</a>
-		    <button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
+		    <h3 class="card-title"><?= $news->titre ?> <!--<span class="badge bg-secondary">New</span>--></h3>
+		    <p class="card-text"><?= $news->contenu ?></p>
+		    <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+		    <a href="../index.php?action=afficherNews&idNews=<?= $news->$id ?>" class="btn btn-primary rounded-stg">Lire l'article</a>
+		    <?php if (true) {
+		    	// si l'utilisateur est connecté, on affiche ce bouton ?>
+		    	<button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
+		    <?php } ?>
+
 		  </div>
 		</div>
-		<div class="card mb-3 bg-white-translucent rounded-stg shadow">
-		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
-		  <div class="card-body">
-		    <h3 class="card-title">Pourquoi les bébés pleuvent-ils ? <span class="badge bg-secondary">New</span></h3>
-		    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		    <a href="#" class="btn btn-primary rounded-stg">Lire l'article</a>
-		    <button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
-		  </div>
-		</div>
-		<div class="card mb-3 bg-white-translucent rounded-stg shadow">
-		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
-		  <div class="card-body">
-		    <h3 class="card-title">Quel est la différence entre le pole nord et le pole nord mais pas pareil ?</h3>
-		    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		    <a href="#" class="btn btn-primary rounded-stg">Lire l'article</a>
-		    <button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
-		  </div>
-		</div>
+		<?php } ?>
 	</div>
 
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Previous">
+	    	<!-- il faut vérifier si la page précédent existe avec un if dans la class de a.
+	    	Si la page n'existe pas, alors on echo disabled dans l'attribut class -->
+	      <a class="page-link" href="../index.php?page=<?= ($page-1) ?>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
 	    </li>
-	    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
+	    <?php for($i=0 ; $i<$nbPagesTotal ; $i++) { ?>
+		    <li class="page-item <?php if ($page == $i) echo "active" ?>"><a class="page-link" href="#"><?= $i ?></a></li>
+		<?php } ?>
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Previous">
+	    	<!-- il faut vérifier si la page suivant existe avec un if dans la class de a.
+	    	Si la page n'existe pas, alors on echo disabled dans l'attribut class -->
+	      <a class="page-link" href="../index.php?page=<?= ($page+1) ?>" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	      </a>
 	    </li>

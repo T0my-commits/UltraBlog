@@ -24,6 +24,14 @@ class ModeleNews {
 		return $news;
 	}
 
+	public function CountAllNews() : int {
+		global $dsn, $username, $password;
+		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
+		$nbNewsTotal = $ng->CountAll();
+
+		return $nbNewsTotal;
+	}
+
 }
 
 ?>

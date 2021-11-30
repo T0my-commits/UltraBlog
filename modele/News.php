@@ -11,7 +11,7 @@ class News {
 	 * Surcharge du constructeur de la classe.
 	*/ 
 	function __construct() {
-		$ctp = func_num_args();
+		/*$ctp = func_num_args();
 		$args = func_get_args();
 
 		switch ($ctp) {
@@ -22,7 +22,7 @@ class News {
 			case 5:
 				$this-&gt;__construct5($args[0],$args[1],$args[2],$args[3],$args[4]);
 				break;
-		}
+		}*/
 	}
 
 	/**
@@ -30,8 +30,8 @@ class News {
 	 * @param $news une instance de news
 	*/
 	function __construct1(News $news) {
-		$this = $news;
-		return this;
+		//$this = $news;
+		return $this;
 	}
 
 	/**

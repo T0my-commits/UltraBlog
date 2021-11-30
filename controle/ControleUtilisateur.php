@@ -40,6 +40,15 @@ class ControleUtilisateur {
 					require($rep.$vues["inscription"]);
 					break;
 
+				case "afficherNews":
+					// on affiche la news;
+					require("vues/PageAfficherNews.php");
+					break;
+
+				case "ajouterCommentaire":
+					require("vues/PageAjoutCommentaire.php");
+					break;
+
 				default:
 					// page erreur;
 					break;
@@ -64,6 +73,8 @@ class ControleUtilisateur {
 	 * Méthode qui permet d'afficher les news sur la page principale
 	*/
 	function ListerNews() : void {
+		global $rep, $vues;
+
 		// on défini le nombre de news par page;
 		$NB_NEWS_PAR_PAGE = 3;
 
@@ -74,7 +85,10 @@ class ControleUtilisateur {
 		// on récupère les news de cette page;
 		$val = Validation::ValiderPage($page);
 		$model = new ModeleNews();
-		$nbNews = $model->GetNewsPage($page, $NB_NEWS_PAR_PAGE);
+		$tabNews = $model->GetNewsPage($page, $NB_NEWS_PAR_PAGE);
+
+		$nbNewsTotal = $model->CountAllNews();
+		$nbPagesTotal = $nbNewsTotal / $NB_NEWS_PAR_PAGE;
 
 		// puis on affiche la page avec les nouvelles infos;
 		require($rep.$vues["pagePrincipale"]);

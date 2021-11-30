@@ -76,7 +76,7 @@ class ControleUtilisateur {
 
 			// on récupère les news de cette page;
 			$val = Validation::ValiderPage($page);
-			$model = new ModeleNews();
+			$model = new News();
 			$nbNews = $model->getNewsPage($page, $nbNewsParPage);
 
 			// puis on affiche la page avec les nouvelles infos;

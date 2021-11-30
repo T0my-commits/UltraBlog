@@ -87,6 +87,19 @@ class Validation {
 		if (empty($dVueErreur)) 	return true;
 		else 						return false;
 	}
+
+	/**
+	 * Méthode qui permet de vérifier que le numéro de page est bien un paramètre attendu
+	 * @return bool true si ok, false si ko
+	*/
+	public static ValiderPage(int $page) : bool {
+		/* Il faut vérifier :
+			- que le paramètre fourni est bien un int
+			- qu'il appartient à l'intervalle [0 ; nbDePageMax]
+			- qu'il ne contient pas de caractères (pas de code javascript par exemple)
+			- qu'il ne contient pas d'espace ou de 0 au début (pour ne pas faire planter la BD)
+		*/
+	}
 }
 
 ?>

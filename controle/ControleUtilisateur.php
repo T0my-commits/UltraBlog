@@ -31,8 +31,8 @@ class ControleUtilisateur {
 
 			switch ($action) {
 				case NULL:
-					// action
-					require($rep.$vues["pagePrincipale"]);
+					// on liste les news
+					ListerNews();
 					break;
 
 				case "page":
@@ -61,6 +61,26 @@ class ControleUtilisateur {
 			//echo $e->getMessage();
 			$dVueEreur[] =	"Erreur inattendue!!! ";
 			require ($rep.$vues['erreur']);
+		}
+
+		/**
+		 * Méthode qui permet d'afficher les news sur la page principale
+		*/
+		public function ListerNews() : void {
+			// on défini le nombre de news par page;
+			$nbNewsParPage = 3;
+
+			// on défini le numéro de page demandé;
+			if (isset($_GET["page"])) 	$page = $_GET["page"];
+			else 						$page = 1;
+
+			// on récupère les news de cette page;
+			$val = Validation::ValiderPage($page);
+			$model = new ModeleNews();
+			$nbNews = $model->getNewsPage($page, $nbNewsParPage);
+
+			// puis on affiche la page avec les nouvelles infos;
+			require($rep.$vues["pagePrincipale"]);
 		}
 	}
 }

@@ -54,14 +54,28 @@ class GatewayNews {
 	 * @return int $fin id du dernier id de l'intervalle
 	*/
 	function FindNewsRange(int $deb, int $fin) : array {
-		
+		$query = "SELECT * FROM News WHERE id BETWEEN :deb AND :fin";
+		$argv = array(":deb" => array($deb, PDO::PARAM_INT),
+			":fin" => array($fin, PDO::PARAM_INT));
+
+		// on exécute la requête
+		$con->executeQuery($query, $argv);
+		$res = $con->getResults();
+
+		// on ajoute les résultats dans un tableau;
+		foreach ($res as $r) {
+			$news[] = new News($r);
+		}
+
+		// on retourne les résultats;
+		return $news;
 	}
 
 	/**
 	 * Fonction qui retourne toutes les news
 	 * @return News[] toutes les news de la BD
 	*/
-	function FindAll() : News[] {
+	function FindAll() : array {
 		$query = "SELECT * FROM News";
 
 		// on éxécute la requête;

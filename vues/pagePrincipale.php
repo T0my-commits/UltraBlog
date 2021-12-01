@@ -25,7 +25,9 @@ require("recurrent/header.php");
 		</div>
 
 
-		<?php foreach ($tabNews as $news) { ?>
+		<?php 
+		if(isset($tabNews)){
+			foreach ($tabNews as $news) { ?>
 		<div class="card mb-3 bg-white-translucent rounded-stg shadow" aria-live="assertive" aria-atomic="true">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
@@ -40,6 +42,7 @@ require("recurrent/header.php");
 
 		  </div>
 		</div>
+			<?php } ?>
 		<?php } ?>
 	</div>
 
@@ -52,8 +55,11 @@ require("recurrent/header.php");
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
 	    </li>
-	    <?php for($i=0 ; $i<$nbPagesTotal ; $i++) { ?>
+	    <?php 
+		if(isset($nbPagesTotal)){
+			for($i=0 ; $i<$nbPagesTotal ; $i++) { ?>
 		    <li class="page-item <?php if ($page == $i) echo "active" ?>"><a class="page-link" href="#"><?= $i ?></a></li>
+			<?php } ?>
 		<?php } ?>
 	    <li class="page-item">
 	    	<!-- il faut vérifier si la page suivant existe avec un if dans la class de a.

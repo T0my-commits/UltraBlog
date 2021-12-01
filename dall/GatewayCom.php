@@ -20,7 +20,7 @@ class GatewayCom{
 
 		//execution de la requête
 		$con->executeQuery($query,$arg);
-		$res=$con->getResults();
+		$res=$this->con->getResults();
 		foreach($res as $row)
 			$com[]=new Commentaires($row['id']);
 
@@ -33,7 +33,7 @@ class GatewayCom{
 		//requête pour récupérer tous les commentaires
 		$query='SELECT *FROM commentaires';
 		$con->executeQuery($query);
-		$res=$con->getResults();
+		$res=$this->con->getResults();
 		foreach($res as $row)
 			$com[]=new Commentaires($row['id']);
 
@@ -49,7 +49,7 @@ class GatewayCom{
 	function CountAllCom():int {
 		$query= 'SELECT COUNT(*) FROM commentaires';
 		$con->executeQuery($query);
-		$res=$con->getResults();
+		$res=$this->con->getResults();
 
 		//retourne le résultat
 		return $res;
@@ -64,8 +64,8 @@ class GatewayCom{
 	function CountByNews(int $idNews):int{
 		$query= 'SELECT COUNT(*) FROM commentaires WHERE $idNews=:idNews';
 		$arg= array(':idNews'=>array($idNews,PDO::PARAM_INT)); 
-		$con->executeQuery($query, $arg);
-		$res=$con->getResults();
+		$this->con->executeQuery($query, $arg);
+		$res=$this->con->getResults();
 
 		//retourne le résultat
 		return $res;
@@ -87,7 +87,7 @@ class GatewayCom{
 				':contenu'=>array($contenu,PDO::PARAM_STR));
 
 		//insertion du commentaire dans la base de données
-		$status=$con->executeQuery($query, $arg);
+		$status=$this->con->executeQuery($query, $arg);
 
 		//retourne le code d'erreur de la méthode executeQuery
 		return $status;						
@@ -105,7 +105,7 @@ class GatewayCom{
 		$arg=array(':id'=> array($id,PDO::PARAM_INT));
 
 		//on supprime le commentaire
-		$status=$con->executeQuery($query, $arg);
+		$status=$this->con->executeQuery($query, $arg);
 		
 		//on retourne le code d'erreur de la méthode executeQuery
 		return $status;			

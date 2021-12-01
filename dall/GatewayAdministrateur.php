@@ -21,7 +21,7 @@ class GatewayAdministrateur {
 
 		//execution de la requête
 		$con->executeQuery($query,$arg);
-		$res=$con->getResults();
+		$res=$this->con->getResults();
 		foreach($res as $row)
 			$user[]=new User($row['id']);
 
@@ -40,8 +40,8 @@ class GatewayAdministrateur {
 		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
 
 		// on récupère les news par date;
-		$con->executeQuery($query, $argv);
-		$res = $con->getResults();
+		$this->con->executeQuery($query, $argv);
+		$res = $this->con->getResults();
 
 		// on stock ces news dans des instances de News dans un tableau;
 		foreach ($res as $r) {
@@ -67,7 +67,7 @@ class GatewayAdministrateur {
 				':login'=>array($login,PDO::PARAM_STR));
 
 		//insertion du commentaire dans la base de données
-		$status=$con->executeQuery($query, $arg);
+		$status=$this->con->executeQuery($query, $arg);
 
 		//retourne le code d'erreur de la méthode executeQuery
 		return $status;						
@@ -86,8 +86,8 @@ class GatewayAdministrateur {
 			":motdepasse" => array($motdepasse, PDO::PARAM_STR));
 
 		//execution de la requête
-		$con->executeQuery($query, $arg);
-		$res = $con->getResults();
+		$this->con->executeQuery($query, $arg);
+		$res = $this->con->getResults();
 
 		// vérification des résultats
 		if (!empty($res)) 	return true;

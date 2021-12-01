@@ -15,12 +15,14 @@
 			<h3 class="card-title">/!\ Erreur /!\</h3>
 			<p class="card-text">Message de l'erreur</p>
 			<p class="card-text"><small class="text-muted"></small></p>
-				<a href="pagePrincipale.php" class="btn btn-primary">Retour à la page principale</a>
+				<a href="../pagePrincipale.php" class="btn btn-primary">Retour à la page principale</a>
 		</div>
 	</div>
 
 
 <?php
+//header('Location: ../pagePrincipale.php');
+require("pagePrincipale.php");
 
 	foreach($dVueEreur as $erreur){
 		echo"</br>".$erreur;

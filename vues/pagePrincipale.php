@@ -25,16 +25,14 @@ require("recurrent/header.php");
 		</div>
 
 
-		<?php 
-		if(isset($tabNews)){
-			foreach ($tabNews as $news) { ?>
+		<?php  foreach ($tabNews as $news) { ?>
 		<div class="card mb-3 bg-white-translucent rounded-stg shadow" aria-live="assertive" aria-atomic="true">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
-		    <h3 class="card-title"><?= $news->titre ?> <!--<span class="badge bg-secondary">New</span>--></h3>
-		    <p class="card-text"><?= $news->contenu ?></p>
+		    <h3 class="card-title"><?= $news->getTitre() ?> <!--<span class="badge bg-secondary">New</span>--></h3>
+		    <p class="card-text"><?= $news->getContenu() ?></p>
 		    <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
-		    <a href="../index.php?action=afficherNews&idNews=<?= $news->$id ?>" class="btn btn-primary rounded-stg">Lire l'article</a>
+		    <a href="../index.php?action=afficherNews&idnews=".<?= $news->getId() ?> class="btn btn-primary rounded-stg">Lire l'article</a>
 		    <?php if (true) {
 		    	// si l'utilisateur est connecté, on affiche ce bouton ?>
 		    	<button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
@@ -42,7 +40,6 @@ require("recurrent/header.php");
 
 		  </div>
 		</div>
-			<?php } ?>
 		<?php } ?>
 	</div>
 

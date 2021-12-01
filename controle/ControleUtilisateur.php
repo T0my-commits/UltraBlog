@@ -23,7 +23,7 @@ class ControleUtilisateur {
 			global $rep, $vues;
 
 			//on initialise un tableau d'erreur
-			$dVueEreur = array();
+			$dVueErreur = array();
 
 			// on récupère l'action dans l'URL
 			if (isset($_GET["action"])) $action = $_GET["action"];
@@ -58,13 +58,13 @@ class ControleUtilisateur {
 		{
 			//echo $e->getMessage();
 			//si erreur BD, pas le cas ici
-			$dVueEreur[] =	"Erreur inattendue!!! ";
+			$dVueErreur[] =	"Erreur inattendue!!! ";
 			require ($rep.$vues['erreur']);
 		}
 		catch (Exception $e)
 		{
 			//echo $e->getMessage();
-			$dVueEreur[] =	"Erreur inattendue!!! ";
+			$dVueErreur[] =	"Erreur inattendue!!! ";
 			require ($rep.$vues['erreur']);
 		}
 	}

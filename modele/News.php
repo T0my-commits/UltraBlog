@@ -10,8 +10,9 @@ class News {
 	/**
 	 * Surcharge du constructeur de la classe.
 	*/ 
+		/*
 	function __construct() {
-		/*$ctp = func_num_args();
+		$ctp = func_num_args();
 		$args = func_get_args();
 
 		switch ($ctp) {
@@ -22,15 +23,20 @@ class News {
 			case 5:
 				$this-&gt;__construct5($args[0],$args[1],$args[2],$args[3],$args[4]);
 				break;
-		}*/
+		}
 	}
+		*/
 
 	/**
 	 * Constructeur de la classe qui prends 1 argument
 	 * @param $news une instance de news
 	*/
-	function __construct1(News $news) {
-		//$this = $news;
+	function __construct(array $news) {
+		$this->id = $news[0];
+		$this->titre = $news[1];
+		$this->idMembre = $news[2];
+		$this->dateNews = $news[3];
+		$this->contenu = $news[4];
 		return $this;
 	}
 
@@ -39,44 +45,44 @@ class News {
 	 * @param $nom le nom de l'auteur
 	 * @param $dateNews la date de publication
 	 * @param $contenu le contenu de la news
-	*/
 	function __construct5(int $id, string $titre, int $idMembre, string $dateNews, string $contenu) {
-		$this->id=$id;
-		$this->titre=$titre;
+		$this->id = $id;
+		$this->titre = $titre;
 		$this->idMembre = $idMembre;
 		$this->dateNews = $dateNews;
 		$this->contenu = $contenu;
 		return $this;
 	}
+	*/
 
 
 //getter
 
 	public function getId():int{
-		return $id;
+		return $this->id;
 	}
 
 	public function getTitre(): string{
-		return $titre;
+		return $this->titre;
 	}
 
 	public function getIdMembre():int{
-		return $idMembre;
+		return $this->idMembre;
 	}
 
 	public function getDate(): string{
-		return $dateNews;
+		return $this->dateNews;
 	}
 
 	public function getContenu(): string{
-		return $contenu;
+		return $this->contenu;
 	}
 
 
 //setter
 
 	public function setId(int $id){
-		$this->id=$id;
+		$this->id = $id;
 	}
 
 
@@ -85,16 +91,16 @@ class News {
 	}
 
 	public function setIdMembre(int $idMembre){
-		$this->idMembre;
+		$this->idMembre = $idMembre;
 	}
 
 
 	public function setDate(string $dateNews){
-		$this->dateNews=$dateNews;
+		$this->dateNews = $dateNews;
 	}
 
 	public function setContenu(string $contenu){
-		$this->contenu=$contenu;
+		$this->contenu = $contenu;
 	}
 
 

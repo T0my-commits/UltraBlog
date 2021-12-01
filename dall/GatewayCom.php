@@ -19,7 +19,7 @@ class GatewayCom{
 		$arg=array(":idNews"=>array($idNews, PDO::PARAM_INT));
 
 		//execution de la requête
-		$con->executeQuery($query,$arg);
+		$this->con->executeQuery($query,$arg);
 		$res=$this->con->getResults();
 		foreach($res as $row)
 			$com[]=new Commentaires($row['id']);
@@ -32,7 +32,7 @@ class GatewayCom{
 
 		//requête pour récupérer tous les commentaires
 		$query='SELECT *FROM commentaires';
-		$con->executeQuery($query);
+		$this->con->executeQuery($query);
 		$res=$this->con->getResults();
 		foreach($res as $row)
 			$com[]=new Commentaires($row['id']);
@@ -47,9 +47,8 @@ class GatewayCom{
 	 * @return un entier qui est le nombre total de commentaires
 	*/
 	function CountAllCom():int {
-		$query= 'SELECT COUNT(*) FROM commentaires';
-		$con->executeQuery($query);
-		$res=$this->con->getResults();
+		$query = 'SELECT COUNT(*) FROM commentaires';
+		$res = $this->con->executeQuery($query);
 
 		//retourne le résultat
 		return $res;
@@ -62,10 +61,9 @@ class GatewayCom{
 	 * @return un entier qui est le nombre total de commentaires pour la news rentrée en paramètre
 	*/
 	function CountByNews(int $idNews):int{
-		$query= 'SELECT COUNT(*) FROM commentaires WHERE $idNews=:idNews';
-		$arg= array(':idNews'=>array($idNews,PDO::PARAM_INT)); 
-		$this->con->executeQuery($query, $arg);
-		$res=$this->con->getResults();
+		$query = 'SELECT COUNT(*) FROM commentaires WHERE $idNews=:idNews';
+		$arg = array(':idNews'=>array($idNews,PDO::PARAM_INT)); 
+		$res = $this->con->executeQuery($query, $arg);
 
 		//retourne le résultat
 		return $res;

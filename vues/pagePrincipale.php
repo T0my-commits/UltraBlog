@@ -52,8 +52,8 @@ require("recurrent/header.php");
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
 	    </li>
-	    <?php for($i=0 ; $i<$nbPagesTotal ; $i++) { ?>
-		    <li class="page-item <?php if ($page == ($i+1)) echo "active" ?>"><a class="page-link" href="#"><?= ($i+1) ?></a></li>
+	    <?php for($i=0 ; $i<=$nbPagesTotal ; $i++) { ?>
+		    <li class="page-item <?php if ($page == ($i+1)) echo "active" ?>"><a class="page-link" href="../index.php?page=<?= ($i+1) ?>"><?= ($i+1) ?></a></li>
 		<?php } ?>
 	    <li class="page-item <?php if (($page+1) > $nbPagesTotal) echo "disabled" ?>">
 	      <a class="page-link" href="../index.php?page=<?= ($page+1) ?>" aria-label="Next">

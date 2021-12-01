@@ -17,11 +17,13 @@ require("recurrent/header.php");
 			<button type="button" class="btn btn-secondary btn-md">Voir mes news sur cette page</button>
 			-->
 			
+			<?php if (true) { ?>
 			<div class="mb-3">
 			  <label for="exampleFormControlTextarea1" class="form-label">Poster une news</label>
 			  <textarea class="form-control shadow-sm" id="exampleFormControlTextarea1" rows="6" placeholder="Rédigez votre article ici"></textarea>
 				<button type="button" class="btn btn-primary my-2">Je poste !</button>
 			</div>
+			<?php } ?>
 		</div>
 
 

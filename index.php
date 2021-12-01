@@ -32,7 +32,7 @@
 	Autoload::charger();
 
 	$cont = new ControleUtilisateur();
-
+	
 	?>
 
 </html>

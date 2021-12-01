@@ -1,11 +1,11 @@
 <?php
 
 class News {
-	private int $id;
-	private string $titre;
-	private int $idMembre;
-	private string $dateNews;
-	private string $contenu;
+	private $id;
+	private $titre;
+	private $idMembre;
+	private $dateNews;
+	private $contenu;
 
 	/**
 	 * Surcharge du constructeur de la classe.

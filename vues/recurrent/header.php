@@ -17,8 +17,8 @@
             Admin
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="../index.php?action=connexion">Se connecter</a></li>
-            <li><a class="dropdown-item" href="../index.php?action=inscription">S'inscrire</a></li>
+            <li><a class="dropdown-item" href="index.php?action=connexion">Se connecter</a></li>
+            <li><a class="dropdown-item" href="index.php?action=inscription">S'inscrire</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Poster une news</a></li>
           </ul>

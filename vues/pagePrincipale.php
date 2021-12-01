@@ -34,7 +34,7 @@ require("recurrent/header.php");
 		    <h3 class="card-title"><?= $news->getTitre() ?> <!--<span class="badge bg-secondary">New</span>--></h3>
 		    <p class="card-text"><?= $news->getContenu() ?></p>
 		    <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
-		    <a href="../index.php?action=afficherNews&idnews=".<?= $news->getId() ?> class="btn btn-primary rounded-stg">Lire l'article</a>
+		    <a href="index.php?action=afficherNews&idnews=<?= $news->getId() ?> " class="btn btn-primary rounded-stg">Lire l'article</a>
 		    <?php if (true) {
 		    	// si l'utilisateur est connecté, on affiche ce bouton ?>
 		    	<button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>

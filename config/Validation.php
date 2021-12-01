@@ -111,6 +111,14 @@ class Validation {
 */
 			return true;
 	}
+
+	public static function ValiderNews(int $id){
+		if(!isset($id) || $id="" || $id=" ")
+			$dVueErreur[]="la new n'existe pas";
+		else
+			$id = filter_var($id, FILTER_SANITIZE_INT);
+
+	}
 }
 
 ?>

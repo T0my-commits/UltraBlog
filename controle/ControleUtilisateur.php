@@ -42,6 +42,7 @@ class ControleUtilisateur {
 
 				case "afficherNews":
 					// on affiche la news;
+					$this->AfficherNews($id);
 					require("vues/PageAfficherNews.php");
 					break;
 
@@ -93,6 +94,25 @@ class ControleUtilisateur {
 		// puis on affiche la page avec les nouvelles infos;
 		require($rep.$vues["pagePrincipale"]);
 	}
+
+	/*function AfficherNews(int $id):void{
+		global $rep, $vues;
+		$val = Validation::ValidInscription();
+
+
+
+
+		require($rep.$vue["pageVue"]);
+	}*/
 }
 
 ?>
+
+
+
+
+
+
+
+
+

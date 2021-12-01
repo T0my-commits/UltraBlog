@@ -76,7 +76,7 @@ class ControleUtilisateur {
 		global $rep, $vues;
 
 		// on défini le nombre de news par page;
-		$NB_NEWS_PAR_PAGE = 3;
+		$NB_NEWS_PAR_PAGE = 4;
 
 		// on défini le numéro de page demandé;
 		if (isset($_GET["page"])) 	$page = $_GET["page"];
@@ -88,7 +88,7 @@ class ControleUtilisateur {
 		$tabNews = $model->GetNewsPage($page, $NB_NEWS_PAR_PAGE);
 
 		$nbNewsTotal = $model->CountAllNews();
-		$nbPagesTotal = $nbNewsTotal / $NB_NEWS_PAR_PAGE;
+		$nbPagesTotal = ceil($nbNewsTotal / $NB_NEWS_PAR_PAGE);
 
 		// puis on affiche la page avec les nouvelles infos;
 		require($rep.$vues["pagePrincipale"]);

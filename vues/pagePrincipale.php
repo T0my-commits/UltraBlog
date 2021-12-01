@@ -45,22 +45,17 @@ require("recurrent/header.php");
 
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">
-	    <li class="page-item">
+	    <li class="page-item <?php if (($page-1) < $nbPagesTotal) echo "disabled" ?>">
 	    	<!-- il faut vérifier si la page précédent existe avec un if dans la class de a.
 	    	Si la page n'existe pas, alors on echo disabled dans l'attribut class -->
 	      <a class="page-link" href="../index.php?page=<?= ($page-1) ?>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
 	    </li>
-	    <?php 
-		if(isset($nbPagesTotal)){
-			for($i=0 ; $i<$nbPagesTotal ; $i++) { ?>
-		    <li class="page-item <?php if ($page == $i) echo "active" ?>"><a class="page-link" href="#"><?= $i ?></a></li>
-			<?php } ?>
+	    <?php for($i=0 ; $i<$nbPagesTotal ; $i++) { ?>
+		    <li class="page-item <?php if ($page == ($i+1)) echo "active" ?>"><a class="page-link" href="#"><?= ($i+1) ?></a></li>
 		<?php } ?>
-	    <li class="page-item">
-	    	<!-- il faut vérifier si la page suivant existe avec un if dans la class de a.
-	    	Si la page n'existe pas, alors on echo disabled dans l'attribut class -->
+	    <li class="page-item <?php if (($page+1) > $nbPagesTotal) echo "disabled" ?>">
 	      <a class="page-link" href="../index.php?page=<?= ($page+1) ?>" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	      </a>

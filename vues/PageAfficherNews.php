@@ -36,6 +36,7 @@ require("recurrent/header.php");
 			<h4><?= $commentaire->getLogin() ?></h4>
 			<p><?= $commentaire->getContenu() ?></p>
 		</div>
+		<?php } ?>
 
 
 	</div>

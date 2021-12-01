@@ -22,16 +22,19 @@ class Commentaires {
 		}
 	}
 
-	function __construct1(Commentaire $com) {
-		this=$com;
-		return this;
+	function __construct1(array $com) {
+		$this->id = $com[0];
+		$this->login = $com[1];
+		$this->idNews = $com[2];
+		$this->contenu = $com[3];
+		return $this;
 	}
 
 	function __construct4(int $id, string $login, int $idNews, string $contenu){
-		$this->id=$id;
-		$this->login=$login;
-		$this->idNews=$idNews;
-		$this->contenu=$contenu;
+		$this->id = $id;
+		$this->login = $login;
+		$this->idNews = $idNews;
+		$this->contenu = $contenu;
 		return $this;
 	}
 
@@ -39,38 +42,38 @@ class Commentaires {
 //getter
 
 	public function getId():int{
-		return $id;
+		return $this->id;
 	}
 
 	public function getLogin():string{
-		return $login;
+		return $this->login;
 	}
 
 	public function getIdNews():int{
-		return $idNews;
+		return $this->idNews;
 	}
 
 	public function getContenu(): string{
-		return $contenu;
+		return $this->contenu;
 	}
 
 
 //setter
 
 	public function setId(int $id){
-		$this->id=$id;
+		$this->id = $id;
 	}
 
 	public function setLogin(string $login){
-		$this->login=$login;
+		$this->login = $login;
 	}
 
 	public function setIdNews(int $idNews){
-		$this->idNews=$idNews;
+		$this->idNews = $idNews;
 	}
 
 	public function setContenu(string $contenu){
-		$this->contenu=$contenu;
+		$this->contenu = $contenu;
 	}
 
 
@@ -79,9 +82,6 @@ class Commentaires {
 	public function toString() : string {
 		return $this->login." ".$this->contenu;
 	}
-
-
-
 
 }
 

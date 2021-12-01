@@ -9,8 +9,7 @@ class News {
 
 	/**
 	 * Surcharge du constructeur de la classe.
-	*/ 
-		/*
+		
 	function __construct() {
 		$ctp = func_num_args();
 		$args = func_get_args();
@@ -25,7 +24,8 @@ class News {
 				break;
 		}
 	}
-		*/
+	*/ 
+		
 
 	/**
 	 * Constructeur de la classe qui prends 1 argument
@@ -54,6 +54,7 @@ class News {
 		return $this;
 	}
 	*/
+	
 
 
 //getter

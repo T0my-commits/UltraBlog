@@ -15,7 +15,7 @@ $vues["erreur"] = "vues/erreur.php";
 $vues["connexion"] = "vues/connexion.php";
 $vues["inscription"] = "vues/inscription.php";
 $vues["pagePrincipale"] = "vues/pagePrincipale.php";
-$vue["pageVue"] = "vues/PageAfficherNews.php";
-$vue["pageCom"] = "vues/PageAjoutCommentaire.php";
+$vues["pageVue"] = "vues/PageAfficherNews.php";
+$vues["pageCom"] = "vues/PageAjoutCommentaire.php";
 
 ?>

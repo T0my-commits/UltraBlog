@@ -116,7 +116,12 @@ class Validation {
 		if(!isset($id) || $id="" || $id=" ")
 			$dVueErreur[]="la new n'existe pas";
 		else
-			$id = filter_var($id, FILTER_SANITIZE_INT);
+			$id = filter_id($id, FILTER_SANITIZE_INT);
+
+		if (empty($dVueErreur)) 	
+			return true;
+		else 						
+			return false;
 
 	}
 }

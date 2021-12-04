@@ -42,8 +42,8 @@ class ControleUtilisateur {
 
 				case "afficherNews":
 					// on affiche la news;
-					$this->AfficherNews($id);
-					require("vues/PageAfficherNews.php");
+					$this->AfficherNew($_GET['idnews']);
+					require($rep.$vues["pageVue"]);
 					break;
 
 				case "ajouterCommentaire":
@@ -80,8 +80,10 @@ class ControleUtilisateur {
 		$NB_NEWS_PAR_PAGE = 4;
 
 		// on défini le numéro de page demandé;
-		if (isset($_GET["page"])) 	$page = $_GET["page"];
-		else 						$page = 1;
+		if (isset($_GET["page"])) 	
+			$page = $_GET["page"];
+		else 						
+			$page = 1;
 
 		// on récupère les news de cette page;
 		$val = Validation::ValiderPage($page);
@@ -95,15 +97,15 @@ class ControleUtilisateur {
 		require($rep.$vues["pagePrincipale"]);
 	}
 
-	/*function AfficherNews(int $id):void{
+	function AfficherNew(int $idnews):void{
+
 		global $rep, $vues;
-		$val = Validation::ValidInscription();
-
-
-
-
-		require($rep.$vue["pageVue"]);
-	}*/
+		//$idnews=$_GET['idnews'];
+		$val = Validation::ValiderNews($idnews);
+		$model = new ModeleNews();
+		$news = $model->GetNews($idnews);
+		require($rep.$vues["pageVue"]);
+	}
 }
 
 ?>

@@ -86,6 +86,13 @@ class ControleAdministrateur extends ControleUtilisateur {
 			require($rep.$vues["erreur"]);
 		}
 	}
+
+	function AjouterNews(int $idMembre, string $titre, string $contenu){
+		global $rep, $vues;
+		$titre = $_POST['$ftitre'
+
+
+	}
 }
 
 ?>

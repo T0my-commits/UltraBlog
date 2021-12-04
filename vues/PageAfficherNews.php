@@ -7,10 +7,12 @@ require("recurrent/header.php");
 <body style="background-color: #cdd9e8;">
 
 
+<!--<?php $id=$new->getId() ?>-->
 <div class="container-xxl my-5">
+<!--<h1>bonjour </h1>-->
 	<div class="gy-5 col-8 align-self-center mx-auto">
 
-		<a href="../index.php" class="btn btn-secondary">< Retour aux news</a>
+		<a href="../index.php" class="btn btn-secondary"> Retour aux news</a>
 
 		<div>
 			<h1 class="fs-1 fw-bold white my-5"><?= $news->getTitre() ?></h1>

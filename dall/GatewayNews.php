@@ -21,7 +21,9 @@ class GatewayNews {
 		$res = $this->con->getResults();
 
 		// on renvoi les résultats;
-		return new News($res);
+		foreach( $res as $row){
+			return new News($row);
+		}
 	}
 
 	/**
@@ -107,10 +109,11 @@ class GatewayNews {
 	 * Function qui insert une news dans la base de données
 	 * @return bool true si erreur, false sinon
 	*/
-	function InsertNews(int $idMembre, string $contenu) : bool {
+	function InsertNews(int $idMembre, string $titre, string $contenu) : bool {
 		$query = "INSERT INTO News() VALUES(:idMembre, NOW(), :this->contenu)";
 		$argv = array(":idMembre" => array($idMembre, PDO::PARAM_INT),
 			":dateNews" => array($dateNews, PDO::PARAM_STR),
+			":this->titre" => array($titre, PDO::PARAM_STR),
 			":this->contenu" => array($this->contenu, PDO::PARAM_STR)
 		);
 

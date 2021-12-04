@@ -87,11 +87,9 @@ class ControleAdministrateur extends ControleUtilisateur {
 		}
 	}
 
-	function AjouterNews(int $idMembre, string $titre, string $contenu){
+	function AjouterNews(int $idMembre, string $titre, string $contenu) {
 		global $rep, $vues;
-		$titre = $_POST['$ftitre'
-
-
+		$titre = $_POST['$ftitre'];
 	}
 }
 

@@ -13,7 +13,8 @@ require("recurrent/header.php");
 		    <input type="text" class="form-control" id="flogin" name="flogin" required>
 		  </div>
 		  <label for="zoneTexteCommentaire" class="form-label">Votre commentaire</label>
-			  <textarea class="form-control shadow-sm rounded-stg" id="zoneTexteCommentaire" rows="6" placeholder="Rédigez votre commentaire ici" name="contenuCommentaire" type="text"></textarea>
+			  <textarea class="form-control shadow-sm rounded-stg" id="zoneTexteCommentaire" rows="6" placeholder="Rédigez votre commentaire ici" name="fcommentaire" type="text" required></textarea>
+			  <input type="hidden" name="idNews" value="<?= $idNews ?>">
 		  <button type="submit" class="btn btn-primary my-3">Poster !</button>
 		</form>
 	</div>

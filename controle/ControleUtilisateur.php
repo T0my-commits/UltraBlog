@@ -46,8 +46,8 @@ class ControleUtilisateur {
 					break;
 
 				case "ajouterCommentaire":
-					
-					//require("vues/PageAjoutCommentaire.php");
+					// on affiche la page d'ajout de commentaire ou on ajoute un commentaire;
+					$this->AjouterCommentaire($dVueErreur);
 					break;
 
 				default:
@@ -86,7 +86,7 @@ class ControleUtilisateur {
 			$page = 1;
 
 		// on récupère les news de cette page;
-		$val = Validation::ValiderPage($page);
+		Validation::ValiderPage($page);
 		$model = new ModeleNews();
 		$tabNews = $model->GetNewsPage($page, $NB_NEWS_PAR_PAGE);
 
@@ -97,17 +97,55 @@ class ControleUtilisateur {
 		require($rep.$vues['pagePrincipale']);
 	}
 
+	/**
+	 * Méthode qui permet d'afficher une news et ces commentaires
+	*/
 	function AfficherNews(array &$dVueErreur) : void {
 
 		global $rep, $vues;
 		$idnews=$_GET['idnews'];
-		$val = Validation::ValiderNews($idnews, $dVueErreur);
+		Validation::Valider_INT($idnews, $dVueErreur);
 		$model = new ModeleNews();
 		$news = $model->GetNews($idnews);
 
 		$tabCommentaires = $model->GetCom($idnews);
 
 		require('vues/PageAfficherNews.php');
+	}
+
+	/**
+	 * Méthode qui permet d'afficher la page d'ajout de commentaire et d'en
+	 * ajouter un
+	*/
+	function AjouterCommentaire(array &$dVueErreur) : void {
+
+		global $rep, $vues;
+
+		// si les champs sont déjà remplis, alors l'utilisateur veut poster un message...
+		if (isset($_POST['flogin']) && isset($_POST['fcommentaire']))
+		{
+			// on fais le traitement necessaire
+			$login = $_POST['flogin'];
+			$commentaire = $_POST['fcommentaire'];
+			$idNews = $_POST['idNews'];
+
+			Validation::Valider_STR($login, $dVueErreur);
+			Validation::Valider_STR($commentaire, $dVueErreur);
+			Validation::Valider_INT($idNews, $dVueErreur);
+
+			$model = new ModeleNews();
+			$model->AddCommentaire($login, $commentaire, $idNews);
+
+			header("Location: index.php?action=afficherNews&idnews=".$idNews);
+
+		}
+		else {
+			// ...sinon on affiche la vue d'ajout de commentaires
+			$idNews = $_GET['idnews'];
+			Validation::Valider_INT($idNews, $dVueErreur);
+			require($rep.$vues["pageAjoutCommentaire"]);
+		}
+		
 	}
 
 }

@@ -29,7 +29,7 @@ require("recurrent/header.php");
 		  </div>
 		</div>
 
-		<a href="index.php?ajouterCommentaire=1" class="btn btn-primary my-3">Poster un commentaire !</a>
+		<a href="index.php?action=ajouterCommentaire&idnews=<?= $news->getId() ?>" class="btn btn-primary my-3">Poster un commentaire !</a>
 
 		<?php  foreach ($tabCommentaires as $commentaire) { ?>
 		<div class="container my-2">

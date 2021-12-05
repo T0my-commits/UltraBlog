@@ -24,6 +24,10 @@ class ModeleNews {
 		return $news;
 	}
 
+	/**
+	 * Méthode qui permet de compter toutes les news de la BD
+	 * @return int le nombre de news
+	*/
 	public function CountAllNews() : int {
 		global $dsn, $username, $password;
 		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
@@ -32,18 +36,35 @@ class ModeleNews {
 		return $nbNewsTotal;
 	}
 
-	public function GetNews(int $idnews) : News{
+	/**
+	 * Méthode qui permet de récupérer une news par son ID
+	 * @return News la news demandée
+	*/
+	public function GetNews(int $idnews) : News {
 		global $dsn, $username, $password;
 		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
 		$news = $ng-> FindNewsById($idnews);
 		return $news;
 	}
 
-	public function GetCom(int $idnews) : array{
+	/**
+	 * Méthode qui permet récupérer les commentaires d'une news
+	 * @return array un tableau de commentaires
+	*/
+	public function GetCom(int $idnews) : array {
 		global $dsn, $username, $password;
 		$cg = new GatewayCom(new Connexion($dsn, $username, $password));
-		$commentaire = $cg-> FindCom($idnews);
+		$commentaire = $cg->FindCom($idnews);
 		return $commentaire;
+	}
+
+	/**
+	 * Méthode qui permet d'ajouter un commentaire à une news
+	*/
+	public function AddCommentaire(string $login, string $commentaire, int $idNews) {
+		global $dsn, $username, $password;
+		$cg = new GatewayCom(new Connexion($dsn, $username, $password));
+		$cg->AddCom($login, $commentaire, $idNews);
 	}
 
 }

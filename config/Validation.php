@@ -13,9 +13,8 @@ class Validation {
 	
 	/**
 	 * Méthode qui permet de vérifier que le formulaire d'inscription à bien été renseigné
-	 * @return bool true si ok, false si ko
 	*/
-	static function ValidInscription(string $nom, string $prenom, string $email, string $tel, string $login, string $motdepasse) : bool {
+	static function ValidInscription(string $nom, string $prenom, string $email, string $tel, string $login, string $motdepasse, array &$dVueErreur) {
 		
 		//vérification du login bien attribué
 		if(!isset($login) || $login = "")
@@ -59,16 +58,14 @@ class Validation {
 			$tel = filter_var($tel, FILTER_SANITIZE_STRING);
 
 
-		// on retourne le code erreur
-		if (empty($dVueErreur)) 	return true;
-		else 						return false;
+		// on lève une exception si il y a une erreur;
+		if (!empty($dVueErreur)) 	throw new Exception();
 	}
 
 	/**
 	 * Méthode qui permet de vérifier que le formulaire de connexion à bien été renseigné
-	 * @return bool true si ok, false si ko
 	*/
-	static function ValidConnexion(string &$nom, string &$motdepasse, array &$dVueErreur) : bool {
+	static function ValidConnexion(string &$nom, string &$motdepasse, array &$dVueErreur) {
 		//vérification du login bien attribué
 		if(!isset($login) || $login = "" || $login = " ")
 			$dVueErreur[] = " il faut renseigner le login";
@@ -83,9 +80,8 @@ class Validation {
 			$motdepasse = filter_var($motdepasse, FILTER_SANITIZE_STRING);
 
 
-		// on retourne le code erreur
-		if (empty($dVueErreur)) 	return true;
-		else 						return false;
+		// on lève une exception si il y a une erreur;
+		if (!empty($dVueErreur)) 	throw new Exception();
 	}
 
 	/**
@@ -112,43 +108,59 @@ class Validation {
 			return true;
 	}
 
-	public static function ValiderNews(int $id, array &$dVueErreur) : void{
-		if(!isset($id) || $id="")
-			$dVueErreur[]="la new n'existe pas";
-		
-		if($id != filter_var($id, FILTER_SANITIZE_STRING)){
-			$dVueErreur[]= "tentative d'attaque";
-			$id="";
-		}
-		if(!empty($dVueErreur))
-			throw new Exception();
-
-	}
-	
-
-
-	public static function ValiderAjoutNews(int $idMembre, string $titre, string $contenu){
-		if(!isset($idMembre) || $idMembre="" || $idMembre=" ")
-			$dVueErreur[]="l'utilisateur n'existe pas";
+	/**
+	 * Méthode qui permet de vérifier que le formulaire d'inscription à bien été renseigné
+	*/
+	public static function ValiderAjoutNews(int $idMembre, string $titre, string $contenu) {
+		if(!isset($idMembre))
+			$dVueErreur[] = "l'utilisateur n'existe pas";
 		else
 			$idMembre = filter_var($idMembre, FILTER_SANITIZE_INT);
 
-		if(!isset($titre) || $titre="" || $titre=" ")
-			$dVueErreur[]="il faut renseigner le titre";
+		if(!isset($titre) || $titre = "" || $titre = " ")
+			$dVueErreur[] = "il faut renseigner le titre";
 		else
 			$titre = filter_var($titre, FILTER_SANITIZE_STRING);
 
-		if(!isset($contenu) || $contenu="" || $contenu=" ")
-			$dVueErreur[]="il faut renseigner le contenu";
+		if(!isset($contenu) || $contenu = "" || $contenu = " ")
+			$dVueErreur[] = "il faut renseigner le contenu";
 		else
 			$contenu = filter_var($contenu, FILTER_SANITIZE_STRING);
 
-		if (empty($dVueErreur)) 	
-			return true;
-		else 						
-			return false;
+		// on lève une exception si il y a une erreur;
+		if(!empty($dVueErreur))		throw new Exception();
 	
 	}
+
+	/**
+	 * Méthode qui permet de vérifier qu'un nom est bien un nombre
+	*/
+	public static function Valider_INT(int $number, array &$dVueErreur) : void {
+		if(!isset($number))
+			$dVueErreur[] = "not found (int)";
+		
+		if($number != filter_var($number, FILTER_SANITIZE_STRING))
+			$dVueErreur[] = "tentative d'attaque";
+
+		// on lève une exception si il y a une erreur;
+		if(!empty($dVueErreur))		throw new Exception();
+
+	}
+
+	/**
+	 * Méthode qui permet de vérifier qu'un nombre est bien un nombre
+	*/
+	public static function Valider_STR(string $s, array &$dVueErreur) {
+		if (!isset($s) || $s = "")
+			$dVueErreur[] = "not found (str)";
+
+		if ($s != filter_var($s, FILTER_SANITIZE_STRING))
+			$dVueErreur[] = "tentative d'attaque";
+
+		// on lève une exception si il y a une erreur;
+		if(!empty($dVueErreur))		throw new Exception();
+	}
+
 }
 
 ?>

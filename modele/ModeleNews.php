@@ -32,7 +32,7 @@ class ModeleNews {
 		return $nbNewsTotal;
 	}
 
-	public function GetNews(int $idnews){
+	public function GetNews(int $idnews) : News{
 		global $dsn, $username, $password;
 		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
 		$news = $ng-> FindNewsById($idnews);

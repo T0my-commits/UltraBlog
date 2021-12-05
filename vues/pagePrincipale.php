@@ -20,6 +20,7 @@ require("recurrent/header.php");
 			<?php if (true) { ?>
 			<div class="mb-3">
 			  <label for="exampleFormControlTextarea1" class="form-label">Poster une news</label>
+			  <textarea class="form-control shadow-sm" id="exampleFormControlTextarea1" rows="1" placeholder="Rentrez le titre de votre article"></textarea>
 			  <textarea class="form-control shadow-sm" id="exampleFormControlTextarea1" rows="6" placeholder="Rédigez votre article ici"></textarea>
 				<button type="button" class="btn btn-primary my-2">Je poste !</button>
 			</div>
@@ -50,15 +51,15 @@ require("recurrent/header.php");
 	    <li class="page-item <?php if (($page-1) < $nbPagesTotal) echo "disabled" ?>">
 	    	<!-- il faut vérifier si la page précédent existe avec un if dans la class de a.
 	    	Si la page n'existe pas, alors on echo disabled dans l'attribut class -->
-	      <a class="page-link" href="../index.php?page=<?= ($page-1) ?>" aria-label="Previous">
+	      <a class="page-link" href="index.php?page=<?= ($page-1) ?>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	      </a>
 	    </li>
-	    <?php for($i=0 ; $i<=$nbPagesTotal ; $i++) { ?>
-		    <li class="page-item <?php if ($page == ($i+1)) echo "active" ?>"><a class="page-link" href="../index.php?page=<?= ($i+1) ?>"><?= ($i+1) ?></a></li>
+	    <?php for($i=0 ; $i<$nbPagesTotal ; $i++) { ?>
+		    <li class="page-item <?php if ($page == ($i+1)) echo "active" ?>"><a class="page-link" href="index.php?page=<?= ($i+1) ?>"><?= ($i+1) ?></a></li>
 		<?php } ?>
-	    <li class="page-item <?php if (($page+1) > $nbPagesTotal) echo "disabled" ?>">
-	      <a class="page-link" href="../index.php?page=<?= ($page) ?>" aria-label="Next">
+	    <li class="page-item <?php if ($page >= $nbPagesTotal) echo "disabled" ?>">
+	      <a class="page-link" href="index.php?page=<?= $page ?>" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	      </a>
 	    </li>

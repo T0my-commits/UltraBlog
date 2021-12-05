@@ -42,8 +42,8 @@ class ControleUtilisateur {
 
 				case "afficherNews":
 					// on affiche la news;
-					$this->AfficherNew($_GET['idnews']);
-					require($rep.$vues["pageVue"]);
+					$this->AfficherNew($dVueErreur);
+				
 					break;
 
 				case "ajouterCommentaire":
@@ -94,17 +94,17 @@ class ControleUtilisateur {
 		$nbPagesTotal = ceil($nbNewsTotal / $NB_NEWS_PAR_PAGE);
 
 		// puis on affiche la page avec les nouvelles infos;
-		require($rep.$vues["pagePrincipale"]);
+		require($rep.$vues['pagePrincipale']);
 	}
 
-	function AfficherNew(int $idnews):void{
+	function AfficherNew(array &$dVueErreur):void{
 
 		global $rep, $vues;
-		//$idnews=$_GET['idnews'];
-		$val = Validation::ValiderNews($idnews);
+		$idnews=$_GET['idnews'];
+		$val = Validation::ValiderNews($idnews, $dVueErreur);
 		$model = new ModeleNews();
 		$news = $model->GetNews($idnews);
-		require($rep.$vues["pageVue"]);
+		require('vues/PageAfficherNews.php');
 	}
 }
 

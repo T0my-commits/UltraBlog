@@ -87,10 +87,19 @@ class ControleAdministrateur extends ControleUtilisateur {
 		}
 	}
 
-	function AjouterNews(int $idMembre, string $titre, string $contenu) {
+	/*function AjouterNews(int $idMembre, string $titre, string $contenu){
 		global $rep, $vues;
+		$idMembre = $_GET['idMembre'];
 		$titre = $_POST['$ftitre'];
-	}
+		$contenu = $_POST['$fcontenu'];
+		Validation::ValiderAjoutNews($idMembre, $titre, $contenu);
+		$model = new ModeleNews();
+		$news= $model->AjoutNews($idMembre, $titre, $contenu);
+
+		require($rep.$vues['pagePrincipale']);
+
+
+	}*/
 }
 
 ?>

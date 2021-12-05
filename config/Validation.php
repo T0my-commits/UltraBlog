@@ -112,17 +112,38 @@ class Validation {
 			return true;
 	}
 
-	public static function ValiderNews(int $id){
+	public static function ValiderNews(int $id, array &$dVueErreur) : void{
 		if(!isset($id) || $id="" || $id=" ")
 			$dVueErreur[]="la new n'existe pas";
 		else
 			$id = filter_id($id, FILTER_SANITIZE_INT);
+		if(!empty($dVueErreur))
+			throw new Exception();
+
+	}
+
+
+	public static function ValiderAjoutNews(int $idMembre, string $titre, string $contenu){
+		if(!isset($idMembre) || $idMembre="" || $idMembre=" ")
+			$dVueErreur[]="l'utilisateur n'existe pas";
+		else
+			$idMembre = filter_var($idMembre, FILTER_SANITIZE_INT);
+
+		if(!isset($titre) || $titre="" || $titre=" ")
+			$dVueErreur[]="il faut renseigner le titre";
+		else
+			$titre = filter_var($titre, FILTER_SANITIZE_STRING);
+
+		if(!isset($contenu) || $contenu="" || $contenu=" ")
+			$dVueErreur[]="il faut renseigner le contenu";
+		else
+			$contenu = filter_var($contenu, FILTER_SANITIZE_STRING);
 
 		if (empty($dVueErreur)) 	
 			return true;
 		else 						
 			return false;
-
+	
 	}
 }
 

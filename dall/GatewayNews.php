@@ -20,10 +20,9 @@ class GatewayNews {
 		$this->con->executeQuery($query, $argv);
 		$res = $this->con->getResults();
 
-		// on renvoi les résultats;
-		foreach( $res as $row){
-			return new News($row);
-		}
+		// on renvoi une news
+	
+		return new News($res[0]);
 	}
 
 	/**
@@ -44,8 +43,10 @@ class GatewayNews {
 			$news[] = new News($r);
 		}
 
-		// on retourne les news;
-		return $news;
+		// on retourne la news;
+		foreach( $res as $row){
+			return new News($row);
+		}
 	}
 
 	/**

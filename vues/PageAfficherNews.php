@@ -7,7 +7,6 @@ require("recurrent/header.php");
 <body style="background-color: #cdd9e8;">
 
 
-<!--<?php $id=$new->getId() ?>-->
 <div class="container-xxl my-5">
 <!--<h1>bonjour </h1>-->
 	<div class="gy-5 col-8 align-self-center mx-auto">

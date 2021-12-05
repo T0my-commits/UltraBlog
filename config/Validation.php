@@ -113,10 +113,13 @@ class Validation {
 	}
 
 	public static function ValiderNews(int $id, array &$dVueErreur) : void{
-		if(!isset($id) || $id="" || $id=" ")
+		if(!isset($id) || $id="")
 			$dVueErreur[]="la new n'existe pas";
-		else
-			$id = filter_id($id, FILTER_SANITIZE_INT);
+		
+		if($id != filter_var($id, FILTER_SANITIZE_STRING)){
+			$dVueErreur[]= "tentative d'attaque";
+			$id="";
+		}
 		if(!empty($dVueErreur))
 			throw new Exception();
 

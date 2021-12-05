@@ -7,7 +7,7 @@ class Commentaires {
 	private int $idNews;
 	private string $contenu;
 
-	function __construct() {
+	/*function __construct() {
 		$ctp = func_num_args();
 		$args = func_get_args();
 
@@ -20,7 +20,7 @@ class Commentaires {
 				$this-&gt;__construct3($args[0],$args[1],$args[2],$args[3]);
 				break;
 		}
-	}
+	}*/
 
 	function __construct1(array $com) {
 		$this->id = $com[0];
@@ -30,13 +30,13 @@ class Commentaires {
 		return $this;
 	}
 
-	function __construct4(int $id, string $login, int $idNews, string $contenu){
+	/*function __construct4(int $id, string $login, int $idNews, string $contenu){
 		$this->id = $id;
 		$this->login = $login;
 		$this->idNews = $idNews;
 		$this->contenu = $contenu;
 		return $this;
-	}
+	}*/
 
 
 //getter

@@ -32,6 +32,7 @@
 	Autoload::charger();
 
 	$cont = new ControleAdministrateur();
+	//$cont = new ControleUtilisateur();
 	
 	?>
 

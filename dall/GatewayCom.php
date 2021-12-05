@@ -3,7 +3,7 @@
 class GatewayCom{
 	private $con;
 
-	function __construct(Connection $con){
+	function __construct(Connexion $con){
 		$this->con=$con;
 	}
 
@@ -22,10 +22,9 @@ class GatewayCom{
 		$this->con->executeQuery($query,$arg);
 		$res=$this->con->getResults();
 		foreach($res as $row)
-			$com[]=new Commentaires($row['id']);
-
+			$commentaire[]=new Commentaires($row['id']);
 		//renvoie un tableau de commentaires
-		return $com;	
+		return $commentaire;	
 	}
 
 	function FindAllCom() : array{
@@ -81,7 +80,7 @@ class GatewayCom{
 		$query='INSERT INTO commentaires VALUES (:id, :login, :idNews, :contenu)';
 		$arg=array(	':id'=> array($id,PDO::PARAM_INT),
 				':login'=>array($login,PDO::PARAM_STR),
-				':idNews'=>array($idNews,PDO::PARAM_STR)
+				':idNews'=>array($idNews,PDO::PARAM_STR),
 				':contenu'=>array($contenu,PDO::PARAM_STR));
 
 		//insertion du commentaire dans la base de données

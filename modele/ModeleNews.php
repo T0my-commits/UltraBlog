@@ -39,6 +39,13 @@ class ModeleNews {
 		return $news;
 	}
 
+	public function GetCom(int $idnews) : array{
+		global $dsn, $username, $password;
+		$cg = new GatewayCom(new Connexion($dsn, $username, $password));
+		$commentaire = $cg-> FindCom($idnews);
+		return $commentaire;
+	}
+
 }
 
 ?>

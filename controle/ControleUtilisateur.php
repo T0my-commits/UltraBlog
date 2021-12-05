@@ -43,11 +43,12 @@ class ControleUtilisateur {
 				case "afficherNews":
 					// on affiche la news;
 					$this->AfficherNew($dVueErreur);
-				
+					$this->AfficherCom($dVueErreur);
 					break;
 
 				case "ajouterCommentaire":
-					require("vues/PageAjoutCommentaire.php");
+					
+					//require("vues/PageAjoutCommentaire.php");
 					break;
 
 				default:
@@ -97,7 +98,7 @@ class ControleUtilisateur {
 		require($rep.$vues['pagePrincipale']);
 	}
 
-	function AfficherNew(array &$dVueErreur):void{
+	function AfficherNew(array &$dVueErreur) : void{
 
 		global $rep, $vues;
 		$idnews=$_GET['idnews'];
@@ -106,6 +107,19 @@ class ControleUtilisateur {
 		$news = $model->GetNews($idnews);
 		require('vues/PageAfficherNews.php');
 	}
+
+	function AfficherCom(array &$dVueErreur) : void{
+
+		global $rep, $vues;
+		$idnews=$_GET['idnews'];
+		$val = Validation::ValiderNews($idnews, $dVueErreur);
+		$model = new ModeleNews();
+		$tabCommentaires = $model->GetCom($idnews);
+		require('vues/PageAfficherNews.php');
+	}
+
+
+	
 }
 
 ?>

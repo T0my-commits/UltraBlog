@@ -124,6 +124,7 @@ class Validation {
 			throw new Exception();
 
 	}
+	
 
 
 	public static function ValiderAjoutNews(int $idMembre, string $titre, string $contenu){

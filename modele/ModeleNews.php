@@ -62,9 +62,14 @@ class ModeleNews {
 	 * Méthode qui permet d'ajouter un commentaire à une news
 	*/
 	public function AddCommentaire(string $login, string $commentaire, int $idNews) {
+		// on se connecte à la BD;
 		global $dsn, $username, $password;
 		$cg = new GatewayCom(new Connexion($dsn, $username, $password));
 		$cg->AddCom($login, $commentaire, $idNews);
+
+		// on crée une variable de session avec le login de l'utilisateur;
+		session_start();
+		$_SESSION['slogin'] = $login;
 	}
 
 }

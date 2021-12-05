@@ -19,8 +19,10 @@ class ControleUtilisateur {
 			 * via une méthode POST (exemple : login, mot de passe)
 			*/
 
-			// nécessaire pour utiliser variables globales:
+			// nécessaire pour utiliser variables globales;
 			global $rep, $vues;
+			// on démarre une nouvelle session ou on récupère la session actuelle;
+			session_start();	
 
 			//on initialise un tableau d'erreur
 			$dVueErreur = array();
@@ -142,7 +144,12 @@ class ControleUtilisateur {
 		else {
 			// ...sinon on affiche la vue d'ajout de commentaires
 			$idNews = $_GET['idnews'];
+			if (isset($_SESSION['slogin'])) $slogin = $_SESSION['slogin'];
+			else $slogin = "";
+
 			Validation::Valider_INT($idNews, $dVueErreur);
+			Validation::Valider_STR($slogin, $dVueErreur);
+
 			require($rep.$vues["pageAjoutCommentaire"]);
 		}
 		

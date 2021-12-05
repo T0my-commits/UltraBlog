@@ -15,16 +15,18 @@ class GatewayCom{
 	function FindCom(int $idNews) : array{
 
 		//requête pour récuperer le commentaire en fonction de l'idNews
-		$query='SELECT *FROM commentaires WHERE idNews=:idNews';	
+		$query='SELECT * FROM commentaires WHERE idNews=:idNews';	
 		$arg=array(":idNews"=>array($idNews, PDO::PARAM_INT));
 
 		//execution de la requête
-		$this->con->executeQuery($query,$arg);
+		$status = $this->con->executeQuery($query,$arg);
 		$res=$this->con->getResults();
+
 		foreach($res as $row)
-			$commentaire[]=new Commentaires($row['id']);
+			$coms[]=new Commentaires($row);
+
 		//renvoie un tableau de commentaires
-		return $commentaire;	
+		return $coms;
 	}
 
 	function FindAllCom() : array{

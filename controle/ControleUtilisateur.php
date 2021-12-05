@@ -41,9 +41,8 @@ class ControleUtilisateur {
 					break;
 
 				case "afficherNews":
-					// on affiche la news;
-					$this->AfficherNew($dVueErreur);
-					$this->AfficherCom($dVueErreur);
+					// on affiche la news et ces commentaires;
+					$this->AfficherNews($dVueErreur);
 					break;
 
 				case "ajouterCommentaire":
@@ -98,28 +97,19 @@ class ControleUtilisateur {
 		require($rep.$vues['pagePrincipale']);
 	}
 
-	function AfficherNew(array &$dVueErreur) : void{
+	function AfficherNews(array &$dVueErreur) : void {
 
 		global $rep, $vues;
 		$idnews=$_GET['idnews'];
 		$val = Validation::ValiderNews($idnews, $dVueErreur);
 		$model = new ModeleNews();
 		$news = $model->GetNews($idnews);
-		require('vues/PageAfficherNews.php');
-	}
 
-	function AfficherCom(array &$dVueErreur) : void{
-
-		global $rep, $vues;
-		$idnews=$_GET['idnews'];
-		$val = Validation::ValiderNews($idnews, $dVueErreur);
-		$model = new ModeleNews();
 		$tabCommentaires = $model->GetCom($idnews);
+
 		require('vues/PageAfficherNews.php');
 	}
 
-
-	
 }
 
 ?>

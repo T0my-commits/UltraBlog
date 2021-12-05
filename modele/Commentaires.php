@@ -22,7 +22,7 @@ class Commentaires {
 		}
 	}*/
 
-	function __construct1(array $com) {
+	function __construct(array $com) {
 		$this->id = $com[0];
 		$this->login = $com[1];
 		$this->idNews = $com[2];

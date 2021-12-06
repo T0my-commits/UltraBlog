@@ -28,13 +28,17 @@ require("recurrent/header.php");
 
 		  </div>
 		</div>
+		
+		<p> <?php echo $nbCom ?> commentaire(s)</p>
 
 		<a href="index.php?action=ajouterCommentaire&idnews=<?= $news->getId() ?>" class="btn btn-primary my-3">Poster un commentaire !</a>
 
 		<?php  foreach ($tabCommentaires as $commentaire) { ?>
-		<div class="container my-2">
-			<h4><?= $commentaire->getLogin() ?></h4>
-			<p><?= $commentaire->getContenu() ?></p>
+		<div style="background-color:#AAAAB8" class="card mb-3 bg-white-translucent rounded-stg shadow" >
+			<div class="card-body">
+				<h5 style="color:black"><?= $commentaire->getLogin() ?></h5>
+				<p class="card-text"><?= $commentaire->getContenu() ?></p>
+			</div>
 		</div>
 		<?php } ?>
 

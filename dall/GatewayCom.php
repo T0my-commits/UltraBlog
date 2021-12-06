@@ -52,7 +52,8 @@ class GatewayCom{
 	*/
 	function CountAllCom() : int {
 		$query = 'SELECT COUNT(*) FROM commentaires';
-		$res = $this->con->executeQuery($query);
+		$status = $this->con->executeQuery($query);
+		$res=$this->con->getResults();
 
 		//retourne le résultat
 		return $res;
@@ -65,12 +66,14 @@ class GatewayCom{
 	 * @return un entier qui est le nombre total de commentaires pour la news rentrée en paramètre
 	*/
 	function CountByNews(int $idNews) : int {
-		$query = 'SELECT COUNT(*) FROM commentaires WHERE $idNews=:idNews';
+		$query = 'SELECT COUNT(*) FROM commentaires WHERE idNews=:idNews';
 		$arg = array(':idNews'=>array($idNews,PDO::PARAM_INT)); 
-		$res = $this->con->executeQuery($query, $arg);
+		$status = $this->con->executeQuery($query, $arg);
+		$res=$this->con->getResults();
+		var_dump($res);
 
 		//retourne le résultat
-		return $res;
+		return $res[0][0];
 
 	}
 

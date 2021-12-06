@@ -33,7 +33,7 @@
 
 	$cont = new ControleAdministrateur();
 	//$cont = new ControleUtilisateur();
-	
 	?>
+	
 
 </html>

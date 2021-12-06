@@ -59,16 +59,16 @@ class ControleUtilisateur {
 		}
 		catch (PDOException $e)
 		{
-			//echo $e->getMessage();
+			echo $e->getMessage();
 			//si erreur BD, pas le cas ici
-			$dVueErreur[] =	"Erreur inattendue!!! ";
-			require ($rep.$vues['erreur']);
+			//$dVueErreur[] =	"Erreur inattendue!!! ";
+			//require ($rep.$vues['erreur']);
 		}
 		catch (Exception $e)
 		{
-			//echo $e->getMessage();
-			$dVueErreur[] =	"Erreur inattendue!!! ";
-			require ($rep.$vues['erreur']);
+			echo $e->getMessage();
+			//$dVueErreur[] =	"Erreur inattendue!!! ";
+			//require ($rep.$vues['erreur']);
 		}
 	}
 
@@ -109,6 +109,7 @@ class ControleUtilisateur {
 		Validation::Valider_INT($idnews, $dVueErreur);
 		$model = new ModeleNews();
 		$news = $model->GetNews($idnews);
+		$nbCom= $model-> CountComByNew($idnews);
 
 		$tabCommentaires = $model->GetCom($idnews);
 

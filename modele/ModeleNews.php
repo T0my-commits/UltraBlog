@@ -58,6 +58,13 @@ class ModeleNews {
 		return $commentaire;
 	}
 
+	public function CountComByNew($idNews) : int {
+		global $dsn, $username, $password;
+		$ng = new GatewayCom(new Connexion($dsn, $username, $password));
+		$nbCom = $ng->CountByNews($idNews);
+		return $nbCom;
+	}
+
 	/**
 	 * Méthode qui permet d'ajouter un commentaire à une news
 	*/

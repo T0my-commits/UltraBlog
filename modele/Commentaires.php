@@ -2,10 +2,10 @@
 
 class Commentaires {
 	
-	private int $id;
-	private string $login;
-	private int $idNews;
-	private string $contenu;
+	private $id;
+	private $login;
+	private $idNews;
+	private $contenu;
 
 	/*function __construct() {
 		$ctp = func_num_args();

@@ -58,17 +58,19 @@ class GatewayNews {
 		$query = "SELECT id,titre,idMembre,dateNews,contenu FROM News WHERE id BETWEEN :deb AND :fin";
 		$argv = array(":deb" => array($deb, PDO::PARAM_INT),
 			":fin" => array($fin, PDO::PARAM_INT));
-
+		$news= array();
 		// on exécute la requête
 		$this->con->executeQuery($query, $argv);
 		$res = $this->con->getResults();
 
 		// on ajoute les résultats dans un tableau;
 		foreach ($res as $r) {
-			$news[] = new News($r);
+			array_push($news, new News($r));
+			//$news[] = new News($r);
 		}
 
 		// on retourne les résultats;
+		//var_dump($news);
 		return $news;
 	}
 

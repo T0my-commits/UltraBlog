@@ -25,8 +25,7 @@
         </li>
       </ul>
       <form class="d-flex" action="index.php?action=rechercheDate" method="POST">
-        <input id="date" type="date" value="Séléctionner la date" name="fdate">	
-
+        <input class="mx-2" id="date" type="date" name="fdate">
         <button class="btn btn-outline-success" type="submit">Rechercher</button>
       </form>
     </div>

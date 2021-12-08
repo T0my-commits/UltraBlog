@@ -56,8 +56,14 @@ class ControleAdministrateur extends ControleUtilisateur {
 		}
 	}
 
+	/**
+	 * Méthode qui déconnecte un membre
+	*/
 	function Deconnexion() {
 		global $rep, $vues, $dVueErreur;
+		session_unset();
+		session_destroy();
+		$_SESSION = array();
 	}
 
 	/*function AjouterNews(int $idMembre, string $titre, string $contenu){

@@ -25,6 +25,8 @@ class ModeleAdministrateur {
 			Validation::Valider_STR($_SESSION['nom']);
 			Validation::Valider_STR($_SESSION['prenom']);
 			Validation::Valider_STR($_SESSION['login']);
+
+			// ---------------------------------- verifier que l'admin existe avec appel à la gateway !!!
 			
 			return new Administrateur($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['login']);
 		}
@@ -36,10 +38,24 @@ class ModeleAdministrateur {
 	 * @param string $motdepasse, mot de passe de l'utilisateur
 	 * @return true si la connexion a fonctionné, dans le cas contraire retourne false
 	*/
-	public static function Connection(string $login, string $motdepasse) : bool {
+	public static function Connection(string $login, string $motdepasse) {
 		global $dsn, $username, $password;
-		// on se connecte à la base de données
+
+		// on vérifie si le couple login + modepasse existe dans la BD
 		$gw = new GatewayAdministrateur(new Connexion($dsn, $username, $password));
-		return $gw->SeConnecter($login, $motdepasse);
+		$member = $gw->SeConnecter($login, $motdepasse);
+
+		// si l'utilisateur existe et que les données sont validées, on ajoute le role en session;
+		if ($member != NULL)
+		{
+			echo "C'est bon, tu peux entrer\n";
+
+			var_dump($member);
+
+			$_SESSION['role'] = "administrateur";
+			$_SESSION['login'] = $login;
+			$_SESSION['nom'] = $member['nom'];
+			$_SESSION['prenom'] = $member['prenom'];
+		}
 	}
 }

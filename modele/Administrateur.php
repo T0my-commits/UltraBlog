@@ -6,7 +6,7 @@ class Administrateur {
 	private string $prenom;
 	private string $login;
 
-	public function __construct(string $nom, int $prenom, string $login) {
+	public function __construct(string $nom, string $prenom, string $login) {
 		$this->nom = $nom;
 		$this->prenom = $prenom;
 		$this->login = $login;

@@ -31,10 +31,9 @@ class ControleAdministrateur extends ControleUtilisateur {
 					// on redirige vers la page d'ajout de news
 					break;
 
-				case "validConnexion":
-					// on vérifie que la page de connexion à bien été renseignée
-					$this->ValidationConnexion();
-					break;
+				case "deconnexion":
+					// on déconnecte l'administrateur;
+					$this->Deconnexion();
 
 				default:
 					// on renvoie le constructeur de ControleUtilisateur;
@@ -57,26 +56,8 @@ class ControleAdministrateur extends ControleUtilisateur {
 		}
 	}
 
-	/**
-	 * Méthode qui permet de valider un formulaire de connexion
-	 * @param array $dVueErreur Le tableau contenant toutes les erreurs rencontrées
-	*/
-	function ValidationConnexion() {
+	function Deconnexion() {
 		global $rep, $vues, $dVueErreur;
-
-		$login = $_POST['flogin'];
-		$motdepasse = $_POST['fmotdepasse'];
-		Validation::ValidConnexion($login, $motdepasse);
-
-		$model = Administrateur::SeConnecter($login, $motdepasse);
-
-		if ($model) {
-			require($rep.$vues["pagePrincipale"]);
-		}
-		else {
-			$dVueErreur[] = "Mauvais login ou mot de passe";
-			require($rep.$vues["erreur"]);
-		}
 	}
 
 	/*function AjouterNews(int $idMembre, string $titre, string $contenu){

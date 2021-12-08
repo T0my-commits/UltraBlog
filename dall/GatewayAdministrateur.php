@@ -4,7 +4,7 @@ class GatewayAdministrateur {
 
 	private $con;
 
-	function __construct(Connection $con) {
+	function __construct(Connexion $con) {
 		$this->con = $con;
 	}
 
@@ -35,7 +35,7 @@ class GatewayAdministrateur {
 	 * @param int $idUser identifiant d'un utilisateur
 	 * @return News[] un ensemble de news ayant la même date de publication
 	*/
-	function FindNews(int idUser) : News[] {
+	function FindNews(int $idUser) : array {
 		$query = "SELECT * FROM  WHERE dateNews=:dateNews";
 		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
 
@@ -43,6 +43,7 @@ class GatewayAdministrateur {
 		$this->con->executeQuery($query, $argv);
 		$res = $this->con->getResults();
 
+		$news = array();
 		// on stock ces news dans des instances de News dans un tableau;
 		foreach ($res as $r) {
 			$news[] = new News($r);
@@ -61,10 +62,10 @@ class GatewayAdministrateur {
 	function InsertUser(int $idUser, string $nom, int $prenom, string $login) : bool {
 
 		$query='INSERT INTO users VALUES (:idUser, :nom, :prenom, :login)';
-		$arg=array(	':idUser'=> array($idUser,PDO::PARAM_INT),
-				':nom'=>array($nom,PDO::PARAM_STR),
-				':prenom'=>array($prenom,PDO::PARAM_STR)
-				':login'=>array($login,PDO::PARAM_STR));
+		$arg=array(	':idUser' => array($idUser, PDO::PARAM_INT),
+				':nom' => array($nom, PDO::PARAM_STR),
+				':prenom' => array($prenom, PDO::PARAM_STR),
+				':login' => array($login, PDO::PARAM_STR));
 
 		//insertion du commentaire dans la base de données
 		$status=$this->con->executeQuery($query, $arg);
@@ -78,32 +79,26 @@ class GatewayAdministrateur {
 	 * Fonction qui permet à un administrateur de se connecter
 	 * @return bool Retourne true si ok, false si ko
 	*/
-	public function SeConnecter(string $login, string $motdepasse) : bool {
+	public function SeConnecter(string $login, string $motdepasse) : array {
+		global $dVueErreur;
+		session_start();
 
-		//requête pour récuperer le commentaire en fonction de l'idNews
-		$query="SELECT login,nom,prenom,motdepasse FROM membres WHERE login=:login,motdepasse=:motdepasse";	
-		$arg = array(":login" => array($login, PDO::PARAM_STR),
+		//requête pour vérifier qu'un couple login + mdp existe dans la BD;
+		$query = "SELECT login,nom,prenom FROM membres WHERE login=:login AND motdepasse=:motdepasse";	
+		$argv = array(":login" => array($login, PDO::PARAM_STR),
 			":motdepasse" => array($motdepasse, PDO::PARAM_STR));
 
 		//execution de la requête
-		$this->con->executeQuery($query, $arg);
+		$this->con->executeQuery($query, $argv);
 		$res = $this->con->getResults();
 
 		// vérification des résultats
-		if (!empty($res)) 	return true;
-					 else 	return false;
-
-		/*
-		if (!empty($res)) {
-			$login = $res[0];
-			$nom = $res[1];
-			$prenom = $res[2];
-			$motdepasse = $res[5];
-			$user = new Administrateur($nom, $prenom, $login, $motdepasse);
+		if (empty($res)) {
+			$dVueErreur[] = "Mauvais login ou mot de passe";
+			throw new Exception();
 		}
 		else
-			$user = NULL;
-		*/
+			return $res;
 	}
 }
 

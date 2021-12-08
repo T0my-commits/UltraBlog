@@ -21,6 +21,7 @@
             <li><a class="dropdown-item" href="index.php?action=inscription">S'inscrire</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Poster une news</a></li>
+            <li><a class="dropdown-item" href="index.php?action=deconnexion">Se déconnecter</a></li>
           </ul>
         </li>
       </ul>

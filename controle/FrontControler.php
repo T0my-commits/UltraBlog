@@ -8,13 +8,10 @@ class FrontControler {
 		try
 		{
 			// on importe les variables globales;
-			global $rep, $vues;
-
-			//on initialise un tableau d'erreur
-			$dVueEreur = array();
+			global $rep, $vues, $dVueErreur;
 
 			// on répertorie les actions admin;
-			$listeActions_Admin = array("deconnecter", "supprimer", "ajouterNews");
+			$listeActions_Admin = array("deconnexion", "supprimerNews", "ajouterNews");
 
 			// on vérifie si l'utilisateur est connecté;
 			$admin = ModeleAdministrateur::isConnect();
@@ -34,7 +31,7 @@ class FrontControler {
 		}
 		catch (Exception $e)
 		{
-			$dVueEreur[] =	"Erreur inattendue (FrontController)!!! ";
+			$dVueErreur[] =	"Erreur inattendue (FrontController)!!! ";
 			require ($rep.$vues['erreur']);
 		}
 	}

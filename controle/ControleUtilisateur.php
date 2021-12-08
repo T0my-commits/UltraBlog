@@ -38,6 +38,16 @@ class ControleUtilisateur {
 					require($rep.$vues["inscription"]);
 					break;
 
+				case "connexion":
+					// on affiche la page de connexion;
+					require($rep.$vues["connexion"]);
+					break;
+
+				case "validConnexion":
+					// on vérifie que la page de connexion à bien été renseignée
+					$this->ValidationConnexion();
+					break;
+
 				case "afficherNews":
 					// on affiche la news et ces commentaires;
 					$this->AfficherNews();
@@ -165,15 +175,24 @@ class ControleUtilisateur {
 		
 	}
 
+	/**
+	 * Méthode qui permet de valider un formulaire de connexion
+	 * @param array $dVueErreur Le tableau contenant toutes les erreurs rencontrées
+	*/
+	function ValidationConnexion() {
+		global $rep, $vues, $dVueErreur;
+
+		$login = $_POST['flogin'];
+		$motdepasse = $_POST['fmotdepasse'];
+
+		// on nettoie le login / mdp;
+		Validation::Valider_STR($login);
+		Validation::Valider_STR($motdepasse);
+
+		// on établie la connexion;
+		ModeleAdministrateur::Connection($login, $motdepasse);
+	}
+
 }
 
 ?>
-
-
-
-
-
-
-
-
-

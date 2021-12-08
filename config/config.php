@@ -1,7 +1,13 @@
 <?php
 
 // gen
+
 $rep = __DIR__."/../";
+
+// errors
+
+//on initialise un tableau d'erreur
+$dVueErreur = array();
 
 // BD
 

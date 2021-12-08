@@ -23,13 +23,6 @@ class Validation {
 			$login = filter_var($login, FILTER_SANITIZE_STRING);
 
 
-		//vérification que l'email est bien attribué
-		if(!isset($email) || $email = "")
-			$dVueErreur[] = " il faut renseigner le email";
-		else 
-			$email = filter_var($email, FILTER_SANITIZE_STRING);
-
-
 		//vérification du mot de passe bien attribué
 		if(!isset($motdepasse) || $motdepasse = "")
 			$dVueErreur[] = " il faut renseigner le mot de passe";
@@ -51,13 +44,6 @@ class Validation {
 			$prenom = filter_var($prenom, FILTER_SANITIZE_STRING);
 
 
-		//vérification du nom bien attribué
-		if(!isset($tel) || $tel = "")
-			$dVueErreur[] = " il faut renseigner le tel";
-		else 
-			$tel = filter_var($tel, FILTER_SANITIZE_STRING);
-
-
 		// on lève une exception si il y a une erreur;
 		if (!empty($dVueErreur)) 	throw new Exception();
 	}
@@ -65,7 +51,9 @@ class Validation {
 	/**
 	 * Méthode qui permet de vérifier que le formulaire de connexion à bien été renseigné
 	*/
-	static function ValidConnexion(string &$nom, string &$motdepasse, array &$dVueErreur) {
+	static function ValidConnexion(string &$nom, string &$motdepasse) {
+		global $dVueErreur;
+
 		//vérification du login bien attribué
 		if(!isset($login) || $login = "" || $login = " ")
 			$dVueErreur[] = " il faut renseigner le login";
@@ -135,7 +123,9 @@ class Validation {
 	/**
 	 * Méthode qui permet de vérifier qu'un nom est bien un nombre
 	*/
-	public static function Valider_INT(int $number, array &$dVueErreur) : void {
+	public static function Valider_INT(int $number) : void {
+		global $dVueErreur;
+
 		if(!isset($number))
 			$dVueErreur[] = "not found (int)";
 		
@@ -150,7 +140,9 @@ class Validation {
 	/**
 	 * Méthode qui permet de vérifier qu'un nombre est bien un nombre
 	*/
-	public static function Valider_STR(string $s, array &$dVueErreur) {
+	public static function Valider_STR(string $s) {
+		global $dVueErreur;
+
 		if (!isset($s) || $s = "")
 			$dVueErreur[] = "not found (str)";
 

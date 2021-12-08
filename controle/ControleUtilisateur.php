@@ -10,9 +10,10 @@ class ControleUtilisateur {
 		{
 			/* On veut gérer les actions suivantes :
 			 *   - affichage de la page et systeme de pagination
-			 *   - addnews (l'administrateur veut ajouter une news)
 			 *   - inscription
 			 *   - connexion
+			 *   - afficher une news
+			 *   - poster un commentaire
 			 * 
 			 * Ces actions sont passées dans l'URL via une méthode GET.
 			 * Lorsque que nous traiterons de données plus confidentielles, nous communiquerons ces données
@@ -20,12 +21,7 @@ class ControleUtilisateur {
 			*/
 
 			// nécessaire pour utiliser variables globales;
-			global $rep, $vues;
-			// on démarre une nouvelle session ou on récupère la session actuelle;
-			session_start();	
-
-			//on initialise un tableau d'erreur
-			$dVueErreur = array();
+			global $rep, $vues, $dVueErreur;
 
 			// on récupère l'action dans l'URL
 			if (isset($_GET["action"])) $action = $_GET["action"];
@@ -44,16 +40,16 @@ class ControleUtilisateur {
 
 				case "afficherNews":
 					// on affiche la news et ces commentaires;
-					$this->AfficherNews($dVueErreur);
+					$this->AfficherNews();
 					break;
 
 				case "ajouterCommentaire":
 					// on affiche la page d'ajout de commentaire ou on ajoute un commentaire;
-					$this->AjouterCommentaire($dVueErreur);
+					$this->AjouterCommentaire();
 					break;
 
 				case "rechercheDate":
-					$this->AfficherNewByDate($dVueErreur);
+					$this->AfficherNewByDate();
 					break;
 
 				default:
@@ -106,11 +102,11 @@ class ControleUtilisateur {
 	/**
 	 * Méthode qui permet d'afficher une news et ces commentaires
 	*/
-	function AfficherNews(array &$dVueErreur) : void {
+	function AfficherNews() : void {
 
-		global $rep, $vues;
+		global $rep, $vues, $dVueErreur;
 		$idnews=$_GET['idnews'];
-		Validation::Valider_INT($idnews, $dVueErreur);
+		Validation::Valider_INT($idnews);
 		$model = new ModeleNews();
 		$news = $model->GetNews($idnews);
 		$nbCom= $model-> CountComByNew($idnews);
@@ -120,8 +116,8 @@ class ControleUtilisateur {
 		require($rep.$vues['pageAfficherVue']);
 	}
 
-	function AfficherNewByDate(array &$dVueErreur) : void{
-		global $rep, $vue;
+	function AfficherNewByDate() : void{
+		global $rep, $vue, $dVueErreur;
 		$dateNews = $_POST['fdate'];
 		//Validation::ValiderDate($dateNews);
 		$model = new ModeleNews();
@@ -133,9 +129,9 @@ class ControleUtilisateur {
 	 * Méthode qui permet d'afficher la page d'ajout de commentaire et d'en
 	 * ajouter un
 	*/
-	function AjouterCommentaire(array &$dVueErreur) : void {
+	function AjouterCommentaire() : void {
 
-		global $rep, $vues;
+		global $rep, $vues, $dVueErreur;
 
 		// si les champs sont déjà remplis, alors l'utilisateur veut poster un message...
 		if (isset($_POST['flogin']) && isset($_POST['fcommentaire']))
@@ -145,9 +141,9 @@ class ControleUtilisateur {
 			$commentaire = $_POST['fcommentaire'];
 			$idNews = $_POST['idNews'];
 
-			Validation::Valider_STR($login, $dVueErreur);
-			Validation::Valider_STR($commentaire, $dVueErreur);
-			Validation::Valider_INT($idNews, $dVueErreur);
+			Validation::Valider_STR($login);
+			Validation::Valider_STR($commentaire);
+			Validation::Valider_INT($idNews);
 
 			$model = new ModeleNews();
 			$model->AddCommentaire($login, $commentaire, $idNews);
@@ -161,8 +157,8 @@ class ControleUtilisateur {
 			if (isset($_SESSION['slogin'])) $slogin = $_SESSION['slogin'];
 			else $slogin = "";
 
-			Validation::Valider_INT($idNews, $dVueErreur);
-			Validation::Valider_STR($slogin, $dVueErreur);
+			Validation::Valider_INT($idNews);
+			Validation::Valider_STR($slogin);
 
 			require($rep.$vues["pageAjoutCommentaire"]);
 		}

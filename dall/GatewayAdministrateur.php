@@ -81,7 +81,7 @@ class GatewayAdministrateur {
 	public function SeConnecter(string $login, string $motdepasse) : bool {
 
 		//requête pour récuperer le commentaire en fonction de l'idNews
-		$query="SELECT login,nom,prenom,email,tel,motdepasse FROM membres WHERE login=:login,motdepasse=:motdepasse";	
+		$query="SELECT login,nom,prenom,motdepasse FROM membres WHERE login=:login,motdepasse=:motdepasse";	
 		$arg = array(":login" => array($login, PDO::PARAM_STR),
 			":motdepasse" => array($motdepasse, PDO::PARAM_STR));
 
@@ -98,10 +98,8 @@ class GatewayAdministrateur {
 			$login = $res[0];
 			$nom = $res[1];
 			$prenom = $res[2];
-			$email = $res[3];
-			$tel = $res[4];
 			$motdepasse = $res[5];
-			$user = new Administrateur($nom, $prenom, $email, $tel, $login, $motdepasse);
+			$user = new Administrateur($nom, $prenom, $login, $motdepasse);
 		}
 		else
 			$user = NULL;

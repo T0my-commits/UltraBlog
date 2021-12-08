@@ -20,10 +20,7 @@ class ControleAdministrateur extends ControleUtilisateur {
 			*/
 
 			// nécessaire pour utiliser variables globales:
-			global $rep, $vues;
-
-			//on initialise un tableau d'erreur
-			$dVueEreur = array();
+			global $rep, $vues, $dVueErreur;
 
 			// on récupère l'action dans l'URL
 			if (isset($_GET["action"])) $action = $_GET["action"];
@@ -34,14 +31,9 @@ class ControleAdministrateur extends ControleUtilisateur {
 					// on redirige vers la page d'ajout de news
 					break;
 
-				case "connexion":
-					// on redirige vers la page de connexion
-					require($rep.$vues["connexion"]);
-					break;
-
 				case "validConnexion":
 					// on vérifie que la page de connexion à bien été renseignée
-					$this->ValidationConnexion($dVueEreur);
+					$this->ValidationConnexion();
 					break;
 
 				default:
@@ -54,13 +46,13 @@ class ControleAdministrateur extends ControleUtilisateur {
 		{
 			//echo $e->getMessage();
 			//si erreur BD, pas le cas ici
-			$dVueEreur[] =	"Erreur inattendue!!! ";
+			$dVueErreur[] =	"Erreur inattendue!!! ";
 			require ($rep.$vues['erreur']);
 		}
 		catch (Exception $e)
 		{
 			//echo $e->getMessage();
-			$dVueEreur[] =	"Erreur inattendue!!! ";
+			$dVueErreur[] =	"Erreur inattendue!!! ";
 			require ($rep.$vues['erreur']);
 		}
 	}
@@ -69,12 +61,12 @@ class ControleAdministrateur extends ControleUtilisateur {
 	 * Méthode qui permet de valider un formulaire de connexion
 	 * @param array $dVueErreur Le tableau contenant toutes les erreurs rencontrées
 	*/
-	function ValidationConnexion(array $dVueEreur) {
-		global $rep, $vues;
+	function ValidationConnexion() {
+		global $rep, $vues, $dVueErreur;
 
 		$login = $_POST['flogin'];
 		$motdepasse = $_POST['fmotdepasse'];
-		Validation::ValidConnexion($login, $motdepasse, $dVueEreur);
+		Validation::ValidConnexion($login, $motdepasse);
 
 		$model = Administrateur::SeConnecter($login, $motdepasse);
 
@@ -82,7 +74,7 @@ class ControleAdministrateur extends ControleUtilisateur {
 			require($rep.$vues["pagePrincipale"]);
 		}
 		else {
-			$dVueEreur[] = "Mauvais login ou mot de passe";
+			$dVueErreur[] = "Mauvais login ou mot de passe";
 			require($rep.$vues["erreur"]);
 		}
 	}

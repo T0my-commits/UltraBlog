@@ -52,6 +52,10 @@ class ControleUtilisateur {
 					$this->AjouterCommentaire($dVueErreur);
 					break;
 
+				case "rechercheDate":
+					$this->AfficherNewByDate($dVueErreur);
+					break;
+
 				default:
 					// page erreur;
 					break;
@@ -113,7 +117,16 @@ class ControleUtilisateur {
 
 		$tabCommentaires = $model->GetCom($idnews);
 
-		require('vues/PageAfficherNews.php');
+		require($rep.$vues['pageAfficherVue']);
+	}
+
+	function AfficherNewByDate(array &$dVueErreur) : void{
+		global $rep, $vue;
+		$dateNews = $_POST['fdate'];
+		//Validation::ValiderDate($dateNews);
+		$model = new ModeleNews();
+		$news = $model->FindNewsDate($dateNews);
+		require($rep.$vues['pagePrincipale']);
 	}
 
 	/**

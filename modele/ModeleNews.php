@@ -79,6 +79,29 @@ class ModeleNews {
 		$_SESSION['slogin'] = $login;
 	}
 
+	public function FindNewsDate(string $dateNews) : array{
+		global $dsn, $usename, $password;
+		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
+		$news = $ng->FindNewsByDate($dateNews);
+		return $news;
+		
+	}
 }
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

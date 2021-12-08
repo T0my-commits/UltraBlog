@@ -24,8 +24,9 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Recherche une news" aria-label="Search">
+      <form class="d-flex" action="index.php?action=rechercheDate" method="POST">
+        <input id="date" type="date" value="Séléctionner la date" name="fdate">	
+
         <button class="btn btn-outline-success" type="submit">Rechercher</button>
       </form>
     </div>

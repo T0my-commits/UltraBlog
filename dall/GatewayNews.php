@@ -30,7 +30,7 @@ class GatewayNews {
 	 * @param string $dateNews c'est une string car SQL est capable de faire la this->conversion
 	 * @return News[] un ensemble de news ayant la même date de publication
 	*/
-	function FindNewsByDate(string $dateNews) : array {
+	function FindNewsByDate(Date $dateNews) : array {
 		$query = "SELECT * FROM News WHERE dateNews=:dateNews";
 		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
 

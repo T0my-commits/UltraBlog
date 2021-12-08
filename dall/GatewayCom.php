@@ -70,8 +70,6 @@ class GatewayCom{
 		$arg = array(':idNews'=>array($idNews,PDO::PARAM_INT)); 
 		$status = $this->con->executeQuery($query, $arg);
 		$res=$this->con->getResults();
-		var_dump($res);
-
 		//retourne le résultat
 		return $res[0][0];
 
@@ -97,24 +95,6 @@ class GatewayCom{
 		if (!$status) throw new Exception();		
 	}
 
-
-	/**
-	 * Fonction qui permet d'insérer un commentaire dans la base de données
-	 * @param int $id identifiant du commentaires, string $login le login de la personne qui écrit le commentaire,int $idNews identifiant d'une news, string $contenu le contenu du commentaire
-	 * @return un bool true si succès, false pour erreur
-	*/
-	function SupprimerCom(int $id) : bool {
-
-		$query = '"DELETE FROM commentaires WHERE id=:id"';
-		$arg = array(':id' => array($id,PDO::PARAM_INT));
-
-		//on supprime le commentaire
-		$status = $this->con->executeQuery($query, $arg);
-		
-		//on retourne le code d'erreur de la méthode executeQuery
-		return $status;			
-
-	}
 
 }
 

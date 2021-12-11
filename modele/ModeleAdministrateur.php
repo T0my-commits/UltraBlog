@@ -70,6 +70,14 @@ class ModeleAdministrateur {
 
 		// on vérifie si le couple login + modepasse existe dans la BD
 		$gw = new GatewayAdministrateur(new Connexion($dsn, $username, $password));
+
+		// si le login existe déjà, on affiche la page d'erreur;
+		if ($gw->IsLoginInBD($login)) {
+			$dVueErreur[] = "Le login existe déjà";
+			throw new Exception();
+		}
+
+		// on inscrit le nouveau membre;
 		$isMember = $gw->Inscription($nom, $prenom, $login, $motdepasse);
 
 		// si l'utilisateur est inscrit, on le connecte automatiquement;

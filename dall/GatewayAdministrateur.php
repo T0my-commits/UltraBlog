@@ -81,8 +81,6 @@ class GatewayAdministrateur {
 	*/
 	public function SeConnecter(string $login, string $motdepasse) : array {
 		global $dVueErreur;
-		session_start();
-
 		//requête pour vérifier qu'un couple login + mdp existe dans la BD;
 		$query = "SELECT login,nom,prenom FROM membres WHERE login=:login AND motdepasse=:motdepasse";	
 		$argv = array(":login" => array($login, PDO::PARAM_STR),
@@ -99,8 +97,6 @@ class GatewayAdministrateur {
 	 * @return bool Retourne true si ok, false si ko
 	*/
 	public function Inscription(string $nom, string $prenom, string $login, string $motdepasse) : bool {
-		session_start();
-
 		//requête pour vérifier qu'un couple login + mdp existe dans la BD;
 		$query = "INSERT INTO membres(login, motdepasse, nom, prenom, d_inscription) VALUES(:login, :motdepasse, :nom, :prenom, DATE(NOW()))";	
 		$argv = array(":login" => array($login, PDO::PARAM_STR),
@@ -110,6 +106,21 @@ class GatewayAdministrateur {
 
 		//execution de la requête
 		return $this->con->executeQuery($query, $argv);
+	}
+
+	/**
+	 * Méthode qui permet de vérifier si un login est dans la BD
+	 * @return bool true si présent, false sinon
+	*/
+	public function IsLoginInBD(string $login) : bool {
+		//requête pour vérifier qu'un couple login + mdp existe dans la BD;
+		$query = "SELECT * FROM membres WHERE login = :login";	
+		$arg = array(":login" => array($login, PDO::PARAM_STR));
+
+		//execution de la requête
+		$this->con->executeQuery($query, $arg);
+		if (count($this->con->getResults()) != 0) return true;
+		else return false;
 	}
 }
 

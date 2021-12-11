@@ -74,8 +74,9 @@ class ModeleNews {
 		$cg = new GatewayCom(new Connexion($dsn, $username, $password));
 		$cg->AddCom($login, $commentaire, $idNews);
 
-		// on crée une variable de session avec le login de l'utilisateur;
+		// on crée une variable de session avec le login de l'utilisateur et son role;
 		session_start();
+		$_SESSION['role'] = "utilisateur";
 		$_SESSION['slogin'] = $login;
 	}
 
@@ -89,19 +90,3 @@ class ModeleNews {
 }
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

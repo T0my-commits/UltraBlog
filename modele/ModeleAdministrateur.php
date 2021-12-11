@@ -42,7 +42,7 @@ class ModeleAdministrateur {
 	 * @return true si la connexion a fonctionné, dans le cas contraire retourne false
 	*/
 	public static function Connexion(string $login, string $motdepasse) {
-		global $dsn, $username, $password;
+		global $dsn, $username, $password, $dVueErreur;
 
 		// on vérifie si le couple login + modepasse existe dans la BD
 		$gw = new GatewayAdministrateur(new Connexion($dsn, $username, $password));
@@ -66,7 +66,7 @@ class ModeleAdministrateur {
 	 * Méthode qui permet à un utilisateur de s'inscrire
 	*/
 	public static function Inscription(string $nom, string $prenom, string $login, string $motdepasse) {
-		global $dsn, $username, $password;
+		global $dsn, $username, $password, $dVueErreur;
 
 		// on vérifie si le couple login + modepasse existe dans la BD
 		$gw = new GatewayAdministrateur(new Connexion($dsn, $username, $password));

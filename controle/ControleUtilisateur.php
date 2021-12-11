@@ -48,6 +48,11 @@ class ControleUtilisateur {
 					$this->ValidationConnexion();
 					break;
 
+				case "validInscription":
+					// on vérifie que la page de connexion à bien été renseignée
+					$this->ValidationInscription();
+					break;
+
 				case "afficherNews":
 					// on affiche la news et ces commentaires;
 					$this->AfficherNews();
@@ -69,16 +74,15 @@ class ControleUtilisateur {
 		}
 		catch (PDOException $e)
 		{
-			echo $e->getMessage();
-			//si erreur BD, pas le cas ici
-			//$dVueErreur[] =	"Erreur inattendue!!! ";
-			//require ($rep.$vues['erreur']);
+			//echo $e->getMessage();
+			$dVueErreur[] =	"Erreur inattendue!!! ";
+			require ($rep.$vues['erreur']);
 		}
 		catch (Exception $e)
 		{
-			echo $e->getMessage();
-			//$dVueErreur[] =	"Erreur inattendue!!! ";
-			//require ($rep.$vues['erreur']);
+			//echo $e->getMessage();
+			$dVueErreur[] =	"Erreur inattendue!!! ";
+			require ($rep.$vues['erreur']);
 		}
 	}
 
@@ -193,7 +197,34 @@ class ControleUtilisateur {
 		Validation::Valider_STR($motdepasse);
 
 		// on établie la connexion;
-		ModeleAdministrateur::Connection($login, $motdepasse);
+		ModeleAdministrateur::Connexion($login, $motdepasse);
+
+		// on affiche la page d'acceuil
+		header("Location: index.php");
+	}
+
+	/**
+	 * Méthode qui permet de valider un formulaire de connexion
+	 * @param array $dVueErreur Le tableau contenant toutes les erreurs rencontrées
+	*/
+	function ValidationInscription() {
+		global $rep, $vues, $dVueErreur;
+
+		$nom = $_POST['fnom'];
+		$prenom = $_POST['fprenom'];
+		$login = $_POST['flogin'];
+		$motdepasse = $_POST['fmotdepasse'];
+
+		echo $nom . $prenom . $login . $motdepasse;
+
+		// on nettoie le login / mdp;
+		Validation::Valider_STR($nom);
+		Validation::Valider_STR($prenom);
+		Validation::Valider_STR($login);
+		Validation::Valider_STR($motdepasse);
+
+		// on établie la connexion;
+		ModeleAdministrateur::Inscription($nom, $prenom, $login, $motdepasse);
 
 		// on affiche la page d'acceuil
 		header("Location: index.php");

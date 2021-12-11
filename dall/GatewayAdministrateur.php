@@ -90,15 +90,26 @@ class GatewayAdministrateur {
 
 		//execution de la requête
 		$this->con->executeQuery($query, $argv);
-		$res = $this->con->getResults();
+		return $this->con->getResults();
+	}
 
-		// vérification des résultats
-		if (empty($res)) {
-			$dVueErreur[] = "Mauvais login ou mot de passe";
-			throw new Exception();
-		}
-		else
-			return $res;
+
+	/**
+	 * Fonction qui permet à un administrateur de se connecter
+	 * @return bool Retourne true si ok, false si ko
+	*/
+	public function Inscription(string $nom, string $prenom, string $login, string $motdepasse) : bool {
+		session_start();
+
+		//requête pour vérifier qu'un couple login + mdp existe dans la BD;
+		$query = "INSERT INTO membres(login, motdepasse, nom, prenom, d_inscription) VALUES(:login, :motdepasse, :nom, :prenom, DATE(NOW()))";	
+		$argv = array(":login" => array($login, PDO::PARAM_STR),
+			":motdepasse" => array($motdepasse, PDO::PARAM_STR),
+			":nom" => array($nom, PDO::PARAM_STR),
+			":prenom" => array($prenom, PDO::PARAM_STR));
+
+		//execution de la requête
+		return $this->con->executeQuery($query, $argv);
 	}
 }
 

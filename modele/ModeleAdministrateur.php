@@ -41,7 +41,7 @@ class ModeleAdministrateur {
 	 * @param string $motdepasse, mot de passe de l'utilisateur
 	 * @return true si la connexion a fonctionné, dans le cas contraire retourne false
 	*/
-	public static function Connection(string $login, string $motdepasse) {
+	public static function Connexion(string $login, string $motdepasse) {
 		global $dsn, $username, $password;
 
 		// on vérifie si le couple login + modepasse existe dans la BD
@@ -49,12 +49,32 @@ class ModeleAdministrateur {
 		$member = $gw->SeConnecter($login, $motdepasse);
 
 		// si l'utilisateur existe et que les données sont validées, on ajoute le role en session;
-		if ($member != NULL)
+		if (count($member) != 0)
 		{
 			$_SESSION['role'] = "administrateur";
 			$_SESSION['login'] = $login;
 			$_SESSION['nom'] = $member[0]['nom'];
 			$_SESSION['prenom'] = $member[0]['prenom'];
 		}
+		else {
+			$dVueErreur[] = "Mauvais login ou mot de passe";
+			throw new Exception();
+		}
+	}
+
+	/**
+	 * Méthode qui permet à un utilisateur de s'inscrire
+	*/
+	public static function Inscription(string $nom, string $prenom, string $login, string $motdepasse) {
+		global $dsn, $username, $password;
+
+		// on vérifie si le couple login + modepasse existe dans la BD
+		$gw = new GatewayAdministrateur(new Connexion($dsn, $username, $password));
+		$isMember = $gw->Inscription($nom, $prenom, $login, $motdepasse);
+
+		// si l'utilisateur est inscrit, on le connecte automatiquement;
+		if ($isMember) ModeleAdministrateur::Connexion($login, $motdepasse);
+		else throw new Exception();
+		
 	}
 }

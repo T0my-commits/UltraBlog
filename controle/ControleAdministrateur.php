@@ -64,6 +64,9 @@ class ControleAdministrateur extends ControleUtilisateur {
 		session_unset();
 		session_destroy();
 		$_SESSION = array();
+
+		// on affiche la page d'acceuil;
+		header("Location: index.php");
 	}
 
 	/*function AjouterNews(int $idMembre, string $titre, string $contenu){

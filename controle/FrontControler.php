@@ -14,7 +14,7 @@ class FrontControler {
 			$listeActions_Admin = array("deconnexion", "supprimerNews", "ajouterNews");
 
 			// on vérifie si l'utilisateur est connecté;
-			$admin = ModeleAdministrateur::isConnect();
+			$admin = ModeleAdministrateur::IsConnect();
 
 			// on récupère l'action dans l'URL
 			if (isset($_GET["action"])) $action = $_GET["action"];

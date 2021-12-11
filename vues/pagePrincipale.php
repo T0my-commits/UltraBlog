@@ -11,7 +11,8 @@ require("recurrent/header.php");
 	<div class="gy-5 col-8 align-self-center mx-auto">
 
 		<div>
-			<h1 class="fs-1 fw-bold white">UltraBlog</h1>
+			<h1 class="fs-1 fw-bold white"><?php if ($admin != NULL) echo "Bonjour " . $admin->GetLogin();
+			                                     else echo "UltraBlog"; ?></h1>
 			<!--
 			<button type="button" class="btn btn-primary">Ajouter une news</button>
 			<button type="button" class="btn btn-secondary btn-md">Voir mes news sur cette page</button>

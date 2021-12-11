@@ -15,40 +15,34 @@ class Administrateur {
 
 //getter
 
-	public function getNom():string{
-		return $nom;
+	public function GetNom() : string {
+		return $this->nom;
 	}
 
-	public function getPrenom():string{
-		return $prenom;
+	public function GetPrenom() : string {
+		return $this->prenom;
 	}
 
-	public function getLogin():string{
-		return $login;
-	}
-
-	public function getMdp():string{
-		return $motdepasse;
+	public function GetLogin() : string {
+		return $this->login;
 	}
 
 //setter
 
-	public function setNom($nom){
-		$this->nom=$nom;
+	public function SetNom($nom) {
+		$this->nom = $nom;
 	}
 
-	public function setPrenom($prenom){
-		$this->prenom=$prenom;
+	public function SetPrenom($prenom) {
+		$this->prenom = $prenom;
 	}
 
-	public function setLogin($login){
-		$this->login=$login;
+	public function SetLogin($login) {
+		$this->login = $login;
 	}
 
-	public function setMdp($motdepasse){
-		$this->motdepasse=$motdepasse;
-	}
 
+//toString
 
 	public function toString() : string {
 		return $this->nom." ".$this->prenom." ".$this->login;

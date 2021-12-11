@@ -41,38 +41,38 @@ class Commentaires {
 
 //getter
 
-	public function getId():int{
+	public function GetId():int{
 		return $this->id;
 	}
 
-	public function getLogin():string{
+	public function GetLogin():string{
 		return $this->login;
 	}
 
-	public function getIdNews():int{
+	public function GetIdNews():int{
 		return $this->idNews;
 	}
 
-	public function getContenu(): string{
+	public function GetContenu(): string{
 		return $this->contenu;
 	}
 
 
 //setter
 
-	public function setId(int $id){
+	public function SetId(int $id){
 		$this->id = $id;
 	}
 
-	public function setLogin(string $login){
+	public function SetLogin(string $login){
 		$this->login = $login;
 	}
 
-	public function setIdNews(int $idNews){
+	public function SetIdNews(int $idNews){
 		$this->idNews = $idNews;
 	}
 
-	public function setContenu(string $contenu){
+	public function SetContenu(string $contenu){
 		$this->contenu = $contenu;
 	}
 

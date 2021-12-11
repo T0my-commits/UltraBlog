@@ -105,6 +105,9 @@ class ControleUtilisateur {
 		$nbNewsTotal = $model->CountAllNews();
 		$nbPagesTotal = ceil($nbNewsTotal / $NB_NEWS_PAR_PAGE);
 
+		// on récupère le nom de l'admin si l'utilisateur est admin;
+		$admin = ModeleAdministrateur::IsConnect();
+
 		// puis on affiche la page avec les nouvelles infos;
 		require($rep.$vues['pagePrincipale']);
 	}
@@ -191,6 +194,9 @@ class ControleUtilisateur {
 
 		// on établie la connexion;
 		ModeleAdministrateur::Connection($login, $motdepasse);
+
+		// on affiche la page d'acceuil
+		header("Location: index.php");
 	}
 
 }

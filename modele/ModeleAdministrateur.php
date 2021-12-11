@@ -9,7 +9,10 @@ class ModeleAdministrateur {
 		// foo
 	}
 
-	public static function isConnect()
+	/**
+	 * Méthode qui retoure un objet admin si ok, NULL si ko
+	*/
+	public static function IsConnect()
 	{
 		global $dVueErreur;
 		session_start();
@@ -48,14 +51,10 @@ class ModeleAdministrateur {
 		// si l'utilisateur existe et que les données sont validées, on ajoute le role en session;
 		if ($member != NULL)
 		{
-			echo "C'est bon, tu peux entrer\n";
-
-			var_dump($member);
-
 			$_SESSION['role'] = "administrateur";
 			$_SESSION['login'] = $login;
-			$_SESSION['nom'] = $member['nom'];
-			$_SESSION['prenom'] = $member['prenom'];
+			$_SESSION['nom'] = $member[0]['nom'];
+			$_SESSION['prenom'] = $member[0]['prenom'];
 		}
 	}
 }

@@ -64,7 +64,7 @@ class ControleUtilisateur {
 					break;
 
 				case "rechercheDate":
-					$this->AfficherNewByDate();
+					//$this->AfficherNewByDate();
 					break;
 
 				default:
@@ -111,6 +111,7 @@ class ControleUtilisateur {
 
 		// on récupère le nom de l'admin si l'utilisateur est admin;
 		$admin = ModeleAdministrateur::IsConnect();
+		$idMembre = $admin->getIdMembre();
 
 		// puis on affiche la page avec les nouvelles infos;
 		require($rep.$vues['pagePrincipale']);
@@ -134,8 +135,13 @@ class ControleUtilisateur {
 	}
 
 	function AfficherNewByDate() : void{
-		global $rep, $vue, $dVueErreur;
-		$dateNews = $_POST['fdate'];
+		global $rep, $vues, $dVueErreur;
+		$dateCara = $_POST['fdate'];
+
+		//$dateCara = "10/01/2017-20:30";
+		$dateNews = DateTime::createFromFormat('Y-m-d',$dateCara);
+		//print_r($dt);
+
 		//Validation::ValiderDate($dateNews);
 		$model = new ModeleNews();
 		$news = $model->FindNewsDate($dateNews);

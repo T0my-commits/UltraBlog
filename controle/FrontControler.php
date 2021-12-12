@@ -11,7 +11,7 @@ class FrontControler {
 			global $rep, $vues, $dVueErreur;
 
 			// on répertorie les actions admin;
-			$listeActions_Admin = array("deconnexion", "deletenews", "addnews");
+			$listeActions_Admin = array("deconnexion", "deletenews", "addNews","afficherNewsAdmin");
 
 			// on vérifie si l'utilisateur est connecté;
 			$admin = ModeleAdministrateur::IsConnect();

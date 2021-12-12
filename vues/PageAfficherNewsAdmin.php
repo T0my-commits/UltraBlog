@@ -7,31 +7,6 @@ require("recurrent/header.php");
 <body style="background-color: #cdd9e8;">
 
 
-<div class="container-xxl my-5">
-	<div class="gy-5 col-8 align-self-center mx-auto">
-
-		<div>
-			<h1 class="fs-1 fw-bold white"><?php if ($admin != NULL) echo "Bonjour " . $admin->GetLogin();
-			                                     else echo "UltraBlog"; ?></h1>
-			<!--
-			<button type="button" class="btn btn-primary">Ajouter une news</button>
-			<button type="button" class="btn btn-secondary btn-md">Voir mes news sur cette page</button>
-			-->
-			
-			<?php if ($admin != NULL) { ?>
-			<div class="mb-3">
-			<form action="index.php?action=addNews" method="POST">
-			  <label for="exampleFormControlTextarea1" class="form-label">Poster une news</label>
-			  <textarea class="form-control shadow-sm" name="ftitre" id="ftitre" rows="1" placeholder="Rentrez le titre de votre article"></textarea>
-			  <textarea class="form-control shadow-sm" name="fcontenu" id="fcontenu" rows="6" placeholder="Rédigez votre article ici"></textarea>
-			<input type="hidden" name="idMembre" value="<?echo $idMembre; ?>">
-				<input type="submit" class="btn btn-primary my-2" value="Je poste !"/>
-			</form>
-			</div>
-			<?php } ?>
-		</div>
-
-
 		<?php  foreach ($tabNews as $news) { ?>
 		<div class="card mb-3 bg-white-translucent rounded-stg shadow" aria-live="assertive" aria-atomic="true">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
@@ -39,7 +14,7 @@ require("recurrent/header.php");
 		    <h3 class="card-title"><?= $news->getTitre() ?> <!--<span class="badge bg-secondary">New</span>--></h3>
 		    <p class="card-text"><?= $news->getContenu() ?></p>
 		    <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
-		    <a href="index.php?action=afficherNews&idnews=<?= $news->getId() ?> " class="btn btn-primary rounded-stg">Lire l'article</a>
+		    <a href="index.php?action=afficherNewsAdmin&login=<?= $admin ->getLogin() ?> " class="btn btn-primary rounded-stg">Lire l'article</a>
 		    <?php if ($admin!=NULL) {
 		    	// si l'utilisateur est connecté, on affiche ce bouton ?>
 		    	<button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
@@ -71,12 +46,6 @@ require("recurrent/header.php");
 	</nav>
 
 </div>
-
-
-
-
-
-
 </body>
 
 <?php

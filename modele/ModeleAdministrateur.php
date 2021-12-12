@@ -31,7 +31,7 @@ class ModeleAdministrateur {
 
 			// ---------------------------------- verifier que l'admin existe avec appel à la gateway !!!
 			
-			return new Administrateur($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['login']);
+			return new Administrateur($_SESSION['idMembre'],$_SESSION['nom'], $_SESSION['prenom'], $_SESSION['login']);
 		}
 	}
 
@@ -55,6 +55,7 @@ class ModeleAdministrateur {
 			$_SESSION['login'] = $login;
 			$_SESSION['nom'] = $member[0]['nom'];
 			$_SESSION['prenom'] = $member[0]['prenom'];
+			$_SESSION['idMembre'] = $member[0]['idMembre'];
 		}
 		else {
 			$dVueErreur[] = "Mauvais login ou mot de passe";
@@ -85,4 +86,26 @@ class ModeleAdministrateur {
 		else throw new Exception();
 		
 	}
+
+	public static function AjoutNews(int $idMembre, string $titre, string $contenu){
+		global $dsn, $username, $password;
+		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
+		$ng->insertNews($idMembre, $titre, $contenu);
+	}
+
+	/*public static function GetNewsAdmin(string $login){
+		global $dsn, $username, $password;
+		$ag = new GatewayNews(new Connexion($dsn, $username, $password));
+		$ag->FindNewsAdmin($login);
+	}*/
+
+
 }
+
+
+
+
+
+
+
+

@@ -35,9 +35,9 @@ class GatewayAdministrateur {
 	 * @param int $idUser identifiant d'un utilisateur
 	 * @return News[] un ensemble de news ayant la même date de publication
 	*/
-	function FindNews(int $idUser) : array {
-		$query = "SELECT * FROM  WHERE dateNews=:dateNews";
-		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
+	function FindNewsAdmin(int $login) : array {
+		$query = "SELECT * FROM  WHERE login=:login";
+		$argv = array(":login" => array($login, PDO::PARAM_STR));
 
 		// on récupère les news par date;
 		$this->con->executeQuery($query, $argv);

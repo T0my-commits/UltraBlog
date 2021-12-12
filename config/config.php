@@ -23,5 +23,6 @@ $vues["inscription"] = "vues/inscription.php";
 $vues["pagePrincipale"] = "vues/pagePrincipale.php";
 $vues["pageAfficherVue"] = "vues/PageAfficherNews.php";
 $vues["pageAjoutCommentaire"] = "vues/PageAjoutCommentaire.php";
+$vues["pageNewsByAdmin"]= "vues/PageAfficherNewsAdmin.php";
 
 ?>

@@ -31,7 +31,7 @@ class GatewayNews {
 	 * @return News[] un ensemble de news ayant la même date de publication
 	*/
 	function FindNewsByDate(Date $dateNews) : array {
-		$query = "SELECT * FROM News WHERE dateNews=:dateNews";
+		$query = "SELECT * FROM News WHERE TO_DATE(dateNews=:dateNews, YYYY-MM-DD)";
 		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
 
 		// on récupère les news par date;
@@ -113,11 +113,11 @@ class GatewayNews {
 	 * @return bool true si erreur, false sinon
 	*/
 	function InsertNews(int $idMembre, string $titre, string $contenu) : bool {
-		$query = "INSERT INTO News() VALUES(:idMembre, NOW(), :this->contenu)";
+		$query = "INSERT INTO News(idMembre, dateNews, titre, contenu) VALUES(:idMembre, CURDATE(),:titre :contenu)";
 		$argv = array(":idMembre" => array($idMembre, PDO::PARAM_INT),
-			":dateNews" => array($dateNews, PDO::PARAM_STR),
-			":this->titre" => array($titre, PDO::PARAM_STR),
-			":this->contenu" => array($this->contenu, PDO::PARAM_STR)
+			//":dateNews" => array($dateNews, PDO::PARAM_STR),
+			":titre" => array($titre, PDO::PARAM_STR),
+			":contenu" => array($contenu, PDO::PARAM_STR)
 		);
 
 		// on insert la news dans la base de données;

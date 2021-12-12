@@ -2,11 +2,13 @@
 
 class Administrateur {
 
-	private string $nom;
-	private string $prenom;
-	private string $login;
+	private $idMembre;
+	private $nom;
+	private $prenom;
+	private $login;
 
-	public function __construct(string $nom, string $prenom, string $login) {
+	public function __construct(int $idMembre,string $nom, string $prenom, string $login) {
+		$this->idMembre = $idMembre;
 		$this->nom = $nom;
 		$this->prenom = $prenom;
 		$this->login = $login;
@@ -14,6 +16,10 @@ class Administrateur {
 	}
 
 //getter
+
+	public function getIdMembre() : int{
+		return $this->idMembre;
+	}
 
 	public function GetNom() : string {
 		return $this->nom;
@@ -28,6 +34,10 @@ class Administrateur {
 	}
 
 //setter
+
+	public function SetIdMembre($idMembre) {
+		$this->idMembre = $idMembre;
+	}
 
 	public function SetNom($nom) {
 		$this->nom = $nom;
@@ -45,7 +55,7 @@ class Administrateur {
 //toString
 
 	public function toString() : string {
-		return $this->nom." ".$this->prenom." ".$this->login;
+		return $this->idMembre." ".$this->nom." ".$this->prenom." ".$this->login;
 	}
 
 }

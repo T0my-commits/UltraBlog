@@ -27,13 +27,21 @@ class ControleAdministrateur extends ControleUtilisateur {
 								else 	$action = NULL;
 
 			switch ($action) {
-				case "addnews":
+				case "addNews":
 					// on redirige vers la page d'ajout de news
+					$this->AddNews();
 					break;
 
 				case "deconnexion":
 					// on déconnecte l'administrateur;
 					$this->Deconnexion();
+			
+				case "deletenews":
+					//permet à l'admin d'ajouter une news
+
+				case "afficherNewsAdmin":
+					$this->NewsByAdmin();
+					
 
 				default:
 					// on renvoie le constructeur de ControleUtilisateur;
@@ -45,7 +53,8 @@ class ControleAdministrateur extends ControleUtilisateur {
 		{
 			//echo $e->getMessage();
 			//si erreur BD, pas le cas ici
-			$dVueErreur[] =	"Erreur inattendue!!! ";
+			//$dVueErreur[] = "Erreur inattendue!!!";
+			$dVueErreur[] = $e;
 			require ($rep.$vues['erreur']);
 		}
 		catch (Exception $e)
@@ -69,19 +78,38 @@ class ControleAdministrateur extends ControleUtilisateur {
 		header("Location: index.php");
 	}
 
-	/*function AjouterNews(int $idMembre, string $titre, string $contenu){
-		global $rep, $vues;
-		$idMembre = $_GET['idMembre'];
-		$titre = $_POST['$ftitre'];
-		$contenu = $_POST['$fcontenu'];
-		Validation::ValiderAjoutNews($idMembre, $titre, $contenu);
-		$model = new ModeleNews();
-		$news= $model->AjoutNews($idMembre, $titre, $contenu);
-
+	function AddNews() : void{
+		global $rep, $vues, $dVueErreur;
+		
+		echo $_POST['idMembre'];
+		$idMembre = (int) $_POST['idMembre'];
+		$titre = $_POST['ftitre'];
+		$contenu = $_POST['fcontenu'];
+		Validation::Valider_INT($idMembre);
+		Validation::Valider_STR($titre);
+		Validation::Valider_STR($contenu);
+		
+		$news= ModeleAdministrateur::AjoutNews($idMembre, $titre, $contenu);
+		
 		require($rep.$vues['pagePrincipale']);
 
 
+	}
+	
+	/*function NewsByAdmin(){
+
+		global $rep, $vues;
+		$login=$_GET['login'];
+		//Validation::Valider_STR($login);
+		$model = new ModeleAdministrateur();
+		$news = $model->GetNewsAdmin($login);
+	
+		
+		require($rep.$vues['pageNewsByAdmin']);
 	}*/
 }
 
 ?>
+
+
+

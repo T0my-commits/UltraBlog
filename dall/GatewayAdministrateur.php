@@ -82,7 +82,7 @@ class GatewayAdministrateur {
 	public function SeConnecter(string $login, string $motdepasse) : array {
 		global $dVueErreur;
 		//requête pour vérifier qu'un couple login + mdp existe dans la BD;
-		$query = "SELECT login,nom,prenom FROM membres WHERE login=:login AND motdepasse=:motdepasse";	
+		$query = "SELECT id,login,nom,prenom FROM membres WHERE login=:login AND motdepasse=:motdepasse";	
 		$argv = array(":login" => array($login, PDO::PARAM_STR),
 			":motdepasse" => array($motdepasse, PDO::PARAM_STR));
 

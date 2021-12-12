@@ -7,7 +7,7 @@ class Administrateur {
 	private $prenom;
 	private $login;
 
-	public function __construct(int $idMembre,string $nom, string $prenom, string $login) {
+	public function __construct(int $idMembre, string $nom, string $prenom, string $login) {
 		$this->idMembre = $idMembre;
 		$this->nom = $nom;
 		$this->prenom = $prenom;

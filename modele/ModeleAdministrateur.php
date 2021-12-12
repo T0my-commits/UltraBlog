@@ -18,6 +18,7 @@ class ModeleAdministrateur {
 		session_start();
 
 		if (isset($_SESSION['role'])
+				&& isset($_SESSION['idMembre'])
 				&& isset($_SESSION['login'])
 				&& isset($_SESSION['nom'])
 				&& isset($_SESSION['prenom']))
@@ -25,13 +26,14 @@ class ModeleAdministrateur {
 			if ($_SESSION['role'] != "administrateur")
 				return NULL;
 			
+			Validation::Valider_INT($_SESSION['idMembre']);
 			Validation::Valider_STR($_SESSION['nom']);
 			Validation::Valider_STR($_SESSION['prenom']);
 			Validation::Valider_STR($_SESSION['login']);
 
 			// ---------------------------------- verifier que l'admin existe avec appel à la gateway !!!
 			
-			return new Administrateur($_SESSION['idMembre'],$_SESSION['nom'], $_SESSION['prenom'], $_SESSION['login']);
+			return new Administrateur($_SESSION['idMembre'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['login']);
 		}
 	}
 
@@ -52,10 +54,10 @@ class ModeleAdministrateur {
 		if (count($member) != 0)
 		{
 			$_SESSION['role'] = "administrateur";
+			$_SESSION['idMembre'] = $member[0]['id'];
 			$_SESSION['login'] = $login;
 			$_SESSION['nom'] = $member[0]['nom'];
 			$_SESSION['prenom'] = $member[0]['prenom'];
-			$_SESSION['idMembre'] = $member[0]['idMembre'];
 		}
 		else {
 			$dVueErreur[] = "Mauvais login ou mot de passe";

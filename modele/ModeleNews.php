@@ -80,12 +80,14 @@ class ModeleNews {
 		$_SESSION['slogin'] = $login;
 	}
 
-	public function FindNewsDate(string $dateNews) : array{
+	/**
+	 * Méthode qui trouve un ensemble de news pour une date donnée
+	 * @return un ensemble de news
+	*/
+	public function FindNewsDate(string $dateNews) : array {
 		global $dsn, $username, $password;
 		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
-		$news = $ng->FindNewsByDate($dateNews);
-		return $news;
-		
+		return $ng->FindNewsByDate($dateNews);
 	}
 }
 

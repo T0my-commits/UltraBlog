@@ -30,8 +30,8 @@ class GatewayNews {
 	 * @param string $dateNews c'est une string car SQL est capable de faire la this->conversion
 	 * @return News[] un ensemble de news ayant la même date de publication
 	*/
-	function FindNewsByDate(Date $dateNews) : array {
-		$query = "SELECT * FROM News WHERE TO_DATE(dateNews=:dateNews, YYYY-MM-DD)";
+	function FindNewsByDate(string $dateNews) : array {
+		$query = 'SELECT * FROM News WHERE dateNews=:dateNews';
 		$argv = array(":dateNews" => array($dateNews, PDO::PARAM_STR));
 
 		// on récupère les news par date;
@@ -39,14 +39,13 @@ class GatewayNews {
 		$res = $this->con->getResults();
 
 		// on stock ces news dans des instances de News dans un tableau;
+		$news = array();
 		foreach ($res as $r) {
 			$news[] = new News($r);
 		}
 
 		// on retourne la news;
-		foreach( $res as $row){
-			return new News($row);
-		}
+		return $news;
 	}
 
 	/**

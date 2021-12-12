@@ -64,7 +64,7 @@ class ControleUtilisateur {
 					break;
 
 				case "rechercheDate":
-					//$this->AfficherNewByDate();
+					$this->AfficherNewByDate();
 					break;
 
 				default:
@@ -98,7 +98,7 @@ class ControleUtilisateur {
 		// on défini le numéro de page demandé;
 		if (isset($_GET["page"])) 	
 			$page = $_GET["page"];
-		else 						
+		else
 			$page = 1;
 
 		// on récupère les news de cette page;
@@ -106,14 +106,46 @@ class ControleUtilisateur {
 		$model = new ModeleNews();
 		$tabNews = $model->GetNewsPage($page, $NB_NEWS_PAR_PAGE);
 
-		$nbNewsTotal = $model->CountAllNews();
+		$nbNewsTotal = count($tabNews);
 		$nbPagesTotal = ceil($nbNewsTotal / $NB_NEWS_PAR_PAGE);
 
 		// on récupère le nom de l'admin si l'utilisateur est admin;
 		$admin = ModeleAdministrateur::IsConnect();
-		$idMembre = $admin->getIdMembre();
+		$idMembre = ($admin != NULL) ? $admin->getIdMembre() : NULL;
 
 		// puis on affiche la page avec les nouvelles infos;
+		require($rep.$vues['pagePrincipale']);
+	}
+
+	/**
+	 * Méthode qui récupère les news sélectionnées par date
+	*/
+	function AfficherNewByDate() : void {
+		global $rep, $vues, $dVueErreur;
+
+		// on défini le nombre de news par page;
+		$NB_NEWS_PAR_PAGE = 4;
+
+		// on défini le numéro de page demandé;
+		if (isset($_GET["page"])) 	
+			$page = $_GET["page"];
+		else
+			$page = 1;
+
+		// on récupère les news de cette page;
+		$dateNews = $_POST['fdate'];
+
+		Validation::Valider_STR($dateNews);
+		$model = new ModeleNews();
+		$tabNews = $model->FindNewsDate($dateNews);
+
+		$nbNewsTotal = count($tabNews);
+		$nbPagesTotal = ceil($nbNewsTotal / $NB_NEWS_PAR_PAGE);
+
+		// on récupère le nom de l'admin si l'utilisateur est admin;
+		$admin = ModeleAdministrateur::IsConnect();
+		$idMembre = ($admin != NULL) ? $admin->getIdMembre() : NULL;
+
 		require($rep.$vues['pagePrincipale']);
 	}
 
@@ -132,20 +164,6 @@ class ControleUtilisateur {
 		$tabCommentaires = $model->GetCom($idnews);
 
 		require($rep.$vues['pageAfficherVue']);
-	}
-
-	function AfficherNewByDate() : void{
-		global $rep, $vues, $dVueErreur;
-		$dateCara = $_POST['fdate'];
-
-		//$dateCara = "10/01/2017-20:30";
-		$dateNews = DateTime::createFromFormat('Y-m-d',$dateCara);
-		//print_r($dt);
-
-		//Validation::ValiderDate($dateNews);
-		$model = new ModeleNews();
-		$news = $model->FindNewsDate($dateNews);
-		require($rep.$vues['pagePrincipale']);
 	}
 
 	/**

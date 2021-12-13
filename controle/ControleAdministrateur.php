@@ -35,13 +35,16 @@ class ControleAdministrateur extends ControleUtilisateur {
 				case "deconnexion":
 					// on déconnecte l'administrateur;
 					$this->Deconnexion();
-			
+					break;
+
 				case "deletenews":
 					//permet à l'admin d'ajouter une news
+					$this->DeleteNews();
+					break;
 
 				case "afficherNewsAdmin":
-					$this->NewsByAdmin();
-					
+					//$this->NewsByAdmin();
+					break;
 
 				default:
 					// on renvoie le constructeur de ControleUtilisateur;
@@ -83,7 +86,6 @@ class ControleAdministrateur extends ControleUtilisateur {
 		
 		echo $_POST['idMembre'];
 		$idMembre = (int) $_POST['idMembre'];
-		echo $idMembre;
 		$titre = $_POST['ftitre'];
 		$contenu = $_POST['fcontenu'];
 		Validation::Valider_INT($idMembre);
@@ -94,7 +96,16 @@ class ControleAdministrateur extends ControleUtilisateur {
 		
 		//require($rep.$vues['pagePrincipale']);
 		header("Location: index.php");
+	}
 
+	function DeleteNews() : void{
+		global $rep, $vues, $dVueErreur;
+		$idMembre = (int) $_GET['idMembre'];
+		$idNews = (int) $_GET['idNews'];
+		Validation::Valider_INT($idMembre);
+		Validation::Valider_INT($idNews);
+		ModeleAdministrateur::SupprimerNews($idNews, $idMembre);
+		header("Location: index.php");		
 
 	}
 	

@@ -95,6 +95,18 @@ class ModeleAdministrateur {
 		$ng->insertNews($idMembre, $titre, $contenu);
 	}
 
+	public static function SupprimerNews(int $idNews, int $idMembre){
+		global $dsn, $username, $password;
+		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
+		$news = $ng->NewsByAdmin($idNews, $idMembre);
+		if($news==NULL){
+			echo $idMembre;
+			throw new Exception("ce n'est pas la news de l'admin");
+		}
+		$ng->DeleteNews($idNews);
+		
+	}
+
 	/*public static function GetNewsAdmin(string $login){
 		global $dsn, $username, $password;
 		$ag = new GatewayNews(new Connexion($dsn, $username, $password));

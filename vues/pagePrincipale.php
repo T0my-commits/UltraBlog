@@ -37,13 +37,19 @@ require("recurrent/header.php");
 		<div class="card mb-3 bg-white-translucent rounded-stg shadow" aria-live="assertive" aria-atomic="true">
 		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
+		    <p> <?= $news->getDate() ?> </p>
 		    <h3 class="card-title"><?= $news->getTitre() ?> <!--<span class="badge bg-secondary">New</span>--></h3>
 		    <p class="card-text"><?= $news->getContenu() ?></p>
 		    <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
 		    <a href="index.php?action=afficherNews&idnews=<?= $news->getId() ?> " class="btn btn-primary rounded-stg">Lire l'article</a>
-		    <?php if ($admin!=NULL) {
+		    
+		    <?php if ($admin!=NULL && $admin->getIdMembre()== $news->getIdMembre()) {
 		    	// si l'utilisateur est connecté, on affiche ce bouton ?>
-		    	<button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
+
+			<a href="index.php?action=deletenews&idNews=<?php echo $news->getId()?>&idMembre=<?php echo $news->getIdMembre()?> " class="btn btn-outline-danger rounded-stg"> Effacer la news </a>
+
+
+		    	<!--<button type="submit" class="btn btn-outline-danger rounded-stg">Effacer news</button>-->
 		    <?php } ?>
 
 		  </div>

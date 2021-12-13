@@ -132,13 +132,27 @@ class GatewayNews {
 	*/
 	function DeleteNews(int $id) : bool {
 		$query = "DELETE FROM News WHERE id=:id";
-		$argv = array(":id" => array($id, PDO::PARAM_INT));
+		$argv = array(	":id" => array($id, PDO::PARAM_INT));
 
 		// on supprime la news;
 		$status = $this->con->executeQuery($query, $argv);
 
 		// on retourne le code erreur de executeQuery();
 		return $status;
+	}
+
+	function NewsByAdmin(int $id, int $idMembre) {
+		$query = "SELECT * FROM News WHERE id=:id AND idMembre=:idMembre";
+		$argv = array(	":id" => array($id, PDO::PARAM_INT),
+				":idMembre" => array($idMembre, PDO::PARAM_INT));
+	
+		$news = $this->con->executeQuery($query, $argv);
+		$res = $this->con->getResults();
+		if($res[0]!=NULL)
+			return new News($res[0]);
+		return NULL;
+	
+
 	}
 }
 

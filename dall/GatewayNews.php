@@ -112,7 +112,7 @@ class GatewayNews {
 	 * @return bool true si erreur, false sinon
 	*/
 	function InsertNews(int $idMembre, string $titre, string $contenu) : bool {
-		$query = "INSERT INTO News(idMembre, dateNews, titre, contenu) VALUES(:idMembre, CURDATE(),:titre :contenu)";
+		$query = "INSERT INTO News(idMembre, dateNews, titre, contenu) VALUES(:idMembre, CURDATE(),:titre, :contenu)";
 		$argv = array(":idMembre" => array($idMembre, PDO::PARAM_INT),
 			//":dateNews" => array($dateNews, PDO::PARAM_STR),
 			":titre" => array($titre, PDO::PARAM_STR),

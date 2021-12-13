@@ -83,15 +83,17 @@ class ControleAdministrateur extends ControleUtilisateur {
 		
 		echo $_POST['idMembre'];
 		$idMembre = (int) $_POST['idMembre'];
+		echo $idMembre;
 		$titre = $_POST['ftitre'];
 		$contenu = $_POST['fcontenu'];
 		Validation::Valider_INT($idMembre);
 		Validation::Valider_STR($titre);
 		Validation::Valider_STR($contenu);
 		
-		$news= ModeleAdministrateur::AjoutNews($idMembre, $titre, $contenu);
+		ModeleAdministrateur::AjoutNews($idMembre, $titre, $contenu);
 		
-		require($rep.$vues['pagePrincipale']);
+		//require($rep.$vues['pagePrincipale']);
+		header("Location: index.php");
 
 
 	}

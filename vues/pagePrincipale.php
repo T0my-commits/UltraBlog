@@ -24,7 +24,8 @@ require("recurrent/header.php");
 			  <label for="exampleFormControlTextarea1" class="form-label">Poster une news</label>
 			  <textarea class="form-control shadow-sm" name="ftitre" id="ftitre" rows="1" placeholder="Rentrez le titre de votre article"></textarea>
 			  <textarea class="form-control shadow-sm" name="fcontenu" id="fcontenu" rows="6" placeholder="Rédigez votre article ici"></textarea>
-			<input type="hidden" name="idMembre" value="<? if ($idMembre != NULL) echo $idMembre; ?>">
+			<input type="hidden" name="idMembre" value="<?php echo $admin->getIdMembre(); ?>">
+			
 				<input type="submit" class="btn btn-primary my-2" value="Je poste !"/>
 			</form>
 			</div>

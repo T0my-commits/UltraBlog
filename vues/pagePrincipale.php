@@ -56,6 +56,10 @@ require("recurrent/header.php");
 		</div>
 		<?php } ?>
 	</div>
+	<?php if($admin!=NULL){ ?>
+		<p>Nombre de commentaire pour l'utilisateur: <? echo "bonjour" ?> </p>
+
+	<?php } ?>
 
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">

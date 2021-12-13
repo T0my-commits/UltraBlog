@@ -203,6 +203,16 @@ class ControleUtilisateur {
 
 			require($rep.$vues["pageAjoutCommentaire"]);
 		}
+
+		if($admin!=NULL){
+			if(!isset ($_COOKIE['cookieCptCom'])){
+				setcookie("cookieCptCom",0, time()+365*24*3600);
+			}
+			else
+				setcookie("cookieCptCom",$_COOKIE['cookieCptCom'], time()+365*24*3600);
+			require($rep.$vues["pagePrincipale"]);
+			
+		}
 		
 	}
 

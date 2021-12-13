@@ -108,7 +108,7 @@ class ControleAdministrateur extends ControleUtilisateur {
 		header("Location: index.php");		
 
 	}
-	
+
 	/*function NewsByAdmin(){
 
 		global $rep, $vues;

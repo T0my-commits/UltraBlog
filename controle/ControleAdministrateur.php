@@ -42,10 +42,6 @@ class ControleAdministrateur extends ControleUtilisateur {
 					$this->DeleteNews();
 					break;
 
-				case "afficherNewsAdmin":
-					//$this->NewsByAdmin();
-					break;
-
 				default:
 					// on renvoie le constructeur de ControleUtilisateur;
 					parent::__construct();
@@ -54,15 +50,11 @@ class ControleAdministrateur extends ControleUtilisateur {
 		}
 		catch (PDOException $e)
 		{
-			//echo $e->getMessage();
-			//si erreur BD, pas le cas ici
-			//$dVueErreur[] = "Erreur inattendue!!!";
 			$dVueErreur[] = $e;
 			require ($rep.$vues['erreur']);
 		}
 		catch (Exception $e)
 		{
-			//echo $e->getMessage();
 			$dVueErreur[] =	"Erreur inattendue!!! ";
 			require ($rep.$vues['erreur']);
 		}
@@ -109,17 +101,6 @@ class ControleAdministrateur extends ControleUtilisateur {
 
 	}
 
-	/*function NewsByAdmin(){
-
-		global $rep, $vues;
-		$login=$_GET['login'];
-		//Validation::Valider_STR($login);
-		$model = new ModeleAdministrateur();
-		$news = $model->GetNewsAdmin($login);
-	
-		
-		require($rep.$vues['pageNewsByAdmin']);
-	}*/
 }
 
 ?>

@@ -10,7 +10,6 @@
     </head>
 
 	<div class="card mb-3">
-		<!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		<div class="card-body">
 			<h3 class="card-title">/!\ Erreur /!\</h3>
 			<p class="card-text">Message de l'erreur</p>

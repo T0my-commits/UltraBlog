@@ -30,34 +30,7 @@ class GatewayCom{
 		return $coms;
 	}
 
-	function FindAllCom() : array {
 
-		//requête pour récupérer tous les commentaires
-		$query = 'SELECT *FROM commentaires';
-		$this->con->executeQuery($query);
-		$res = $this->con->getResults();
-
-		$coms = array();
-		foreach($res as $row)
-			$com[] = new Commentaires($row['id']);
-
-		//renvoie un tableau de commentaires
-		return $com;
-	}
-
-
-	/**
-	 * Fonction qui permet de compter tous les commentaires du blog
-	 * @return un entier qui est le nombre total de commentaires
-	*/
-	function CountAllCom() : int {
-		$query = 'SELECT COUNT(*) FROM commentaires';
-		$status = $this->con->executeQuery($query);
-		$res=$this->con->getResults();
-
-		//retourne le résultat
-		return $res;
-	}
 
 
 	/**

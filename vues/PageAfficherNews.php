@@ -20,12 +20,6 @@ require("recurrent/header.php");
 		<div class="card mb-3 bg-white-translucent rounded-stg shadow" aria-live="assertive" aria-atomic="true">
 		  <div class="card-body">
 		    <p class="card-text"><?= $news->GetContenu() ?></p>
-		    <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
-		    <?php if (true){
-		    	// si l'utilisateur est connecté, on affiche ce bouton ?>
-		    	<button type="button" class="btn btn-outline-danger rounded-stg">Effacer news</button>
-		    <?php } ?>
-
 		  </div>
 		</div>
 		

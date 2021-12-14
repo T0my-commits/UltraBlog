@@ -60,8 +60,8 @@ class ModeleNews {
 
 	public function CountComByNew($idNews) : int {
 		global $dsn, $username, $password;
-		$ng = new GatewayCom(new Connexion($dsn, $username, $password));
-		$nbCom = $ng->CountByNews($idNews);
+		$cg = new GatewayCom(new Connexion($dsn, $username, $password));
+		$nbCom = $cg->CountByNews($idNews);
 		return $nbCom;
 	}
 

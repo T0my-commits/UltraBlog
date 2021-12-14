@@ -140,20 +140,6 @@ class GatewayNews {
 		// on retourne le code erreur de executeQuery();
 		return $status;
 	}
-
-	function NewsByAdmin(int $id, int $idMembre) {
-		$query = "SELECT * FROM News WHERE id=:id AND idMembre=:idMembre";
-		$argv = array(	":id" => array($id, PDO::PARAM_INT),
-				":idMembre" => array($idMembre, PDO::PARAM_INT));
-	
-		$news = $this->con->executeQuery($query, $argv);
-		$res = $this->con->getResults();
-		if($res[0]!=NULL)
-			return new News($res[0]);
-		return NULL;
-	
-
-	}
 }
 
 ?>

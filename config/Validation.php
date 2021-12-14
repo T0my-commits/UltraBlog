@@ -14,7 +14,7 @@ class Validation {
 	/**
 	 * Méthode qui permet de vérifier que le formulaire d'inscription à bien été renseigné
 	*/
-	static function ValidInscription(string $nom, string $prenom, string $email, string $tel, string $login, string $motdepasse, array &$dVueErreur) {
+	/*static function ValidInscription(string $nom, string $prenom, string $email, string $tel, string $login, string $motdepasse, array &$dVueErreur) {
 		
 		//vérification du login bien attribué
 		if(!isset($login) || $login = "")
@@ -46,7 +46,7 @@ class Validation {
 
 		// on lève une exception si il y a une erreur;
 		if (!empty($dVueErreur)) 	throw new Exception();
-	}
+	}*/
 
 	/**
 	 * Méthode qui permet de vérifier que le numéro de page est bien un paramètre attendu
@@ -70,30 +70,6 @@ class Validation {
 			throw new Exception("La page demandée n'existe pas");
 */
 			return true;
-	}
-
-	/**
-	 * Méthode qui permet de vérifier que le formulaire d'inscription à bien été renseigné
-	*/
-	public static function ValiderAjoutNews(int $idMembre, string $titre, string $contenu) {
-		if(!isset($idMembre))
-			$dVueErreur[] = "l'utilisateur n'existe pas";
-		else
-			$idMembre = filter_var($idMembre, FILTER_SANITIZE_INT);
-
-		if(!isset($titre) || $titre = "" || $titre = " ")
-			$dVueErreur[] = "il faut renseigner le titre";
-		else
-			$titre = filter_var($titre, FILTER_SANITIZE_STRING);
-
-		if(!isset($contenu) || $contenu = "" || $contenu = " ")
-			$dVueErreur[] = "il faut renseigner le contenu";
-		else
-			$contenu = filter_var($contenu, FILTER_SANITIZE_STRING);
-
-		// on lève une exception si il y a une erreur;
-		if(!empty($dVueErreur))		throw new Exception();
-	
 	}
 
 	/**

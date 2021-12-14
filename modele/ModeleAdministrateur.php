@@ -77,15 +77,17 @@ class ModeleAdministrateur {
 		// si le login existe déjà, on affiche la page d'erreur;
 		if ($gw->IsLoginInBD($login)) {
 			$dVueErreur[] = "Le login existe déjà";
-			throw new Exception();
+			throw new Exception("problème login");
 		}
 
 		// on inscrit le nouveau membre;
 		$isMember = $gw->Inscription($nom, $prenom, $login, $motdepasse);
 
 		// si l'utilisateur est inscrit, on le connecte automatiquement;
-		if ($isMember) ModeleAdministrateur::Connexion($login, $motdepasse);
-		else throw new Exception();
+		if ($isMember) 
+			ModeleAdministrateur::Connexion($login, $motdepasse);
+		else 
+			throw new Exception("problème isMember");
 		
 	}
 
@@ -106,12 +108,6 @@ class ModeleAdministrateur {
 		$ng->DeleteNews($idNews);
 		
 	}
-
-	/*public static function GetNewsAdmin(string $login){
-		global $dsn, $username, $password;
-		$ag = new GatewayNews(new Connexion($dsn, $username, $password));
-		$ag->FindNewsAdmin($login);
-	}*/
 
 
 }

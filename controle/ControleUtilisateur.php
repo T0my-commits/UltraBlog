@@ -75,13 +75,13 @@ class ControleUtilisateur {
 		catch (PDOException $e)
 		{
 			//echo $e->getMessage();
-			$dVueErreur[] =	"Erreur inattendue!!! ";
+			$dVueErreur[] =	"Erreur inattendue!!! pdo";
 			require ($rep.$vues['erreur']);
 		}
 		catch (Exception $e)
 		{
 			//echo $e->getMessage();
-			$dVueErreur[] =	"Erreur inattendue!!! ";
+			$dVueErreur[] =	"Erreur inattendue!!! exception";
 			require ($rep.$vues['erreur']);
 		}
 	}
@@ -256,10 +256,10 @@ class ControleUtilisateur {
 		Validation::Valider_STR($prenom);
 		Validation::Valider_STR($login);
 		Validation::Valider_STR($motdepasse);
-
+		echo "coucou1";
 		// on établie la connexion;
 		ModeleAdministrateur::Inscription($nom, $prenom, $login, $motdepasse);
-
+		echo "coucou";
 		// on affiche la page d'acceuil
 		header("Location: index.php");
 	}

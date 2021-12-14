@@ -11,12 +11,7 @@ require("recurrent/header.php");
 	<div class="gy-5 col-8 align-self-center mx-auto">
 
 		<div>
-			<h1 class="fs-1 fw-bold white"><?php if ($admin != NULL) echo "Bonjour " . $admin->GetLogin();
-			                                     else echo "UltraBlog"; ?></h1>
-			<!--
-			<button type="button" class="btn btn-primary">Ajouter une news</button>
-			<button type="button" class="btn btn-secondary btn-md">Voir mes news sur cette page</button>
-			-->
+			<h1 class="fs-1 fw-bold white"><?php if ($admin != NULL) echo "Bonjour " . $admin->GetLogin();?></h1>
 			
 			<?php if ($admin != NULL) { ?>
 			<div class="mb-3">
@@ -35,31 +30,23 @@ require("recurrent/header.php");
 
 		<?php  foreach ($tabNews as $news) { ?>
 		<div class="card mb-3 bg-white-translucent rounded-stg shadow" aria-live="assertive" aria-atomic="true">
-		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
+
 		  <div class="card-body">
 		    <p> <?= $news->getDate() ?> </p>
 		    <h3 class="card-title"><?= $news->getTitre() ?> <!--<span class="badge bg-secondary">New</span>--></h3>
 		    <p class="card-text"><?= $news->getContenu() ?></p>
-		    <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
 		    <a href="index.php?action=afficherNews&idnews=<?= $news->getId() ?> " class="btn btn-primary rounded-stg">Lire l'article</a>
 		    
 		    <?php if ($admin!=NULL && $admin->getIdMembre()== $news->getIdMembre()) {
 		    	// si l'utilisateur est connecté, on affiche ce bouton ?>
 
 			<a href="index.php?action=deletenews&idNews=<?php echo $news->getId()?>&idMembre=<?php echo $news->getIdMembre()?> " class="btn btn-outline-danger rounded-stg"> Effacer la news </a>
-
-
-		    	<!--<button type="submit" class="btn btn-outline-danger rounded-stg">Effacer news</button>-->
 		    <?php } ?>
 
 		  </div>
 		</div>
 		<?php } ?>
 	</div>
-	<?php if($admin!=NULL){ ?>
-		<p>Nombre de commentaire pour l'utilisateur: <? echo "bonjour" ?> </p>
-
-	<?php } ?>
 
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">
@@ -82,11 +69,6 @@ require("recurrent/header.php");
 	</nav>
 
 </div>
-
-
-
-
-
 
 </body>
 

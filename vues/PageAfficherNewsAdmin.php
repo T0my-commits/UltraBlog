@@ -9,11 +9,10 @@ require("recurrent/header.php");
 
 		<?php  foreach ($tabNews as $news) { ?>
 		<div class="card mb-3 bg-white-translucent rounded-stg shadow" aria-live="assertive" aria-atomic="true">
-		  <!-- <img src="../media/cbd.jpeg" class="card-img-top" alt="..."> -->
 		  <div class="card-body">
 		    <h3 class="card-title"><?= $news->getTitre() ?> <!--<span class="badge bg-secondary">New</span>--></h3>
 		    <p class="card-text"><?= $news->getContenu() ?></p>
-		    <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+
 		    <a href="index.php?action=afficherNewsAdmin&login=<?= $admin ->getLogin() ?> " class="btn btn-primary rounded-stg">Lire l'article</a>
 		    <?php if ($admin!=NULL) {
 		    	// si l'utilisateur est connecté, on affiche ce bouton ?>

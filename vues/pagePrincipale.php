@@ -34,7 +34,7 @@ require("recurrent/header.php");
 
 		  <div class="card-body">
 		    <p> <?= $news->getDate() ?> </p>
-		    <h3 class="card-title"><?= $news->getTitre() ?> <!--<span class="badge bg-secondary">New</span>--></h3>
+		    <h3 class="card-title"><?= $news->getId()?> <?= $news->getTitre() ?> <!--<span class="badge bg-secondary">New</span>--></h3>
 		    <p class="card-text"><?= $news->getContenu() ?></p>
 		    <a href="index.php?action=afficherNews&idnews=<?= $news->getId() ?> " class="btn btn-primary rounded-stg">Lire l'article</a>
 		    

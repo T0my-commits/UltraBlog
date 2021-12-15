@@ -94,7 +94,11 @@ class ModeleAdministrateur {
 	public static function AjoutNews(int $idMembre, string $titre, string $contenu){
 		global $dsn, $username, $password;
 		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
-		$ng->insertNews($idMembre, $titre, $contenu);
+		$idNews = $ng->CountAll();
+		while ($ng->IsNewsExist($idNews))
+			$idNews = $idNews + 1;
+
+		$ng->InsertNews($idNews, $idMembre, $titre, $contenu);
 	}
 
 	public static function SupprimerNews(int $idNews, int $idMembre){

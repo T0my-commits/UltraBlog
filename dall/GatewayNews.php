@@ -21,8 +21,24 @@ class GatewayNews {
 		$res = $this->con->getResults();
 
 		// on renvoi une news
-	
 		return new News($res[0]);
+	}
+
+	/**
+	 * Méthode qui teste si une news existe
+	 * @return true si ok, false sinon
+	*/
+	function IsNewsExist(int $id) : bool {
+		$query = "SELECT * FROM News WHERE id=:id";
+		$argv = array(":id" => array($id, PDO::PARAM_INT));
+
+		// on exécute la recherche;
+		$this->con->executeQuery($query, $argv);
+		$res = $this->con->getResults();
+
+		// on renvoi une news
+		if ($res != NULL) return true;
+		else return false;
 	}
 
 	/**
@@ -54,7 +70,7 @@ class GatewayNews {
 	 * @return int $fin id du dernier id de l'intervalle
 	*/
 	function FindNewsRange(int $deb, int $fin) : array {
-		$query = "SELECT id,titre,idMembre,dateNews,contenu FROM News WHERE id BETWEEN :deb AND :fin";
+		$query = "SELECT id,titre,idMembre,dateNews,contenu FROM News WHERE id BETWEEN :deb AND :fin ORDER BY id DESC";
 		$argv = array(":deb" => array($deb, PDO::PARAM_INT),
 			":fin" => array($fin, PDO::PARAM_INT));
 		$news= array();
@@ -101,20 +117,38 @@ class GatewayNews {
 		$query = "SELECT COUNT(*) FROM News";
 
 		// on éxécute la requête;
-		$nb = $this->con->executeQuery($query, []);
+		$this->con->executeQuery($query, []);
+		$nb = $this->con->getResults();
 
 		// on retourne le nombre de News;
-		return $nb;
+		return $nb[0]["COUNT(*)"];
+	}
+
+	/**
+	 * Méthode qui retouve une news en fonction d'un admin
+	*/
+	function NewsByAdmin(int $id, int $idMembre) {
+		$query = "SELECT * FROM News WHERE id=:id AND idMembre=:idMembre";
+		$argv = array(":id" => array($id, PDO::PARAM_INT),
+				":idMembre" => array($idMembre, PDO::PARAM_INT));
+	
+		$news = $this->con->executeQuery($query, $argv);
+		$res = $this->con->getResults();
+		if($res[0]!=NULL)
+			return new News($res[0]);
+		return NULL;
+	
+
 	}
 
 	/**
 	 * Function qui insert une news dans la base de données
 	 * @return bool true si erreur, false sinon
 	*/
-	function InsertNews(int $idMembre, string $titre, string $contenu) : bool {
-		$query = "INSERT INTO News(idMembre, dateNews, titre, contenu) VALUES(:idMembre, CURDATE(),:titre, :contenu)";
+	function InsertNews(int $id, int $idMembre, string $titre, string $contenu) : bool {
+		$query = "INSERT INTO News(id, idMembre, dateNews, titre, contenu) VALUES(:id, :idMembre, CURDATE(),:titre, :contenu)";
 		$argv = array(":idMembre" => array($idMembre, PDO::PARAM_INT),
-			//":dateNews" => array($dateNews, PDO::PARAM_STR),
+			":id" => array($id, PDO::PARAM_INT),
 			":titre" => array($titre, PDO::PARAM_STR),
 			":contenu" => array($contenu, PDO::PARAM_STR)
 		);

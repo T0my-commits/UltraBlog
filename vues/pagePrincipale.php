@@ -11,7 +11,8 @@ require("recurrent/header.php");
 	<div class="gy-5 col-8 align-self-center mx-auto">
 
 		<div>
-			<h1 class="fs-1 fw-bold white"><?php if ($admin != NULL) echo "Bonjour " . $admin->GetLogin();?></h1>
+			<h1 class="fs-1 fw-bold white"><?php if ($admin != NULL) echo "Bonjour " . $admin->GetLogin();
+			                                     else echo "UltraBlog"; ?></h1>
 			
 			<?php if ($admin != NULL) { ?>
 			<div class="mb-3">

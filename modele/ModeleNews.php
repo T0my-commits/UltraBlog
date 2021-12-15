@@ -18,8 +18,8 @@ class ModeleNews {
 	public function GetNewsPage(int $page, int $nbNewsParPage) : array {
 		global $dsn, $username, $password;
 		$ng = new GatewayNews(new Connexion($dsn, $username, $password));
-		$deb = $nbNewsParPage * ($page-1);
-		$fin = $deb + ($nbNewsParPage-1);
+		$deb = $nbNewsParPage * ($page-1) + ($page-1);
+		$fin = $deb + $nbNewsParPage;
 		$news = $ng->FindNewsRange($deb, $fin);
 		return $news;
 	}

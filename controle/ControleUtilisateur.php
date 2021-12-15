@@ -93,7 +93,7 @@ class ControleUtilisateur {
 		global $rep, $vues;
 
 		// on défini le nombre de news par page;
-		$NB_NEWS_PAR_PAGE = 4;
+		$NB_NEWS_PAR_PAGE = 3;
 
 		// on défini le numéro de page demandé;
 		if (isset($_GET["page"])) 	
@@ -107,7 +107,7 @@ class ControleUtilisateur {
 		$tabNews = $model->GetNewsPage($page, $NB_NEWS_PAR_PAGE);
 
 		$nbNewsTotal = count($tabNews);
-		$nbPagesTotal = ceil($nbNewsTotal / $NB_NEWS_PAR_PAGE);
+		$nbPagesTotal = ceil($model->CountAllNews() / $NB_NEWS_PAR_PAGE);
 
 		// on récupère le nom de l'admin si l'utilisateur est admin;
 		$admin = ModeleAdministrateur::IsConnect();

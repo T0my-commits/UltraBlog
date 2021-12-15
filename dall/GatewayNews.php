@@ -70,7 +70,7 @@ class GatewayNews {
 	 * @return int $fin id du dernier id de l'intervalle
 	*/
 	function FindNewsRange(int $deb, int $fin) : array {
-		$query = "SELECT id,titre,idMembre,dateNews,contenu FROM News WHERE id BETWEEN :deb AND :fin ORDER BY id DESC";
+		$query = "SELECT id,titre,idMembre,dateNews,contenu FROM News WHERE id BETWEEN :deb AND :fin ORDER BY dateNews DESC";
 		$argv = array(":deb" => array($deb, PDO::PARAM_INT),
 			":fin" => array($fin, PDO::PARAM_INT));
 		$news= array();
@@ -85,7 +85,6 @@ class GatewayNews {
 		}
 
 		// on retourne les résultats;
-		//var_dump($news);
 		return $news;
 	}
 

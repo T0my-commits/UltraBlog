@@ -76,7 +76,6 @@ class ControleAdministrateur extends ControleUtilisateur {
 	function AddNews() : void{
 		global $rep, $vues, $dVueErreur;
 		
-		echo $_POST['idMembre'];
 		$idMembre = (int) $_POST['idMembre'];
 		$titre = $_POST['ftitre'];
 		$contenu = $_POST['fcontenu'];

@@ -98,8 +98,10 @@ class Validation {
 		if (!isset($s) || $s = "")
 			$dVueErreur[] = "not found (str)";
 
-		if ($s != filter_var($s, FILTER_SANITIZE_STRING))
-			$dVueErreur[] = "tentative d'attaque";
+		//if ($s != filter_var($s, FILTER_SANITIZE_STRING))
+		//	$dVueErreur[] = "tentative d'attaque";
+
+		//$s = htmlspecialchars($s);
 
 		// on lève une exception si il y a une erreur;
 		if(!empty($dVueErreur))		throw new Exception();
